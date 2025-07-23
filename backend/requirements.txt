@@ -1,0 +1,23 @@
+# backend/requirements.txt
+
+# Core server
+fastapi
+uvicorn[standard]
+python-dotenv
+httpx
+
+# CORS & File Uploads
+python-multipart
+
+# LangChain for RAG
+langchain
+langchain-openai
+langchain_community
+
+# PDF, Vector Store & Embeddings
+pypdf
+faiss-cpu
+sentence-transformers
+Pillow # <-- ADD THIS
+torch # <-- ADD THIS (often a dependency of sentence-transformers)
+PyMuPDF # <-- ADD THIS for PDF rendering
