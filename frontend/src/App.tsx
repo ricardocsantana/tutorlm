@@ -636,7 +636,7 @@ const TutorLM: React.FC = () => {
   const cursorStyle = useMemo(() => { if (currentTool === 'move') return isPanning.current ? 'grabbing' : 'grab'; if (currentTool === 'text') return 'text'; return 'crosshair'; }, [currentTool, isPanning.current]);
 
   return (
-    <div className="h-screen w-screen bg-gray-100 overflow-hidden relative font-sans" style={{ cursor: cursorStyle }}>
+    <div className="h-screen w-screen bg-gray-100 overflow-hidden relative font-sans touch-none" style={{ cursor: cursorStyle }}>
       <AnimatePresence>
         {notification && (
           <motion.div key={notification.id} initial={{ opacity: 0, y: -20, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -20, scale: 0.95 }} className={`fixed top-24 left-1/2 -translate-x-1/2 z-[1001] flex items-center gap-3 px-5 py-3 rounded-xl shadow-lg text-white ${notification.type === 'success' ? 'bg-green-500' : ''} ${notification.type === 'error' ? 'bg-red-500' : ''} ${notification.type === 'info' ? 'bg-blue-500' : ''}`}>
