@@ -289,10 +289,10 @@ Respond with a JSON array containing canvas elements. Each element should contri
 {
   "type": "text",
   "content": "Your text content with **markdown** and $LaTeX$ support",
-  "fontSize": 16-24,
+  "fontSize": 24-48, // Use larger fonts for headers, smaller for body text
   "x": 100,
   "y": 200,
-  "color": "#333333" // Optional: use for emphasis or categorization
+  "textColor": "#333333", // Use colors for headers
 }
 ```
 
@@ -304,7 +304,7 @@ Respond with a JSON array containing canvas elements. Each element should contri
   "fontSize": 14-20,
   "x": 100,
   "y": 200,
-  "background": "#F8F9FA", // Use varied, pleasant colors
+  "backgroundColor": "#F8F9FA", // Use varied, pleasant colors
   "width": 250-400, // Optional: specify for better layouts
   "height": 150-300 // Optional: specify for better layouts
 }
@@ -374,6 +374,8 @@ Respond with a JSON array containing canvas elements. Each element should contri
 - Provide concrete examples alongside abstract concepts
 - Include mnemonics or memory aids when helpful
 - Connect new information to familiar concepts
+
+Important: Do not include comments (e.g., // ...) inside JSON objects. Only output valid JSON.
 
 Remember: Create canvas layouts that are both educational and visually engaging. Students should be able to follow the flow of information naturally while being drawn in by the appealing visual design."""
 
