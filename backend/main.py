@@ -37,7 +37,8 @@ load_dotenv()
 # --- CONFIGURATION ---
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 UNSPLASH_API_KEY = os.getenv("UNSPLASH_ACCESS_KEY") # <-- Added for image search
-MULTIMODAL_MODEL_NAME = "openai/gpt-4o"
+#MULTIMODAL_MODEL_NAME = "google/gemma-3n-e4b-it"
+MULTIMODAL_MODEL_NAME = "anthropic/claude-sonnet-4"
 UPLOADS_DIR = Path("uploads")
 UPLOADS_DIR.mkdir(exist_ok=True)
 TEXT_SIM_THRESHOLD = float(os.getenv("TEXT_SIM_THRESHOLD", "0.5"))

@@ -436,3 +436,1816 @@ This layout follows a structured format, starting with an introduction to the to
 ]
 ```
 ---
+Certamente! Posso ajudar com aulas em português de Portugal. Sobre que tópico gostarias de aprender hoje?
+---
+To create a visually engaging and educational canvas focused on introducing the basics of the Portuguese language, I'll design content that covers essential components such as greetings, basic phrases, and language structure. Here is a canvas layout designed to facilitate learning Portuguese:
+
+```json
+[
+  {
+    "type": "text",
+    "content": "Introduction to Portuguese 🇵🇹",
+    "fontSize": 36,
+    "x": 100,
+    "y": 50,
+    "textColor": "#3333CC"
+  },
+  {
+    "type": "card",
+    "content": "**Basic Greetings**\n- **Olá**: Hello\n- **Bom dia**: Good morning\n- **Boa tarde**: Good afternoon\n- **Boa noite**: Good night",
+    "fontSize": 18,
+    "x": 100,
+    "y": 150,
+    "backgroundColor": "#E3F2FD",
+    "width": 300,
+    "height": 200
+  },
+  {
+    "type": "card",
+    "content": "**Essential Phrases**\n- **Por favor**: Please\n- **Obrigado/Obrigada**: Thank you\n- **Desculpe**: Excuse me/Sorry\n- **Sim/Não**: Yes/No",
+    "fontSize": 18,
+    "x": 450,
+    "y": 150,
+    "backgroundColor": "#F3E5F5",
+    "width": 300,
+    "height": 200
+  },
+  {
+    "type": "card",
+    "content": "**Numbers 1-5**\n1. Um\n2. Dois\n3. Três\n4. Quatro\n5. Cinco",
+    "fontSize": 18,
+    "x": 100,
+    "y": 400,
+    "backgroundColor": "#E8F5E8",
+    "width": 150,
+    "height": 150
+  },
+  {
+    "type": "card",
+    "content": "**Common Verbs**\n- **Ser/Estar**: To be\n- **Ter**: To have\n- **Fazer**: To do/make\n- **Poder**: To be able to",
+    "fontSize": 18,
+    "x": 300,
+    "y": 400,
+    "backgroundColor": "#FFF3E0",
+    "width": 200,
+    "height": 150
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 350,
+    "y1": 350,
+    "x2": 350,
+    "y2": 550,
+    "color": "#666666"
+  },
+  {
+    "type": "image",
+    "search": "Portuguese language map",
+    "x": 600,
+    "y": 400,
+    "height": 200,
+    "caption": "Countries where Portuguese is spoken"
+  }
+]
+```
+
+This canvas is designed to start learners with basic components of Portuguese, such as greetings, essential phrases, and numbers. It provides a visually distinct and organized format for better retention and understanding.
+---
+Claro! Vamos criar um layout visual para entender a história de Portugal.
+
+```json
+[
+    {
+        "type": "text",
+        "content": "História de Portugal 🇵🇹",
+        "fontSize": 36,
+        "x": 50,
+        "y": 30,
+        "textColor": "#333333"
+    },
+    {
+        "type": "card",
+        "content": "**Pré-História**: As primeiras evidências de ocupação humana em Portugal remontam ao Paleolítico.",
+        "fontSize": 16,
+        "x": 50,
+        "y": 100,
+        "backgroundColor": "#E3F2FD",
+        "width": 400,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "**Romanização (218 a.C. - 5º século)**: A Península Ibérica foi conquistada pelos romanos, trazendo a língua latina e o direito romano.",
+        "fontSize": 16,
+        "x": 50,
+        "y": 220,
+        "backgroundColor": "#E8F5E8",
+        "width": 400,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "**Conquista Muçulmana (711-1249)**: A invasão dos mouros trouxe influências culturais significativas.",
+        "fontSize": 16,
+        "x": 50,
+        "y": 340,
+        "backgroundColor": "#F3E5F5",
+        "width": 400,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "**Fundação do Reino de Portugal (1139)**: Dom Afonso Henriques declarou a independência do Condado Portucalense, tornando-se o primeiro rei.",
+        "fontSize": 16,
+        "x": 50,
+        "y": 460,
+        "backgroundColor": "#FFF3E0",
+        "width": 400,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "**Era dos Descobrimentos (Séculos XV-XVI)**: Portugal estabeleceu-se como uma potência marítima, explorando novos territórios e culturas.",
+        "fontSize": 16,
+        "x": 500,
+        "y": 100,
+        "backgroundColor": "#E3F2FD",
+        "width": 400,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "**União Ibérica (1580-1640)**: Durante sessenta anos, Portugal e Espanha foram unidos sob uma só coroa.",
+        "fontSize": 16,
+        "x": 500,
+        "y": 220,
+        "backgroundColor": "#FFEBEE",
+        "width": 400,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "**Restauração da Independência (1640)**: Movimento que restaurou a soberania portuguesa, colocando a Casa de Bragança no trono.",
+        "fontSize": 16,
+        "x": 500,
+        "y": 340,
+        "backgroundColor": "#E8F5E8",
+        "width": 400,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "**Revolução dos Cravos (1974)**: Revolução que derrubou a ditadura e restaurou a democracia em Portugal.",
+        "fontSize": 16,
+        "x": 500,
+        "y": 460,
+        "backgroundColor": "#F3E5F5",
+        "width": 400,
+        "height": 100
+    },
+    {
+        "type": "line",
+        "thickness": "m",
+        "x1": 420,
+        "y1": 150,
+        "x2": 470,
+        "y2": 150,
+        "color": "#666666"
+    },
+    {
+        "type": "line",
+        "thickness": "m",
+        "x1": 420,
+        "y1": 270,
+        "x2": 470,
+        "y2": 270,
+        "color": "#666666"
+    },
+    {
+        "type": "line",
+        "thickness": "m",
+        "x1": 420,
+        "y1": 390,
+        "x2": 470,
+        "y2": 390,
+        "color": "#666666"
+    },
+    {
+        "type": "line",
+        "thickness": "m",
+        "x1": 420,
+        "y1": 510,
+        "x2": 470,
+        "y2": 510,
+        "color": "#666666"
+    }
+]
+``` 
+
+Este layout visual ajuda a entender os principais marcos na história de Portugal, proporcionando uma visão clara e organizada do seu desenvolvimento através dos séculos.
+---
+Sure! Let's create an interactive canvas to explore the placement of planets in the Solar System.
+
+```json
+[
+    {
+        "type": "text",
+        "content": "🚀 **Solar System Overview**",
+        "fontSize": 36,
+        "x": 50,
+        "y": 20,
+        "textColor": "#333333"
+    },
+    {
+        "type": "card",
+        "content": "The **Solar System** consists of the Sun and the celestial objects bound to it by gravity, including eight planets.",
+        "fontSize": 18,
+        "x": 50,
+        "y": 80,
+        "backgroundColor": "#E3F2FD",
+        "width": 400,
+        "height": 150
+    },
+    {
+        "type": "text",
+        "content": "🌞 **The Sun**",
+        "fontSize": 24,
+        "x": 50,
+        "y": 250,
+        "textColor": "#333333"
+    },
+    {
+        "type": "card",
+        "content": "The **Sun** is the star at the center of the Solar System. It is by far the most important source of energy for life on Earth.",
+        "fontSize": 16,
+        "x": 50,
+        "y": 300,
+        "backgroundColor": "#FFF3E0",
+        "width": 350,
+        "height": 130
+    },
+    {
+        "type": "line",
+        "thickness": "l",
+        "x1": 100,
+        "y1": 430,
+        "x2": 700,
+        "y2": 430,
+        "color": "#666666"
+    },
+    {
+        "type": "text",
+        "content": "🌍 **Planets of the Solar System**",
+        "fontSize": 24,
+        "x": 50,
+        "y": 460,
+        "textColor": "#333333"
+    },
+    {
+        "type": "card",
+        "content": "**1. Mercury** \nClosest planet to the Sun and the smallest planet.",
+        "fontSize": 16,
+        "x": 50,
+        "y": 520,
+        "backgroundColor": "#E8F5E8",
+        "width": 200,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "**2. Venus** \nSecond planet from the Sun. Known for its bright appearance.",
+        "fontSize": 16,
+        "x": 300,
+        "y": 520,
+        "backgroundColor": "#E8F5E8",
+        "width": 200,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "**3. Earth** \nOur home, the third planet from the Sun.",
+        "fontSize": 16,
+        "x": 550,
+        "y": 520,
+        "backgroundColor": "#E8F5E8",
+        "width": 200,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "**4. Mars** \nKnown as the Red Planet, fourth from the Sun.",
+        "fontSize": 16,
+        "x": 800,
+        "y": 520,
+        "backgroundColor": "#E8F5E8",
+        "width": 200,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "**5. Jupiter** \nFifth planet and the largest in the Solar System.",
+        "fontSize": 16,
+        "x": 50,
+        "y": 650,
+        "backgroundColor": "#F3E5F5",
+        "width": 200,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "**6. Saturn** \nSixth planet known for its rings.",
+        "fontSize": 16,
+        "x": 300,
+        "y": 650,
+        "backgroundColor": "#F3E5F5",
+        "width": 200,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "**7. Uranus** \nSeventh planet, known for its tilt.",
+        "fontSize": 16,
+        "x": 550,
+        "y": 650,
+        "backgroundColor": "#F3E5F5",
+        "width": 200,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "**8. Neptune** \nEighth and farthest. Known for its blue color.",
+        "fontSize": 16,
+        "x": 800,
+        "y": 650,
+        "backgroundColor": "#F3E5F5",
+        "width": 200,
+        "height": 100
+    },
+    {
+        "type": "image",
+        "search": "solar system diagram",
+        "x": 450,
+        "y": 780,
+        "height": 250,
+        "caption": "Diagram of the Solar System"
+    }
+]
+```
+---
+Sure! Let's break it down step-by-step on a visual canvas. I'll create a series of elements that guide you through the process of solving quadratic equations.
+
+```json
+[
+    {
+        "type": "text",
+        "content": "Understanding **Quadratic Equations**",
+        "fontSize": 36,
+        "x": 100,
+        "y": 50,
+        "textColor": "#333333"
+    },
+    {
+        "type": "card",
+        "content": "A **quadratic equation** is of the form: $ax^2 + bx + c = 0$",
+        "fontSize": 18,
+        "x": 100,
+        "y": 150,
+        "backgroundColor": "#E8F5E8",
+        "width": 400,
+        "height": 100
+    },
+    {
+        "type": "card",
+        "content": "To solve, apply the **quadratic formula**:\n$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$",
+        "fontSize": 16,
+        "x": 100,
+        "y": 280,
+        "backgroundColor": "#E3F2FD",
+        "width": 350,
+        "height": 120
+    },
+    {
+        "type": "image",
+        "search": "quadratic formula",
+        "x": 500,
+        "y": 280,
+        "height": 150,
+        "caption": "The visual representation of the quadratic formula"
+    },
+    {
+        "type": "card",
+        "content": "**Example**: Solve $x^2 - 5x + 6 = 0$",
+        "fontSize": 16,
+        "x": 100,
+        "y": 440,
+        "backgroundColor": "#F3E5F5",
+        "width": 350,
+        "height": 80
+    },
+    {
+        "type": "card",
+        "content": "1. Identify: $a = 1$, $b = -5$, $c = 6$\n2. Plug into formula:\n$x = \\frac{-(-5) \\pm \\sqrt{(-5)^2 - 4 \cdot 1 \cdot 6}}{2 \cdot 1}$\n3. Simplify: $x = \\frac{5 \\pm 1}{2}$\n4. Solutions: $x_1 = 3$, $x_2 = 2$",
+        "fontSize": 14,
+        "x": 100,
+        "y": 540,
+        "backgroundColor": "#FFF3E0",
+        "width": 350,
+        "height": 180
+    },
+    {
+        "type": "line",
+        "x1": 250,
+        "y1": 280,
+        "x2": 250,
+        "y2": 440,
+        "color": "#666666",
+        "thickness": "s"
+    },
+    {
+        "type": "card",
+        "content": "Remember: Check the **discriminant** ($b^2 - 4ac$):\n- **Positive**: Two real solutions 📘\n- **Zero**: One real solution\n- **Negative**: No real solutions 🔴",
+        "fontSize": 16,
+        "x": 500,
+        "y": 460,
+        "backgroundColor": "#FFEBEE",
+        "width": 350,
+        "height": 140
+    }
+]
+```
+
+In this layout:
+1. We start with a title to introduce the topic.
+2. Followed by a basic definition and the quadratic formula.
+3. An example problem is included, demonstrating step-by-step how to use the quadratic formula.
+4. I included a line to visually link the formula to its use in solving the example.
+5. There's a card for reminders on the discriminant, illustrating how to interpret the solutions.
+
+This visual guide should help you understand how to solve quadratic equations using the quadratic formula! 🎉
+---
+Certainly! Here's how you can display "Hello, World!" in the console using the programming language Python, and we'll explore similar examples in a few other popular programming languages as well.
+
+```json
+[
+  {
+    "type": "text",
+    "content": "# Printing Hello World in Different Languages",
+    "fontSize": 36,
+    "x": 50,
+    "y": 50,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "## Python\nTo print 'Hello, World!' in Python, use the built-in `print()` function:\n```python\nprint('Hello, World!')\n```",
+    "fontSize": 18,
+    "x": 50,
+    "y": 120,
+    "backgroundColor": "#E3F2FD",
+    "width": 350
+  },
+  {
+    "type": "card",
+    "content": "## JavaScript\nIn JavaScript, you can use `console.log()`:\n```javascript\nconsole.log('Hello, World!');\n```",
+    "fontSize": 18,
+    "x": 450,
+    "y": 120,
+    "backgroundColor": "#F3E5F5",
+    "width": 350
+  },
+  {
+    "type": "card",
+    "content": "## Java\nIn Java, `System.out.println()` is used:\n```java\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}\n```",
+    "fontSize": 18,
+    "x": 50,
+    "y": 320,
+    "backgroundColor": "#E8F5E8",
+    "width": 350
+  },
+  {
+    "type": "card",
+    "content": "## C++\nIn C++, `std::cout` can be used:\n```cpp\n#include <iostream>\n\nint main() {\n    std::cout << \"Hello, World!\" << std::endl;\n    return 0;\n}\n```",
+    "fontSize": 18,
+    "x": 450,
+    "y": 320,
+    "backgroundColor": "#FFF3E0",
+    "width": 350
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 400,
+    "y1": 140,
+    "x2": 400,
+    "y2": 540,
+    "color": "#666666"
+  },
+  {
+    "type": "text",
+    "content": "These examples show the basic syntax for printing text to the console in different programming languages. Notice how each language has its own unique syntax.",
+    "fontSize": 18,
+    "x": 50,
+    "y": 600,
+    "textColor": "#333333"
+  }
+]
+```
+---
+It looks like the equation is \( x^3 + 1 = 0 \).
+
+To solve for \( x \), we can follow these steps:
+
+1. Subtract 1 from both sides:
+   \[
+   x^3 = -1
+   \]
+
+2. Take the cube root of both sides to solve for \( x \):
+   \[
+   x = \sqrt[3]{-1}
+   \]
+
+3. The real solution is:
+   \[
+   x = -1
+   \]
+
+Let me know if you need more help!
+---
+Could you please provide more context or specify what topic or concept you'd like the pictures and descriptions to be about? This will help in creating a more targeted and relevant learning canvas.
+---
+Sure! Let’s create a visually engaging canvas to explore the history of Portugal.
+
+```json
+[
+    {
+        "type": "text",
+        "content": "# History of Portugal",
+        "fontSize": 36,
+        "x": 50,
+        "y": 20,
+        "textColor": "#2E86C1"
+    },
+    {
+        "type": "card",
+        "content": "## Early History\n- **Pre-Roman**: Iberian tribes like the Lusitanians.\n- **Roman Rule**: Part of Hispania, Latin influences.\n- **Visigothic Kingdom**: After the fall of Rome.",
+        "fontSize": 16,
+        "x": 50,
+        "y": 120,
+        "backgroundColor": "#E3F2FD",
+        "width": 350,
+        "height": 180
+    },
+    {
+        "type": "card",
+        "content": "## Formation of Portugal\n- **868 AD**: County of Portugal established.\n- **1139**: Count Afonso Henriques declares himself King.\n- **1143**: Recognized as independent by the Treaty of Zamora.",
+        "fontSize": 16,
+        "x": 450,
+        "y": 120,
+        "backgroundColor": "#F3E5F5",
+        "width": 350,
+        "height": 200
+    },
+    {
+        "type": "line",
+        "thickness": "m",
+        "x1": 405,
+        "y1": 210,
+        "x2": 450,
+        "y2": 210,
+        "color": "#666666"
+    },
+    {
+        "type": "card",
+        "content": "## The Age of Discoveries 🌍\n- **15th-16th centuries**: Global exploration.\n- **Notable Explorers**: Vasco da Gama, Bartolomeu Dias.\n- **Empire**: Colonies in Africa, Asia, Brazil.",
+        "fontSize": 16,
+        "x": 50,
+        "y": 350,
+        "backgroundColor": "#E8F5E8",
+        "width": 350,
+        "height": 180
+    },
+    {
+        "type": "image",
+        "search": "Portugal Age of Discoveries",
+        "x": 450,
+        "y": 350,
+        "height": 200,
+        "caption": "Portuguese explorers charted new territories."
+    },
+    {
+        "type": "card",
+        "content": "## 19th Century and Beyond\n- **Napoleonic Wars**: Brief occupation by France.\n- **1820**: Liberal Revolution.\n- **1910**: Monarchy falls, Republic established.\n- **1974**: Carnation Revolution ends dictatorship.",
+        "fontSize": 16,
+        "x": 50,
+        "y": 580,
+        "backgroundColor": "#FFF3E0",
+        "width": 350,
+        "height": 220
+    },
+    {
+        "type": "line",
+        "thickness": "m",
+        "x1": 225,
+        "y1": 530,
+        "x2": 225,
+        "y2": 580,
+        "color": "#666666"
+    },
+    {
+        "type": "card",
+        "content": "## Modern Era\n- **EU Membership**: Joined European Union in 1986.\n- **21st Century**: Economic challenges, cultural renaissance.\n- **Cultural Influence**: Rich maritime history, vibrant arts.",
+        "fontSize": 16,
+        "x": 450,
+        "y": 580,
+        "backgroundColor": "#FFEBEE",
+        "width": 350,
+        "height": 180
+    },
+    {
+        "type": "line",
+        "thickness": "m",
+        "x1": 225,
+        "y1": 800,
+        "x2": 225,
+        "y2": 580,
+        "color": "#666666"
+    }
+]
+```
+
+This canvas provides a structured overview of Portugal’s rich history, from its early days to modernity. Each section is color-coded and spaced for easy reading, with visual elements to engage and connect concepts. Explore Portuguese history's journey through time visually!
+---
+To solve the quadratic equation \(x^2 + 1 = 0\), we can rearrange and solve for \(x\):
+
+1. Subtract 1 from both sides: 
+   \[ x^2 = -1 \]
+
+2. Take the square root of both sides:
+   \[ x = \pm \sqrt{-1} \]
+
+Using imaginary numbers, we have:
+\[ x = \pm i \]
+
+where \(i\) is the imaginary unit, defined as \(i = \sqrt{-1}\).
+
+So the solutions are:
+\[ x = i \quad \text{and} \quad x = -i \]
+
+If you need help with the second equation in the image at the end, let me know!
+---
+```json
+[
+    {
+        "type": "text",
+        "content": "🇵🇹 The History of Portugal",
+        "fontSize": 36,
+        "x": 100,
+        "y": 50,
+        "textColor": "#333333"
+    },
+    {
+        "type": "text",
+        "content": "**Ancient Beginnings and Roman Era**",
+        "fontSize": 24,
+        "x": 100,
+        "y": 150,
+        "textColor": "#333333"
+    },
+    {
+        "type": "card",
+        "content": "The region now known as Portugal was inhabited by Celtic tribes known as the Lusitanians. The Romans arrived in the **3rd century BC** and integrated Portugal into the Roman Empire as Lusitania.",
+        "fontSize": 18,
+        "x": 100,
+        "y": 200,
+        "backgroundColor": "#E3F2FD",
+        "width": 400,
+        "height": 150
+    },
+    {
+        "type": "image",
+        "search": "Roman ruins Portugal",
+        "x": 550,
+        "y": 200,
+        "height": 150,
+        "caption": "Roman ruins in Conímbriga, Portugal"
+    },
+    {
+        "type": "text",
+        "content": "**Medieval Period**",
+        "fontSize": 24,
+        "x": 100,
+        "y": 400,
+        "textColor": "#333333"
+    },
+    {
+        "type": "card",
+        "content": "After the Fall of Rome, the **Visigoths** and later the **Moors** ruled the area. Portugal became an independent kingdom in 1139 under Afonso I.",
+        "fontSize": 18,
+        "x": 100,
+        "y": 450,
+        "backgroundColor": "#F3E5F5",
+        "width": 400,
+        "height": 150
+    },
+    {
+        "type": "image",
+        "search": "Afonso I Portugal",
+        "x": 550,
+        "y": 450,
+        "height": 150,
+        "caption": "Statue of Afonso I, the first King of Portugal"
+    },
+    {
+        "type": "text",
+        "content": "**Age of Discoveries**",
+        "fontSize": 24,
+        "x": 100,
+        "y": 650,
+        "textColor": "#333333"
+    },
+    {
+        "type": "card",
+        "content": "During the **15th and 16th centuries**, Portugal was a premier maritime power, with explorers like **Vasco da Gama** opening sea routes to India. This era brought immense wealth and established a global empire.",
+        "fontSize": 18,
+        "x": 100,
+        "y": 700,
+        "backgroundColor": "#E8F5E8",
+        "width": 400,
+        "height": 150
+    },
+    {
+        "type": "image",
+        "search": "Vasco da Gama",
+        "x": 550,
+        "y": 700,
+        "height": 150,
+        "caption": "Portrait of Vasco da Gama"
+    },
+    {
+        "type": "text",
+        "content": "**Modern Era**",
+        "fontSize": 24,
+        "x": 100,
+        "y": 900,
+        "textColor": "#333333"
+    },
+    {
+        "type": "card",
+        "content": "In 1910, the monarchy was overthrown, and Portugal became a republic. The country experienced a dictatorship that lasted until the **Carnation Revolution** in 1974, leading to democracy.",
+        "fontSize": 18,
+        "x": 100,
+        "y": 950,
+        "backgroundColor": "#FFF3E0",
+        "width": 400,
+        "height": 150
+    },
+    {
+        "type": "image",
+        "search": "Carnation Revolution",
+        "x": 550,
+        "y": 950,
+        "height": 150,
+        "caption": "Celebrations during the Carnation Revolution"
+    },
+    {
+        "type": "line",
+        "thickness": "m",
+        "x1": 250,
+        "y1": 350,
+        "x2": 250,
+        "y2": 450,
+        "color": "#666666"
+    },
+    {
+        "type": "line",
+        "thickness": "m",
+        "x1": 250,
+        "y1": 600,
+        "x2": 250,
+        "y2": 700,
+        "color": "#666666"
+    },
+    {
+        "type": "line",
+        "thickness": "m",
+        "x1": 250,
+        "y1": 900,
+        "x2": 250,
+        "y2": 1000,
+        "color": "#666666"
+    },
+    {
+        "type": "text",
+        "content": "Key Takeaways: Portugal's history is rich with **cultural influences** from Romans, Moors, and maritime explorations, which have all contributed to its vibrant heritage today.",
+        "fontSize": 18,
+        "x": 100,
+        "y": 1150,
+        "textColor": "#333333"
+    }
+]
+```
+---
+To solve the equation \( x^2 + 2 = 0 \), follow these steps:
+
+1. **Rearrange the equation** to isolate \( x^2 \):
+   \[
+   x^2 = -2
+   \]
+
+2. **Take the square root of both sides**:
+   \[
+   x = \pm \sqrt{-2}
+   \]
+
+3. **Express the solution using imaginary numbers**:
+   \[
+   x = \pm i\sqrt{2}
+   \]
+
+So, the solutions are \( x = i\sqrt{2} \) and \( x = -i\sqrt{2} \).
+---
+It looks like you want to solve the equation \( X = 2X \).
+
+Here's how you can solve it:
+
+1. **Subtract \( X \) from both sides:**
+
+   \[
+   X - X = 2X - X
+   \]
+
+   \[
+   0 = X
+   \]
+
+2. **Solution:**
+   \( X = 0 \)
+
+The only solution is \( X = 0 \). 
+---
+I'm unable to determine the specific content of the image. If you have questions or need explanations about a particular topic, feel free to ask!
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "## A Journey Through Time: The History of Portugal 🇵🇹",
+    "fontSize": 32,
+    "x": 100,
+    "y": 50,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "## The Dawn of the Kingdom (Pre-12th Century)",
+    "fontSize": 18,
+    "x": 100,
+    "y": 150,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 250
+  },
+  {
+    "type": "text",
+    "content": "The Iberian Peninsula was inhabited by various tribes before the Roman Empire arrived. The Romans controlled the region for centuries, leaving behind lasting influences on language and infrastructure. After the Roman decline, the Visigoths established a kingdom.  In the 8th century, the Moors (Arabs and Berbers) conquered much of the peninsula, including the territory of modern-day Portugal.  The Christian reconquest began in the 11th century.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 200,
+    "textColor": "#333333"
+  },
+  {
+    "type": "image",
+    "search": "roman peninsula map",
+    "x": 300,
+    "y": 150,
+    "height": 200,
+    "caption": "Roman Peninsula: Illustrating the historical context of the Iberian Peninsula."
+  },
+  {
+    "type": "card",
+    "content": "## The Formation of Portugal (12th-13th Centuries)",
+    "fontSize": 18,
+    "x": 100,
+    "y": 450,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 250
+  },
+ {
+    "type": "text",
+    "content": "The Kingdom of Portugal emerged in the 12th century with Afonso Henriques, who declared himself King of Portugal in 1139.  Battles against the Moors solidified Portuguese independence. The Reconquista continued, steadily pushing the Moors south.  The establishment of Lisbon as the capital marked a crucial step towards a unified kingdom.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 500,
+       "textColor": "#333333"
+  },
+ {
+    "type": "connection",
+    "thickness": "m",
+    "x1": 100, "y1": 400,
+    "x2": 350, "y2": 400,
+    "color": "#666666"
+  },
+  {
+    "type": "card",
+    "content": "## The Age of Discovery (15th-16th Centuries)",
+    "fontSize": 18,
+    "x": 100,
+    "y": 700,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 250
+  },
+  {
+    "type": "text",
+    "content": "Portugal pioneered maritime exploration during the Age of Discovery.  Driven by a desire for trade routes and wealth, Portuguese explorers like Vasco da Gama (to India) and Ferdinand Magellan (circumnavigation of the globe) expanded Portugal's influence across the world. This era brought immense wealth and power to Portugal, establishing it as a dominant maritime empire. 📊",
+    "fontSize": 16,
+    "x": 100,
+    "y": 750,
+    "textColor": "#333333"
+  },
+  {
+    "type": "image",
+    "search": "vasco da gama",
+    "x": 300,
+    "y": 650,
+    "height": 200,
+    "caption": "Vasco da Gama: A key figure in Portugal's Age of Discovery."
+  },
+    {
+    "type": "text",
+    "content": "The discovery of Brazil in 1500 was a major turning point, leading to colonization and a vast empire.  The spice trade became a cornerstone of the Portuguese economy.  However, this era also involved exploitation and the transatlantic slave trade, a dark chapter in Portuguese history. ⚡",
+    "fontSize": 16,
+    "x": 100,
+    "y": 850,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "## Decline and Modern Portugal (17th Century - Present)",
+    "fontSize": 18,
+    "x": 100,
+    "y": 1050,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 250
+  },
+  {
+    "type": "text",
+    "content": "Portugal's power gradually declined in the 18th and 19th centuries, facing economic difficulties and territorial losses. The Napoleonic Wars severely impacted the country. The 20th century saw a period of political instability, including a colonial war in Angola and Mozambique. In 1974, a Carnation Revolution overthrew the dictatorship, leading to democratic reforms. Portugal joined the European Economic Community (now the EU) in 1986.  🎯",
+    "fontSize": 16,
+    "x": 100,
+    "y": 1100,
+    "textColor": "#333333"
+  },
+  {
+    "type": "text",
+    "content": " **Key Takeaways:**\n* Portugal's history is marked by exploration, colonization, and a maritime empire.\n*  The Age of Discovery shaped Portugal's identity and global influence.\n*  The country experienced periods of decline and political upheaval but emerged as a modern democratic nation. \n* Remembrance of the colonial past and the slave trade remains important for contemporary Portugal. ",
+    "fontSize": 16,
+    "x": 100,
+    "y": 1300,
+    "textColor": "#333333"
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "## Solving the Equation: 2x² = x",
+    "fontSize": 32,
+    "x": 50,
+    "y": 50,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "To solve the equation $2x^2 = x$, we first need to rearrange it into a standard quadratic equation form: $ax^2 + bx + c = 0$.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 150,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 200
+  },
+  {
+    "type": "text",
+    "content": "Subtract $x$ from both sides of the equation: $2x^2 - x = 0$",
+    "fontSize": 16,
+    "x": 100,
+    "y": 350,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "Now, we can factor out the common factor of $x$: $x(2x - 1) = 0$",
+    "fontSize": 16,
+    "x": 100,
+    "y": 500,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 200
+  },
+  {
+    "type": "text",
+    "content": "For the product of two factors to be zero, at least one of them must be zero. Therefore, we have two possible solutions:",
+    "fontSize": 16,
+    "x": 100,
+    "y": 700,
+    "textColor": "#333333"
+  },
+  {
+    "type": "text",
+    "content": "1.  $x = 0$",
+    "fontSize": 16,
+    "x": 100,
+    "y": 740,
+    "textColor": "#333333",
+    "bold": true
+  },
+  {
+    "type": "text",
+    "content": "2.  $2x - 1 = 0$",
+    "fontSize": 16,
+    "x": 100,
+    "y": 780,
+    "textColor": "#333333"
+  },
+    {
+    "type": "text",
+    "content": "Solve for $x$ in the second equation: $2x = 1  =>  x = \frac{1}{2}$",
+    "fontSize": 16,
+    "x": 100,
+    "y": 820,
+    "textColor": "#333333"
+  },
+    {
+    "type": "card",
+    "content": "Therefore, the solutions to the equation $2x^2 = x$ are $x = 0$ and $x = \frac{1}{2}$.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 950,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 200
+  },
+  {
+    "type": "text",
+    "content": "## Key Takeaways",
+    "fontSize": 24,
+    "x": 50,
+    "y": 1100,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "*   Remember to rearrange the equation into standard quadratic form before solving.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 1150,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "card",
+    "content": "*   The zero product property is useful for solving quadratic equations.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 1300,
+    "backgroundColor": "#F3E5F5",
+    "width": 350,
+    "height": 150
+  },
+   {
+    "type": "line",
+    "thickness": "m",
+    "x1": 50, "y1": 900,
+    "x2": 450, "y2": 900,
+    "color": "#666666"
+  }
+]
+```
+---
+
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "## A Journey Through Time: The History of Portugal 🇵🇹",
+    "fontSize": 36,
+    "x": 100,
+    "y": 50,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "### The Dawn of the Kingdom (8th-12th Centuries)",
+    "fontSize": 18,
+    "x": 100,
+    "y": 150,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 250
+  },
+  {
+    "type": "text",
+    "content": "Emerging from the Visigothic and Moorish influence, the County of Portugal gradually gained independence.  The Reconquista (Reconquest) of the Iberian Peninsula was a crucial period.  The Battle of Ourique (1139) is often considered the key event in the formation of the Kingdom of Portugal.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 200,
+    "textColor": "#333333"
+  },
+  {
+    "type": "image",
+    "search": "map of portugal 12th century",
+    "x": 100,
+    "y": 300,
+    "height": 200,
+    "caption": "Map showing the region of Portugal in the 12th century."
+  },
+  {
+    "type": "card",
+    "content": "### The Age of Discoveries (15th-16th Centuries)",
+    "fontSize": 18,
+    "x": 450,
+    "y": 150,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 250
+  },
+  {
+    "type": "text",
+    "content": "Driven by a desire for trade routes to the East, Portugal spearheaded the Age of Discoveries.  Prince Henry the Navigator fostered exploration, leading to voyages down the African coast.  Vasco da Gama's voyage to India (1498) was a monumental achievement.  This era established Portugal as a major maritime power, creating a vast colonial empire. 📊",
+    "fontSize": 16,
+    "x": 450,
+    "y": 200,
+    "textColor": "#333333"
+  },
+  {
+    "type": "connection",
+    "thickness": "m",
+    "x1": 150, "y1": 350,
+    "x2": 450, "y2": 350,
+    "color": "#666666"
+  },
+  {
+    "type": "card",
+    "content": "### The Iberian Union & Decline (16th-18th Centuries)",
+    "fontSize": 18,
+    "x": 100,
+    "y": 450,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 250
+  },
+  {
+    "type": "text",
+    "content": "The marriage of Isabella of Castile and Ferdinand of Aragon in 1469 led to the Iberian Union, though Portugal retained its own institutions.  The Portuguese Empire reached its peak, but facing competition from other European powers (particularly the Dutch and English), Portugal experienced a gradual decline in its global dominance.  The विनाशकारी earthquake of 1755 devastated Lisbon and had profound political and social consequences. $x^2 + y^2 = r^2$ (Illustrative math example)",
+    "fontSize": 16,
+    "x": 100,
+    "y": 500,
+    "textColor": "#333333"
+  },
+   {
+    "type": "image",
+    "search": "Lisbon earthquake 1755",
+    "x": 100,
+    "y": 600,
+    "height": 200,
+    "caption": "Image depicting the devastation of Lisbon after the 1755 earthquake."
+  },
+  {
+    "type": "card",
+    "content": "### Modern Portugal (19th Century - Present)",
+    "fontSize": 18,
+    "x": 450,
+    "y": 450,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 250
+  },
+  {
+    "type": "text",
+    "content": "The Napoleonic Wars led to the loss of Brazil, Portugal's largest colony.  The 19th and 20th centuries saw internal political struggles and the establishment of a republic in 1910. Portugal joined the European Economic Community (EEC), now the European Union, in 1986. Today, Portugal is a stable democracy and a member of NATO. 💡",
+    "fontSize": 16,
+    "x": 450,
+    "y": 500,
+    "textColor": "#333333"
+  },
+    {
+    "type": "text",
+    "content": " **Key Takeaways:** \n - Portugal played a pivotal role in the Age of Discoveries.\n - The 1755 earthquake marked a turning point in its history.\n - Portugal's modern history involves political transitions and integration with Europe. \n",
+    "fontSize": 16,
+    "x": 100,
+    "y": 700,
+    "textColor": "#333333"
+  }
+]
+```
+---
+
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "🇵🇹 **The History of Portugal** 🇵🇹",
+    "fontSize": 32,
+    "x": 400,
+    "y": 50,
+    "textColor": "#2E7D32"
+  },
+  {
+    "type": "text",
+    "content": "*From Celtic tribes to global empire to modern democracy*",
+    "fontSize": 18,
+    "x": 350,
+    "y": 100,
+    "textColor": "#666666"
+  },
+  {
+    "type": "card",
+    "content": "**Pre-Roman Period** 🏺\n\n• **Celtic & Lusitanian tribes** (800-200 BCE)\n• Independent warrior societies\n• Famous resistance leader: **Viriathus**\n• Advanced metalworking and agriculture",
+    "fontSize": 16,
+    "x": 50,
+    "y": 180,
+    "backgroundColor": "#F3E5F5",
+    "width": 280,
+    "height": 160
+  },
+  {
+    "type": "card",
+    "content": "**Roman Lusitania** ⚔️\n\n• **Conquered 139 BCE**\n• Province of Lusitania established\n• Roman roads, cities, culture\n• Christianity introduced\n• Latin → Portuguese language roots",
+    "fontSize": 16,
+    "x": 380,
+    "y": 180,
+    "backgroundColor": "#E3F2FD",
+    "width": 280,
+    "height": 160
+  },
+  {
+    "type": "card",
+    "content": "**Visigothic Period** 👑\n\n• **409-711 CE**\n• Germanic tribes rule\n• Capital: Toledo (Spain)\n• Blend of Roman-Germanic culture\n• Christianity becomes dominant",
+    "fontSize": 16,
+    "x": 710,
+    "y": 180,
+    "backgroundColor": "#FFF3E0",
+    "width": 280,
+    "height": 160
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 330,
+    "y1": 260,
+    "x2": 380,
+    "y2": 260,
+    "color": "#666666"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 660,
+    "y1": 260,
+    "x2": 710,
+    "y2": 260,
+    "color": "#666666"
+  },
+  {
+    "type": "card",
+    "content": "**Islamic Period** 🕌\n\n• **711-1249 CE** (Al-Andalus)\n• Moors conquer Iberian Peninsula\n• Advanced mathematics, medicine, agriculture\n• Religious tolerance (Christians, Jews, Muslims)\n• Arabic influence on Portuguese language",
+    "fontSize": 16,
+    "x": 50,
+    "y": 400,
+    "backgroundColor": "#E8F5E8",
+    "width": 320,
+    "height": 180
+  },
+  {
+    "type": "card",
+    "content": "**Reconquista & Birth of Portugal** ⚔️👑\n\n• **1139**: Afonso I becomes first King\n• **Battle of Ourique** - independence from León\n• **1249**: Reconquista completed\n• **Treaty of Windsor (1386)** - alliance with England\n• Capital established in **Lisbon**",
+    "fontSize": 16,
+    "x": 420,
+    "y": 400,
+    "backgroundColor": "#FFEBEE",
+    "width": 320,
+    "height": 180
+  },
+  {
+    "type": "line",
+    "thickness": "l",
+    "x1": 370,
+    "y1": 490,
+    "x2": 420,
+    "y2": 490,
+    "color": "#D32F2F"
+  },
+  {
+    "type": "text",
+    "content": "⚡ **The Age of Discoveries** (15th-16th centuries)",
+    "fontSize": 24,
+    "x": 300,
+    "y": 640,
+    "textColor": "#1565C0"
+  },
+  {
+    "type": "card",
+    "content": "**Maritime Pioneers** 🌊⛵\n\n• **Prince Henry the Navigator**\n• School of Navigation (Sagres)\n• Improved ship design (caravels)\n• Better navigation tools\n• Systematic exploration strategy",
+    "fontSize": 16,
+    "x": 50,
+    "y": 700,
+    "backgroundColor": "#E1F5FE",
+    "width": 280,
+    "height": 180
+  },
+  {
+    "type": "card",
+    "content": "**Global Empire** 🗺️\n\n• **1415**: Ceuta (first overseas conquest)\n• **1498**: Vasco da Gama reaches India\n• **1500**: Brazil discovered\n• Trading posts: Africa, Asia, Americas\n• Spice trade monopoly",
+    "fontSize": 16,
+    "x": 380,
+    "y": 700,
+    "backgroundColor": "#F1F8E9",
+    "width": 280,
+    "height": 180
+  },
+  {
+    "type": "card",
+    "content": "**Golden Age Achievements** 💎\n\n• **Luís de Camões** - *Os Lusíadas*\n• Manueline architecture\n• Wealth from spices & gold\n• Global cultural exchange\n• Scientific advances",
+    "fontSize": 16,
+    "x": 710,
+    "y": 700,
+    "backgroundColor": "#FFF8E1",
+    "width": 280,
+    "height": 180
+  },
+  {
+    "type": "image",
+    "search": "Portuguese caravel ship Age of Discoveries",
+    "x": 1050,
+    "y": 700,
+    "height": 200,
+    "caption": "Portuguese Caravel"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 330,
+    "y1": 790,
+    "x2": 380,
+    "y2": 790,
+    "color": "#1565C0"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 660,
+    "y1": 790,
+    "x2": 710,
+    "y2": 790,
+    "color": "#1565C0"
+  },
+  {
+    "type": "card",
+    "content": "**Decline & Spanish Rule** 📉\n\n• **1578**: King Sebastian dies in Morocco\n• **1580-1640**: Spanish domination\n• Loss of trade monopolies\n• Dutch & English competition\n• Economic decline",
+    "fontSize": 16,
+    "x": 50,
+    "y": 950,
+    "backgroundColor": "#FFEBEE",
+    "width": 300,
+    "height": 160
+  },
+  {
+    "type": "card",
+    "content": "**Restoration & Rebuilding** 🔄\n\n• **1640**: Independence restored\n• **1755**: Great Lisbon Earthquake\n• **Marquis of Pombal** reforms\n• Enlightenment influence\n• Reconstruction of Lisbon",
+    "fontSize": 16,
+    "x": 400,
+    "y": 950,
+    "backgroundColor": "#E8F5E8",
+    "width": 300,
+    "height": 160
+  },
+  {
+    "type": "card",
+    "content": "**19th Century Challenges** ⚡\n\n• **Napoleonic invasions** (1807-1814)\n• **Liberal Wars** (1828-1834)\n• **
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "## Phases of the Moon: A Month-Long Journey 🌙",
+    "fontSize": 32,
+    "x": 100,
+    "y": 50,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "The Moon doesn't produce its own light! We see it because it reflects sunlight. As the Moon orbits Earth, the amount of the sunlit side we see changes, creating the different phases.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 150,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 250
+  },
+  {
+    "type": "image",
+    "search": "phases of the moon diagram",
+    "x": 100,
+    "y": 200,
+    "height": 300,
+    "caption": "Diagram illustrating the different phases of the moon."
+  },
+  {
+    "type": "text",
+    "content": "Here's a breakdown of the major phases and when you'll see them during a lunar cycle (approximately 29.5 days):",
+    "fontSize": 20,
+    "x": 100,
+    "y": 500,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "**New Moon:**  The Moon is between the Earth and the Sun.  We don't see it! 🌑",
+    "fontSize": 16,
+    "x": 100,
+    "y": 600,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "card",
+    "content": "**Waxing Crescent:** A sliver of the moon becomes visible, growing each night. 🌒 (Waxing means growing).",
+    "fontSize": 16,
+    "x": 450,
+    "y": 600,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "card",
+    "content": "**First Quarter:**  Half of the moon appears lit. 🌓 (First Quarter means one-fourth of the lunar cycle has passed).",
+    "fontSize": 16,
+    "x": 100,
+    "y": 750,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "card",
+    "content": "**Waxing Gibbous:** More than half of the moon is lit, continuing to grow. 🌔 (Gibbous means more than half).",
+    "fontSize": 16,
+    "x": 450,
+    "y": 750,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "card",
+    "content": "**Full Moon:** The entire face of the moon is illuminated. 🌕",
+    "fontSize": 16,
+    "x": 100,
+    "y": 900,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "card",
+    "content": "**Waning Gibbous:**  More than half of the moon is lit, but it's decreasing. 🌖 (Waning means shrinking).",
+    "fontSize": 16,
+    "x": 450,
+    "y": 900,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "card",
+    "content": "**Third Quarter:** Half of the moon is lit again, but the opposite half from the First Quarter. 🌗 (Third Quarter means three-fourths of the lunar cycle has passed).",
+    "fontSize": 16,
+    "x": 100,
+    "y": 1050,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 150
+  },
+   {
+    "type": "card",
+    "content": "**Waning Crescent:** A sliver of the moon remains visible, shrinking until the next New Moon. 🌘",
+    "fontSize": 16,
+    "x": 450,
+    "y": 1050,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "text",
+    "content": "<b>Key Takeaway:</b> The Moon's phases are a continuous cycle caused by the changing angles at which we view the sunlit portion of the Moon as it orbits Earth. ⚡",
+    "fontSize": 18,
+    "x": 100,
+    "y": 1250,
+    "textColor": "#333333"
+  },
+  {
+    "type": "text",
+     "content": "<b>Next Steps:</b> Track the moon's phases for a month to see the cycle in action! 🎯 You can use a lunar calendar or a stargazing app. 📊",
+    "fontSize": 18,
+    "x": 100,
+    "y": 1300,
+    "textColor": "#333333"
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "🌙 **As Fases da Lua** 🌙",
+    "fontSize": 32,
+    "x": 400,
+    "y": 50,
+    "textColor": "#2E3440"
+  },
+  {
+    "type": "card",
+    "content": "**Por que a Lua muda de forma?**\n\n💡 A Lua não produz luz própria - ela **reflete** a luz do Sol!\n\nO que vemos da Terra depende de:\n• Posição da Lua em relação ao Sol\n• Quanto da face iluminada conseguimos ver\n• O ângulo de observação da Terra",
+    "fontSize": 16,
+    "x": 50,
+    "y": 120,
+    "backgroundColor": "#E3F2FD",
+    "width": 320,
+    "height": 180
+  },
+  {
+    "type": "image",
+    "search": "moon phases diagram earth sun alignment",
+    "x": 420,
+    "y": 120,
+    "height": 180,
+    "caption": "A Terra, Lua e Sol em alinhamento"
+  },
+  {
+    "type": "text",
+    "content": "🔄 **As 8 Fases Principais da Lua**",
+    "fontSize": 24,
+    "x": 300,
+    "y": 350,
+    "textColor": "#5E81AC"
+  },
+  {
+    "type": "card",
+    "content": "🌑 **Lua Nova**\n\nA Lua está entre a Terra e o Sol\n• Face iluminada voltada para longe da Terra\n• Não conseguimos vê-la no céu\n• Marca o início do ciclo lunar",
+    "fontSize": 14,
+    "x": 50,
+    "y": 400,
+    "backgroundColor": "#434C5E",
+    "width": 200,
+    "height": 120
+  },
+  {
+    "type": "card",
+    "content": "🌒 **Lua Crescente**\n\nPrimeira fase visível\n• Pequena fatia iluminada à direita\n• Visível ao entardecer\n• Cresce dia após dia",
+    "fontSize": 14,
+    "x": 270,
+    "y": 400,
+    "backgroundColor": "#F3E5F5",
+    "width": 200,
+    "height": 120
+  },
+  {
+    "type": "card",
+    "content": "🌓 **Quarto Crescente**\n\nMetade direita iluminada\n• Forma um 'D' no céu\n• Visível à tarde e início da noite\n• Ângulo de 90° com o Sol",
+    "fontSize": 14,
+    "x": 490,
+    "y": 400,
+    "backgroundColor": "#E8F5E8",
+    "width": 200,
+    "height": 120
+  },
+  {
+    "type": "card",
+    "content": "🌔 **Lua Gibosa Crescente**\n\nMais de metade iluminada\n• Quase cheia, mas não totalmente\n• Visível a maior parte da noite\n• Continua a crescer",
+    "fontSize": 14,
+    "x": 710,
+    "y": 400,
+    "backgroundColor": "#FFF3E0",
+    "width": 200,
+    "height": 120
+  },
+  {
+    "type": "card",
+    "content": "🌕 **Lua Cheia**\n\nTerra entre o Sol e a Lua\n• Face totalmente iluminada visível\n• Nasce quando o Sol se põe\n• Brilha toda a noite",
+    "fontSize": 14,
+    "x": 50,
+    "y": 560,
+    "backgroundColor": "#FFFACD",
+    "width": 200,
+    "height": 120
+  },
+  {
+    "type": "card",
+    "content": "🌖 **Lua Gibosa Minguante**\n\nComeça a diminuir\n• Mais de metade ainda visível\n• Lado esquerdo mais iluminado\n• Visível de madrugada",
+    "fontSize": 14,
+    "x": 270,
+    "y": 560,
+    "backgroundColor": "#FFF3E0",
+    "width": 200,
+    "height": 120
+  },
+  {
+    "type": "card",
+    "content": "🌗 **Quarto Minguante**\n\nMetade esquerda iluminada\n• Forma um 'C' no céu\n• Visível de madrugada\n• Ângulo de 270° com o Sol",
+    "fontSize": 14,
+    "x": 490,
+    "y": 560,
+    "backgroundColor": "#E8F5E8",
+    "width": 200,
+    "height": 120
+  },
+  {
+    "type": "card",
+    "content": "🌘 **Lua Minguante**\n\nÚltima fase visível\n• Pequena fatia à esquerda\n• Visível antes do amanhecer\n• Vai diminuindo até desaparecer",
+    "fontSize": 14,
+    "x": 710,
+    "y": 560,
+    "backgroundColor": "#F3E5F5",
+    "width": 200,
+    "height": 120
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 150,
+    "y1": 520,
+    "x2": 270,
+    "y2": 520,
+    "color": "#81A1C1"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 370,
+    "y1": 520,
+    "x2": 490,
+    "y2": 520,
+    "color": "#81A1C1"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 590,
+    "y1": 520,
+    "x2": 710,
+    "y2": 520,
+    "color": "#81A1C1"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 810,
+    "y1": 520,
+    "x2": 810,
+    "y2": 560,
+    "color": "#81A1C1"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 810,
+    "y1": 680,
+    "x2": 710,
+    "y2": 680,
+    "color": "#81A1C1"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 590,
+    "y1": 680,
+    "x2": 490,
+    "y2": 680,
+    "color": "#81A1C1"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 370,
+    "y1": 680,
+    "x2": 270,
+    "y2": 680,
+    "color": "#81A1C1"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 150,
+    "y1": 680,
+    "x2": 50,
+    "y2": 680,
+    "color": "#81A1C1"
+  },
+  {
+    "type": "card",
+    "content": "⏰ **Duração do Ciclo Lunar**\n\n• **Ciclo completo
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "🤖 **Advertisement Analysis: AI & Human-Robot Interaction Study**",
+    "fontSize": 28,
+    "x": 100,
+    "y": 50,
+    "textColor": "#2E7D32"
+  },
+  {
+    "type": "card",
+    "content": "**What I observe in this image:**\n\n• **Marketing flyer** for an AI/robotics research study\n• **Interactive board game setup** with Pandemic as the medium\n• **Human-robot collaboration** experiment disguised as entertainment\n• **Recruitment strategy** using incentives (free cinema tickets)",
+    "fontSize": 16,
+    "x": 100,
+    "y": 120,
+    "backgroundColor": "#E3F2FD",
+    "width": 400,
+    "height": 180
+  },
+  {
+    "type": "card",
+    "content": "**🎯 Key Visual Elements**\n\n• **Three participants**: 2 humans + 1 humanoid robot\n• **Pandemic board game** as interaction medium\n• **QR code** for easy signup process\n• **Professional poster design** with clear call-to-action",
+    "fontSize": 16,
+    "x": 550,
+    "y": 120,
+    "backgroundColor": "#F3E5F5",
+    "width": 350,
+    "height": 180
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 300,
+    "y1": 320,
+    "x2": 300,
+    "y2": 360,
+    "color": "#666666"
+  },
+  {
+    "type": "card",
+    "content": "**📊 Research Study Design Analysis**\n\n**Methodology:**\n• Uses **familiar game mechanics** to reduce participant anxiety\n• **Naturalistic setting** for authentic human-AI interaction\n• **First-come-first-served** creates urgency\n\n**Data Collection Opportunity:**\n• Communication patterns between humans and AI\n• Decision-making processes in collaborative scenarios\n• Social dynamics in mixed human-robot teams",
+    "fontSize": 15,
+    "x": 100,
+    "y": 380,
+    "backgroundColor": "#E8F5E8",
+    "width": 400,
+    "height": 220
+  },
+  {
+    "type": "card",
+    "content": "**🎭 Marketing Psychology**\n\n**Engagement Tactics:**\n• **\"First pandemic robot\"** - novelty appeal\n• **Game context** - reduces research study intimidation\n• **Free rewards** - tangible incentive\n• **Limited spots** - scarcity principle\n\n**Target Audience:**\n• Tech-curious individuals\n• Gaming enthusiasts\n• Students (cinema ticket appeal)",
+    "fontSize": 15,
+    "x": 550,
+    "y": 380,
+    "backgroundColor": "#FFF3E0",
+    "width": 350,
+    "height": 220
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 200,
+    "y1": 620,
+    "x2": 700,
+    "y2": 620,
+    "color": "#666666"
+  },
+  {
+    "type": "card",
+    "content": "**💡 Educational Insights**\n\n**This represents:**\n• **Participatory research** in AI development\n• **Gamification** of scientific studies\n• **Public engagement** with emerging technology\n• **Ethical AI research** involving human feedback\n\n**Broader implications:**\n• How we integrate AI into social activities\n• The importance of human-AI collaboration studies\n• Making AI research accessible to general public",
+    "fontSize": 16,
+    "x": 200,
+    "y": 650,
+    "backgroundColor": "#FFEBEE",
+    "width": 500,
+    "height": 200
+  },
+  {
+    "type": "text",
+    "content": "**🔍 This image shows how modern AI research engages the public through familiar, enjoyable activities while collecting valuable interaction data.**",
+    "fontSize": 18,
+    "x": 150,
+    "y": 880,
+    "textColor": "#1565C0"
+  }
+]
+```
+---
