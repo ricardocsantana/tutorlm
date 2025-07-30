@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mic, BrainCircuit } from 'lucide-react';
+import { Mic } from 'lucide-react';
 import { useAppStore } from '../store/useAppStore';
 import { useShallow } from 'zustand/react/shallow';
 
@@ -39,9 +39,9 @@ export const AIStateIndicator: React.FC<AIStateIndicatorProps> = ({ isMobile = f
                     <motion.div
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
-                        className="p-2 bg-red-500 rounded-full"
+                        className="p-2 bg-[#fe726c] rounded-full w-8 h-8 flex items-center justify-center"
                     >
-                        <Mic size={20} className="text-white" />
+                        <Mic className="text-white" />
                     </motion.div>
                     <span className="text-gray-800 font-semibold text-md">Listening...</span>
                 </div>
@@ -50,11 +50,11 @@ export const AIStateIndicator: React.FC<AIStateIndicatorProps> = ({ isMobile = f
                     <motion.div
                         animate={{ rotate: 360 }}
                         transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                        className="p-2 bg-gradient-to-br from-blue-500 to-blue-400 rounded-full"
+                        className="w-7 h-7 flex"
                     >
-                        <BrainCircuit size={20} className="text-white" />
+                        <img src="/logo.png" alt="Logo"/>
                     </motion.div>
-                    <span className="text-gray-800 font-semibold text-md">AI Processing...</span>
+                    <span className="text-gray-800 font-semibold text-md">Thinking...</span>
                 </div>
             )}
             {transcript && (

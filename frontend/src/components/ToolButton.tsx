@@ -25,7 +25,7 @@ export const ToolButton: React.FC<{
             disabled={disabled}
             className={`relative p-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2
                 ${active
-                    ? 'bg-gradient-to-br from-blue-500 to-blue-400 text-white shadow-lg shadow-blue-500/25'
+                    ? 'bg-gradient-to-br bg-gradient-to-tr from-[#745bff] via-[#f95bf6] to-[#ff7a41] text-white shadow-lg shadow-red-500/25'
                     : 'bg-white/90 text-gray-700 hover:bg-white hover:text-gray-900 hover:shadow-md border border-gray-200/50'}
                 ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
             `}

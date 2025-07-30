@@ -136,6 +136,12 @@ export const useFileHandlers = (
         const stage = stageRef.current;
         if (!stage) return;
 
+        // Get current stage transform
+        const stageX = stage.x();
+        const stageY = stage.y();
+        const scaleX = stage.scaleX();
+        const scaleY = stage.scaleY();
+
         actions.setIsUploading(true);
         showNotification("Processing drawing(s)...", 'info');
 
@@ -168,11 +174,18 @@ export const useFileHandlers = (
 
                 const PADDING = 20;
                 const clipRect = { x: minX - PADDING, y: minY - PADDING, width: (maxX - minX) + PADDING * 2, height: (maxY - minY) + PADDING * 2 };
-                
+
+                const absClipRect = {
+                    x: (clipRect.x * scaleX) + stageX,
+                    y: (clipRect.y * scaleY) + stageY,
+                    width: clipRect.width * scaleX,
+                    height: clipRect.height * scaleY,
+                };
+
                 // This version is for display, with a transparent background.
-                const displayDataUrl = stage.toDataURL({ ...clipRect, pixelRatio: 2 });
+                const displayDataUrl = stage.toDataURL({ ...absClipRect, pixelRatio: 2 });
                 const displayBlob = dataURLtoBlob(displayDataUrl);
-                
+
                 // Create a temporary white background for the backend version.
                 const tempLayer = new Konva.Layer();
                 tempLayer.add(new Konva.Rect({ ...clipRect, fill: 'white' }));
@@ -180,11 +193,11 @@ export const useFileHandlers = (
                 tempLayer.moveToBottom();
                 stage.batchDraw();
 
-                const backendDataUrl = stage.toDataURL({ ...clipRect, pixelRatio: 2 });
+                const backendDataUrl = stage.toDataURL({ ...absClipRect, pixelRatio: 2 });
                 tempLayer.destroy();
                 stage.batchDraw();
                 const backendBlob = dataURLtoBlob(backendDataUrl);
-                
+
                 // Send both to the backend
                 const formData = new FormData();
                 formData.append('file', backendBlob, `drawing-backend-${Date.now()}.png`);
@@ -192,7 +205,7 @@ export const useFileHandlers = (
 
                 const response = await fetch(`${BACKEND_URL}/api/upload-image`, { method: 'POST', body: formData });
                 if (!response.ok) throw new Error((await response.json()).detail || 'Processing drawing cluster failed.');
-                
+
                 const result = await response.json();
                 const imageUrlForDisplay = result.displayImageDataUrl || result.imageDataUrl; // Prioritize display version
 
@@ -224,11 +237,11 @@ export const useFileHandlers = (
             if (!contentLayer) return;
             const box = contentLayer.getClientRect({ skipTransform: false, skipShadow: true, skipStroke: true });
             if (box.width === 0 || box.height === 0) { showNotification("Nothing to export.", "error"); return; }
-            
+
             const PADDING = 20;
             const exportRect = { x: box.x - PADDING, y: box.y - PADDING, width: box.width + PADDING * 2, height: box.height + PADDING * 2 };
             const dataURL = stage.toDataURL({ ...exportRect, pixelRatio: 2, mimeType: 'image/png' });
-            
+
             const link = document.createElement('a');
             link.download = 'tutorlm-canvas.png';
             link.href = dataURL;

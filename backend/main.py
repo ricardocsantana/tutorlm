@@ -4,16 +4,16 @@ import base64
 import fitz  # PyMuPDF
 import logging
 import torch
-import faiss
 import httpx # <-- Added for making API calls to Unsplash
 import aiofiles  # Add this import at the top
+import wave
 from dotenv import load_dotenv
 from pathlib import Path
 from typing import Dict, Any
 
 from fastapi import FastAPI, UploadFile, File, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, FileResponse
 from fastapi.concurrency import run_in_threadpool
 
 # RAG & Model Imports
@@ -23,6 +23,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_core.messages import HumanMessage, SystemMessage
+from piper import PiperVoice
 
 # Configure logging
 logging.basicConfig(
@@ -50,6 +51,15 @@ rag_state = { "text_retriever": None }
 device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
 logging.info(f"Using device: {device}")
 
+# --- TTS ENDPOINT ---
+VOICE_MODEL_PATH = os.getenv("PIPER_VOICE_PATH", "en_US-lessac-medium.onnx")
+try:
+    voice = PiperVoice.load(VOICE_MODEL_PATH)
+    logging.info(f"PiperVoice loaded from {VOICE_MODEL_PATH}")
+except Exception as e:
+    voice = None
+    logging.error(f"Failed to load PiperVoice: {e}")
+
 logging.info("Loading text embedding model...")
 text_embeddings = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-MiniLM-L6-v2",
@@ -61,6 +71,8 @@ llm = ChatOpenAI(
     model=MULTIMODAL_MODEL_NAME,
     api_key=OPENROUTER_API_KEY,
     base_url="https://openrouter.ai/api/v1",
+    #api_key="ollama",
+    #base_url="http://localhost:11434/v1",
     max_tokens=2048,
 )
 logging.info("All models loaded successfully.")
@@ -428,4 +440,35 @@ def clear_all():
         except OSError as e:
             logging.error(f"Error deleting file {f}: {e}")
     return {"status": "cleared"}
+
+@app.post("/api/tts")
+async def tts_handler(request: Request):
+    """
+    Text-to-speech endpoint. Receives JSON: { "text": "..." }
+    Returns: WAV audio file.
+    """
+
+    if not voice:
+        raise HTTPException(status_code=500, detail="TTS model not loaded on server.")
+    data = await request.json()
+    text = data.get("text")
+    if not text:
+        raise HTTPException(status_code=400, detail="Missing 'text' in request body.")
+
+    temp_wav_path = UPLOADS_DIR / f"{uuid.uuid4()}.wav"
+    try:
+        with wave.open(str(temp_wav_path), "wb") as wav_file:
+            voice.synthesize_wav(text, wav_file)
+        return FileResponse(
+            str(temp_wav_path),
+            media_type="audio/wav",
+            filename="speech.wav",
+            headers={"Content-Disposition": "attachment; filename=speech.wav"}
+        )
+    except Exception as e:
+        logging.error(f"TTS synthesis failed: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="TTS synthesis failed.")
+    finally:
+        # Optionally, clean up the wav file after sending (if not needed for caching)
+        pass
 

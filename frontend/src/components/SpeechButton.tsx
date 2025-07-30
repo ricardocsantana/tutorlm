@@ -26,7 +26,7 @@ export const SpeechButton: React.FC<SpeechButtonProps> = ({ onStart, onStop }) =
                     key="listening"
                     onClick={onStop}
                     initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1, backgroundColor: '#ef4444' }}
+                    animate={{ opacity: 1, scale: 1, backgroundColor: '#fe726c' }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                     disabled={isUploading}
@@ -44,10 +44,10 @@ export const SpeechButton: React.FC<SpeechButtonProps> = ({ onStart, onStop }) =
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                     disabled={isUploading || aiState !== 'idle'}
-                    className="p-5 rounded-full bg-gradient-to-br from-blue-500 to-blue-400 text-white shadow-2xl shadow-blue-500/30 transition-transform duration-200 active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="p-5 rounded-full bg-gradient-to-br bg-gradient-to-tr from-[#745bff] via-[#f95bf6] to-[#ff7a41] text-white transition-transform duration-200 active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed"
                     title="Click or Hold Spacebar to Talk"
                 >
-                    <Mic size={28} />
+                    <Mic size={28} />  
                 </motion.button>
             )}
         </AnimatePresence>

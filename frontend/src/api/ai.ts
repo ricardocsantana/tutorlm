@@ -3,6 +3,7 @@
 import { BACKEND_URL } from '../config';
 import { useAppStore, type LineData } from '../store/useAppStore';
 import renderMarkdownToImage from '../utils/RenderToImage';
+import { speakText } from '../utils/tts';
 
 /**
  * Handles the streaming chat request to the AI backend.
@@ -30,6 +31,10 @@ export const handleAIChatRequest = async (prompt: string, getPointerPosition: ()
                 const content = element.content || '';
                 const width = element.width || 500;
                 try {
+                    // Speak card content
+                    if (content && typeof content === 'string') {
+                        speakText(content).catch(console.error);
+                    }
                     const { dataURL, height } = await renderMarkdownToImage(content, width, {
                         backgroundColor: element.backgroundColor || '#ffffff',
                         textColor: element.textColor || '#1f2937',
@@ -48,13 +53,17 @@ export const handleAIChatRequest = async (prompt: string, getPointerPosition: ()
                 break;
             }
             case 'text': {
-                 if (typeof element.x === 'undefined' || typeof element.y === 'undefined') {
+                if (typeof element.x === 'undefined' || typeof element.y === 'undefined') {
                     console.error("Invalid text element (missing x/y):", element);
                     return;
                 }
                 const content = element.content || '';
                 const width = element.width || 550;
                 try {
+                    // Speak text content
+                    if (content && typeof content === 'string') {
+                        speakText(content).catch(console.error);
+                    }
                     const { dataURL, height } = await renderMarkdownToImage(content, width, {
                         fontSize: '18px',
                         backgroundColor: 'transparent'
@@ -71,7 +80,7 @@ export const handleAIChatRequest = async (prompt: string, getPointerPosition: ()
             }
             case 'line': {
                 const thicknessMap: { [key: string]: number } = { 's': 2, 'm': 4, 'l': 8 };
-                 if (typeof element.x1 === 'undefined' || typeof element.y1 === 'undefined' || typeof element.x2 === 'undefined' || typeof element.y2 === 'undefined') {
+                if (typeof element.x1 === 'undefined' || typeof element.y1 === 'undefined' || typeof element.x2 === 'undefined' || typeof element.y2 === 'undefined') {
                     console.error("Invalid line element (missing x1/y1/x2/y2):", element);
                     return;
                 }
@@ -86,7 +95,7 @@ export const handleAIChatRequest = async (prompt: string, getPointerPosition: ()
                 break;
             }
             case 'image': {
-                 if (typeof element.x === 'undefined' || typeof element.y === 'undefined') {
+                if (typeof element.x === 'undefined' || typeof element.y === 'undefined') {
                     console.error("Invalid image element (missing x/y):", element);
                     return;
                 }

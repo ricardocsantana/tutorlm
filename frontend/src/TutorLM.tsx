@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 // Global State & Types
 import { useAppStore, type NotificationType, type CanvasElement as Element } from './store/useAppStore';
 
+
 // Custom Hooks
 import { useCanvasInteraction } from './hooks/useCanvasInteraction';
 import { useFileHandlers } from './hooks/useFileHandlers';
@@ -99,7 +100,7 @@ const TutorLM: React.FC = () => {
     }, [selectedElementId, editingElementId, actions, startListening, stopListening]);
 
     return (
-        <div className="h-screen w-screen bg-gray-100 overflow-hidden relative font-sans touch-none" style={{ cursor: cursorStyle }}>
+        <div className="h-screen w-screen bg-gray-50 overflow-hidden relative font-sans touch-none" style={{ cursor: cursorStyle }}>
             <Notification notification={notification} />
             <div className="absolute top-7 left-7 z-50 select-none text-5xl" style={{ fontFamily: "'Satisfy', cursive" }}>TutorLM</div>
             <WelcomeMessage show={showWelcome} />

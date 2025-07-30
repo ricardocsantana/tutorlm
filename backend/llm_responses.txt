@@ -2249,3 +2249,1774 @@ I'm unable to determine the specific content of the image. If you have questions
 ]
 ```
 ---
+```json
+[
+  {
+    "type": "text",
+    "content": "👋 **Welcome to TutorLM!**",
+    "fontSize": 32,
+    "x": 200,
+    "y": 100,
+    "textColor": "#2E7D32"
+  },
+  {
+    "type": "card",
+    "content": "Hello! I'm your AI tutor, ready to help you learn anything through **interactive visual lessons**. 🎓\n\nI create engaging canvas-based tutorials that make complex topics easy to understand.",
+    "fontSize": 16,
+    "x": 150,
+    "y": 180,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 120
+  },
+  {
+    "type": "text",
+    "content": "✨ **What I Can Do**",
+    "fontSize": 24,
+    "x": 200,
+    "y": 350,
+    "textColor": "#1565C0"
+  },
+  {
+    "type": "card",
+    "content": "📊 **Visual Learning**\nCreate diagrams, flowcharts, and interactive layouts",
+    "fontSize": 14,
+    "x": 50,
+    "y": 400,
+    "backgroundColor": "#F3E5F5",
+    "width": 200,
+    "height": 100
+  },
+  {
+    "type": "card",
+    "content": "🧮 **Math & Science**\nExplain formulas, equations, and scientific concepts with $LaTeX$ support",
+    "fontSize": 14,
+    "x": 280,
+    "y": 400,
+    "backgroundColor": "#E8F5E8",
+    "width": 200,
+    "height": 100
+  },
+  {
+    "type": "card",
+    "content": "💡 **Any Subject**\nHistory, literature, programming, languages - you name it!",
+    "fontSize": 14,
+    "x": 510,
+    "y": 400,
+    "backgroundColor": "#FFF3E0",
+    "width": 200,
+    "height": 100
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 325,
+    "y1": 300,
+    "x2": 150,
+    "y2": 400,
+    "color": "#9E9E9E"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 325,
+    "y1": 300,
+    "x2": 380,
+    "y2": 400,
+    "color": "#9E9E9E"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 325,
+    "y1": 300,
+    "x2": 610,
+    "y2": 400,
+    "color": "#9E9E9E"
+  },
+  {
+    "type": "text",
+    "content": "🚀 **Ready to Start?**",
+    "fontSize": 20,
+    "x": 280,
+    "y": 560,
+    "textColor": "#D32F2F"
+  },
+  {
+    "type": "card",
+    "content": "Just tell me what you'd like to learn about! For example:\n• *\"Explain photosynthesis\"*\n• *\"How do neural networks work?\"*\n• *\"Teach me Spanish verb conjugations\"*\n• *\"What is calculus?\"*",
+    "fontSize": 16,
+    "x": 200,
+    "y": 600,
+    "backgroundColor": "#FFEBEE",
+    "width": 400,
+    "height": 140
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "# Hey there! 👋 Welcome to TutorLM!",
+    "fontSize": 32,
+    "x": 100,
+    "y": 100,
+    "textColor": "#2196F3"
+  },
+  {
+    "type": "card",
+    "content": "I'm your **interactive AI tutor** ready to help you learn anything! 🎓\n\nI create **visual learning experiences** on this collaborative canvas to make complex topics easy to understand.\n\n✨ **What I can help with:**\n• Math & Science concepts\n• Programming & Technology\n• History & Literature\n• Business & Economics\n• And much more!",
+    "fontSize": 16,
+    "x": 100,
+    "y": 180,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 200
+  },
+  {
+    "type": "card",
+    "content": "🎯 **How it works:**\n\n1. **Ask me anything** you want to learn\n2. I'll create **visual explanations** with diagrams, examples, and clear breakdowns\n3. **Interactive elements** help you engage with the material\n4. **Step-by-step guidance** makes complex topics manageable",
+    "fontSize": 16,
+    "x": 500,
+    "y": 180,
+    "backgroundColor": "#F3E5F5",
+    "width": 300,
+    "height": 200
+  },
+  {
+    "type": "text",
+    "content": "💡 **Ready to start learning?**",
+    "fontSize": 24,
+    "x": 100,
+    "y": 420,
+    "textColor": "#FF9800"
+  },
+  {
+    "type": "card",
+    "content": "Just tell me what you'd like to learn about! For example:\n\n• *\"Explain how photosynthesis works\"*\n• *\"Help me understand calculus derivatives\"*\n• *\"Teach me about the French Revolution\"*\n• *\"Show me how to code a simple website\"*\n\nI'll create a comprehensive, visual learning experience just for you! 🚀",
+    "fontSize": 16,
+    "x": 100,
+    "y": 470,
+    "backgroundColor": "#E8F5E8",
+    "width": 500,
+    "height": 150
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "# Hey there! Welcome to TutorLM! 👋",
+    "fontSize": 32,
+    "x": 200,
+    "y": 100,
+    "textColor": "#2196F3"
+  },
+  {
+    "type": "card",
+    "content": "I'm your **AI tutor** ready to help you learn! 🎓\n\nI create visual, interactive lessons on any topic you're curious about. Just tell me what you'd like to explore!",
+    "fontSize": 18,
+    "x": 150,
+    "y": 200,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 120
+  },
+  {
+    "type": "card",
+    "content": "**What I can help with:**\n• 📚 Academic subjects\n• 💡 Concepts & theories\n• 🔬 Science & math\n• 🎨 Creative topics\n• 💼 Professional skills\n• And much more!",
+    "fontSize": 16,
+    "x": 50,
+    "y": 380,
+    "backgroundColor": "#F3E5F5",
+    "width": 250,
+    "height": 180
+  },
+  {
+    "type": "card",
+    "content": "**How it works:**\n1. Ask me about any topic\n2. I'll create a visual lesson\n3. Learn through interactive diagrams\n4. Ask follow-up questions anytime! 🚀",
+    "fontSize": 16,
+    "x": 350,
+    "y": 380,
+    "backgroundColor": "#E8F5E8",
+    "width": 250,
+    "height": 180
+  },
+  {
+    "type": "line",
+    "thickness": "s",
+    "x1": 325,
+    "y1": 320,
+    "x2": 175,
+    "y2": 380,
+    "color": "#9C27B0"
+  },
+  {
+    "type": "line",
+    "thickness": "s",
+    "x1": 325,
+    "y1": 320,
+    "x2": 475,
+    "y2": 380,
+    "color": "#4CAF50"
+  },
+  {
+    "type": "text",
+    "content": "**Ready to start learning?** Just ask me about anything you'd like to explore! 🌟",
+    "fontSize": 20,
+    "x": 140,
+    "y": 620,
+    "textColor": "#FF6B35"
+  }
+]
+```
+---
+
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "## **Photosynthesis: Capturing Sunlight's Energy** ⚡",
+    "fontSize": 32,
+    "x": 50,
+    "y": 50,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "Photosynthesis is the process used by plants, algae, and some bacteria to convert light energy into chemical energy.  It's the foundation of most food chains on Earth! 📊",
+    "fontSize": 16,
+    "x": 50,
+    "y": 150,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 250
+  },
+  {
+    "type": "image",
+    "search": "photosynthesis diagram",
+    "x": 50,
+    "y": 400,
+    "height": 250,
+    "caption": "A diagram illustrating the process of photosynthesis, showing the inputs (water, carbon dioxide, sunlight) and outputs (glucose, oxygen)."
+  },
+  {
+    "type": "text",
+    "content": "**The Equation:** $6CO_2 + 6H_2O + \text{Light Energy} \rightarrow C_6H_{12}O_6 + 6O_2$  (Carbon Dioxide + Water + Light Energy -> Glucose + Oxygen)",
+    "fontSize": 18,
+    "x": 50,
+    "y": 700,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": " **Key Components:** \n - **Chlorophyll:**  The green pigment in plants that absorbs sunlight. 💡\n - **Chloroplasts:** Organelles within plant cells where photosynthesis occurs. \n - **Light-Dependent Reactions:** Capture light energy and produce ATP and NADPH. \n - **Light-Independent Reactions (Calvin Cycle):** Use ATP and NADPH to convert carbon dioxide into glucose. ",
+    "fontSize": 14,
+    "x": 50,
+    "y": 900,
+    "backgroundColor": "#F3E5F5",
+    "width": 350,
+    "height": 250
+  },
+  {
+    "type": "text",
+    "content": "**Why is Photosynthesis Important?** \n\n - **Food Production:** Provides the basis for almost all food chains. \n - **Oxygen Production:**  Releases oxygen into the atmosphere, essential for respiration. \n - **Carbon Dioxide Regulation:**  Removes carbon dioxide from the atmosphere, helping to regulate climate. 🎯",
+    "fontSize": 16,
+    "x": 50,
+    "y": 1200,
+    "textColor": "#333333"
+  },
+  {
+    "type": "line",
+    "thickneess": "m",
+    "x1": 50, "y1": 1200,
+    "x2": 350, "y2": 1200,
+    "color": "#666666"
+  },
+  {
+    "type": "text",
+    "content": "**Next Steps:** \n\n - Research different types of photosynthetic organisms. \n - Explore the impact of climate change on photosynthesis. \n - Investigate the role of photosynthesis in biofuel production.",
+    "fontSize": 14,
+    "x": 50,
+    "y": 1350,
+    "textColor": "#333333"
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "## Phases of the Moon: A Celestial Cycle 🌕",
+    "fontSize": 32,
+    "x": 100,
+    "y": 20,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "The Moon doesn't produce its own light; it reflects sunlight. As the Moon orbits Earth, the amount of sunlit portion visible from Earth changes, creating the phases we observe.  This cycle takes approximately 29.5 days.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 100,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 250
+  },
+  {
+    "type": "card",
+    "content": "Here's a breakdown of the main phases:",
+    "fontSize": 20,
+    "x": 100,
+    "y": 350,
+    "backgroundColor": "#F8F9FA",
+    "width": 300,
+    "height": 150
+  },
+  {
+    "type": "image",
+    "search": "phases of the moon diagram",
+    "x": 100,
+    "y": 450,
+    "height": 250,
+    "caption": "Diagram illustrating the eight phases of the moon."
+  },
+  {
+    "type": "card",
+    "content": " **1. New Moon:** The Moon is between the Earth and the Sun. The side facing us isn't illuminated, so it appears invisible. 🌑",
+    "fontSize": 14,
+    "x": 100,
+    "y": 700,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 100
+  },
+  {
+    "type": "card",
+    "content": " **2. Waxing Crescent:** A sliver of the Moon becomes visible as it moves away from the Sun. The illuminated portion grows each night. 🌒",
+    "fontSize": 14,
+    "x": 100,
+    "y": 800,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 100
+  },
+  {
+    "type": "card",
+    "content": " **3. First Quarter:**  Half of the Moon appears illuminated.  The Moon is at a 90-degree angle relative to the Earth and Sun. 🌓",
+    "fontSize": 14,
+    "x": 100,
+    "y": 900,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 100
+  },
+  {
+    "type": "card",
+    "content": " **4. Waxing Gibbous:** More than half of the Moon is illuminated, and the illuminated portion continues to grow. 🌔",
+    "fontSize": 14,
+    "x": 100,
+    "y": 1000,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 100
+  },
+  {
+    "type": "card",
+    "content": " **5. Full Moon:** The Earth is between the Sun and the Moon. The entire side of the Moon facing us is illuminated. 🌕",
+    "fontSize": 14,
+    "x": 100,
+    "y": 1100,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 100
+  },
+  {
+    "type": "card",
+    "content": " **6. Waning Gibbous:** After the full moon, the illuminated portion starts to decrease. 🌖",
+    "fontSize": 14,
+    "x": 100,
+    "y": 1200,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 100
+  },
+  {
+    "type": "card",
+    "content": " **7. Last Quarter:**  Half of the Moon is illuminated again, but on the opposite side compared to the First Quarter. 🌗",
+    "fontSize": 14,
+    "x": 100,
+    "y": 1300,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 100
+  },
+  {
+    "type": "card",
+    "content": " **8. Waning Crescent:**  Only a small sliver of the Moon is illuminated before it becomes a New Moon again. 🌘",
+    "fontSize": 14,
+    "x": 100,
+    "y": 1400,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 100
+  },
+  {
+    "type": "text",
+    "content": "Why does the Moon change shape?",
+    "fontSize": 24,
+    "x": 100,
+    "y": 1500,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "The Moon orbits Earth, and as it does, we see different amounts of the sunlit side.  Think of it like holding a ball in front of a lamp – the amount of illuminated surface changes as you rotate the ball.  The Moon's orbit and the Earth's tilt are key to this cycle. 💡",
+    "fontSize": 16,
+    "x": 100,
+    "y": 1600,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 200
+  },
+  {
+    "type": "text",
+    "content": "Key Takeaway: The phases of the Moon are caused by the changing angles at which we view the sunlit portion of the Moon as it orbits Earth. 🎯",
+    "fontSize": 18,
+    "x": 100,
+    "y": 1800,
+    "textColor": "#333333"
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "## A Journey Through Time: The History of Portugal 🇵🇹",
+    "fontSize": 32,
+    "x": 50,
+    "y": 50,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "Portugal's history is rich and complex, spanning millennia.  It began with Roman presence, transitioned through Visigothic rule, and ultimately became a powerful maritime nation.  Here's a breakdown of key periods:",
+    "fontSize": 16,
+    "x": 50,
+    "y": 150,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 250
+  },
+  {
+    "type": "card",
+    "content": "### Early History: Roman & Visigothic Influence (c. 200 BC – 711 AD)",
+    "fontSize": 18,
+    "x": 50,
+    "y": 450,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "text",
+    "content": "The Iberian Peninsula was inhabited by Romans, who established a province called Lusitania.  After the Roman decline, the Visigoths controlled the region.  These periods laid the groundwork for the development of the Portuguese language and culture.",
+    "fontSize": 14,
+    "x": 50,
+    "y": 600,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "### Moorish Conquest & Reconquista (711 – 1497)",
+    "fontSize": 18,
+    "x": 50,
+    "y": 750,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "text",
+    "content": "In 711 AD, the Moors (Muslims from North Africa) conquered most of the Iberian Peninsula.  The Christian kingdoms in the north began a long process of *Reconquista* (reconquest).  This period shaped Portugal's identity and fostered a strong sense of Christian identity.",
+    "fontSize": 14,
+    "x": 50,
+    "y": 900,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "### Age of Exploration (1497 – 1640)",
+    "fontSize": 18,
+    "x": 50,
+    "y": 1050,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "text",
+    "content": "Portugal played a pivotal role in the Age of Exploration.  Vasco da Gama's voyage to India (1497-1499) opened up new trade routes.  Other explorers like Magellan charted the globe.  This era led to a vast colonial empire.",
+    "fontSize": 14,
+    "x": 50,
+    "y": 1200,
+    "textColor": "#333333"
+  },
+  {
+    "type": "image",
+    "search": "Vasco da Gama",
+    "x": 50,
+    "y": 1350,
+    "height": 200,
+    "caption": "Vasco da Gama, a key figure in Portugal's Age of Exploration."
+  },
+  {
+    "type": "card",
+    "content": "### The Iberian Union & Restoration (1580 – 1640)",
+    "fontSize": 18,
+    "x": 50,
+    "y": 1550,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "text",
+    "content": "From 1580 to 1640, Portugal was under the rule of the Spanish Habsburgs during the Iberian Union.  This period was marked by economic difficulties and political instability.  The Portuguese War of Restoration (1640-1668) led to the restoration of Portuguese independence.",
+    "fontSize": 14,
+    "x": 50,
+    "y": 1700,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "### 19th & 20th Centuries: Decline & Modernity (1800 – Present)",
+    "fontSize": 18,
+    "x": 50,
+    "y": 1850,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "text",
+    "content": "The 19th century saw the decline of Portugal's colonial empire.  The country experienced political upheaval, including the Liberal Wars.  The 20th century brought periods of instability, including a dictatorship under António de Oliveira Salazar (the Estado Novo).  After the 1974 Carnation Revolution, Portugal transitioned to a democracy and joined the European Union.",
+    "fontSize": 14,
+    "x": 50,
+    "y": 2000,
+    "textColor": "#333333"
+  },
+  {
+    "type": "connection",
+    "thickneess": "m",
+    "x1": 50, "y1": 2100,
+    "x2": 350, "y2": 2100,
+    "color": "#666666"
+  },
+  {
+    "type": "text",
+    "content": "Key Takeaways: 💡\n- **Age of Exploration:** Portugal's maritime prowess shaped global history.\n- **Colonial Empire:**  A vast empire left a lasting impact on many parts of the world.\n- **Resilience:**  Portugal has overcome numerous challenges throughout its history.",
+    "fontSize": 16,
+    "x": 50,
+    "y": 2250,
+    "textColor": "#333333"
+  }
+]
+```
+---
+
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "## Introduction to Photosynthesis",
+    "fontSize": 32,
+    "x": 50,
+    "y": 50,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "Photosynthesis is the process used by plants, algae, and some bacteria to convert light energy into chemical energy. This process fuels almost all life on Earth!",
+    "fontSize": 16,
+    "x": 50,
+    "y": 150,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 250
+  },
+  {
+    "type": "image",
+    "search": "photosynthesis diagram",
+    "x": 50,
+    "y": 450,
+    "height": 250,
+    "caption": "Diagram illustrating the process of photosynthesis."
+  },
+  {
+    "type": "card",
+    "content": " **Key Ingredients:**\n*   Sunlight: Provides the energy.\n*   Water ($H_2O$): Absorbed through the roots.\n*   Carbon Dioxide ($CO_2$): Taken in from the air through stomata.\n*   Chlorophyll: A green pigment in chloroplasts that absorbs sunlight.  It's what gives plants their color!",
+    "fontSize": 14,
+    "x": 50,
+    "y": 750,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 200
+  },
+  {
+    "type": "text",
+    "content": " **Where it Happens:** Photosynthesis takes place in the chloroplasts of plant cells, primarily in the leaves.",
+    "fontSize": 14,
+    "x": 50,
+    "y": 950,
+    "textColor": "#333333"
+  },
+  {
+    "type": "text",
+    "content": " **The Equation:** $6CO_2 + 6H_2O + Light Energy \rightarrow C_6H_{12}O_6 + 6O_2$ \n(Carbon Dioxide + Water + Light Energy -> Glucose + Oxygen)",
+    "fontSize": 18,
+    "x": 50,
+    "y": 1050,
+    "textColor": "#333333"
+  },
+  {
+    "type": "text",
+    "content": " **Products:**\n*   Glucose ($C_6H_{12}O_6$): A sugar that provides energy for the plant.\n*   Oxygen ($O_2$): Released into the atmosphere.  Essential for respiration in many organisms!",
+    "fontSize": 16,
+    "x": 50,
+    "y": 1250,
+    "textColor": "#333333"
+  },
+  {
+    "type": "connection",
+    "thiсkness": "thin",
+    "x1": 50,
+    "y1": 1200,
+    "x2": 350,
+    "y2": 1200,
+    "color": "#666666"
+  },
+  {
+    "type": "text",
+    "content": " **Why is it important?** Photosynthesis is the foundation of most food chains and provides the oxygen we breathe. 📊",
+    "fontSize": 16,
+    "x": 50,
+    "y": 1400,
+    "textColor": "#333333"
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "## The History of Portugal: A Journey Through Time 🇵🇹",
+    "fontSize": 32,
+    "x": 50,
+    "y": 50,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "### Early Inhabitants & Roman Influence (Pre-5th Century - 5th Century)\n\n*   **Prehistoric Tribes:**  The Iberian Peninsula was inhabited by various tribes before the Romans, including the Celts and Iberians. \n*   **Roman Conquest (212 BCE – 409 CE):**  Rome conquered the region, bringing Latin language, law, and infrastructure.  This laid the foundation for future development.  $LaTeX$:  $Imperium Romanum$ (Roman Empire)",
+    "fontSize": 16,
+    "x": 50,
+    "y": 200,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 250
+  },
+  {
+    "type": "connection",
+    "thickness": "m",
+    "x1": 50,
+    "y1": 250,
+    "x2": 50,
+    "y2": 400,
+    "color": "#666666"
+  },
+  {
+    "type": "card",
+    "content": "### The Moorish Conquest & Reconquista (8th Century - 15th Century)\n\n*   **711 CE:**  Muslim armies from North Africa conquered most of the Iberian Peninsula, establishing Al-Andalus. \n*   **Moorish Influence:**  Significant advancements in science, mathematics, and architecture during the Moorish period.  Lisbon became a major cultural center. $LaTeX$:  $Al-Andalus$ (The Iberian Peninsula under Muslim rule)\n*   **Reconquista:**  Christian kingdoms gradually pushed back the Moors over several centuries.  This culminated in the completion of the Reconquista in 1492 with the fall of Granada.",
+    "fontSize": 16,
+    "x": 50,
+    "y": 450,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 250
+  },
+  {
+    "type": "image",
+    "search": "medieval portugal map",
+    "x": 50,
+    "y": 700,
+    "height": 200,
+    "caption": "A map illustrating the Iberian Peninsula during the Reconquista period."
+  },
+  {
+    "type": "card",
+    "content": "### The Age of Discoveries (15th - 16th Centuries)\n\n*   **Prince Henry the Navigator:**  Patron of exploration, fostering navigation and shipbuilding. \n*   **Vasco da Gama (1497-1499):**  First European to reach India by sea, opening a new trade route.  $LaTeX$: $Vasco da Gama$ \n*   **Pedro Álvares Cabral (1500):**  Discovered Brazil for Portugal. \n*   **Global Empire:**  Portugal established a vast colonial empire, including territories in Africa, Asia, and South America.  This brought immense wealth and influence.",
+    "fontSize": 16,
+    "x": 50,
+    "y": 950,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 250
+  },
+  {
+    "type": "connection",
+    "thickness": "m",
+    "x1": 50,
+    "y1": 1200,
+    "x2": 50,
+    "y2": 1400,
+    "color": "#666666"
+  },
+  {
+    "type": "card",
+    "content": "### Decline and Restoration (17th - 19th Centuries)\n\n*   **The Iberian Union (1580-1640):**  Portugal was ruled by Spain for a period. \n*   **Restoration (1640):**  Portugal regained its independence. \n*   **Napoleonic Wars:**  Portugal was invaded by Napoleon, leading to the Royal Family fleeing to Brazil. \n*   **Liberal Wars (1820-1822):**  Brazil gained independence from Portugal.",
+    "fontSize": 16,
+    "x": 50,
+    "y": 1250,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 250
+  },
+  {
+    "type": "card",
+    "content": "### 20th & 21st Centuries\n\n*   **Carnation Revolution (1974):**  A peaceful coup overthrew the authoritarian Estado Novo regime, establishing a democratic republic. \n*   **European Union (1986):**  Portugal joined the European Union, leading to economic growth and modernization. \n*   **Modern Portugal:**  A developed economy, a member of the EU, and a popular tourist destination.  Facing contemporary challenges like economic stability and social issues.",
+    "fontSize": 16,
+    "x": 50,
+    "y": 1550,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 250
+  },
+  {
+    "type": "text",
+    "content": "## Key Takeaways 💡",
+    "fontSize": 24,
+    "x": 50,
+    "y": 1800,
+    "textColor": "#333333"
+  },
+  {
+    "type": "text",
+    "content": "*   Portugal's history is marked by exploration, empire, and resilience.\n*   The Age of Discoveries had a profound impact on the world.\n*   The Carnation Revolution ushered in a democratic era.\n*   Portugal is a modern European nation with a rich cultural heritage.",
+    "fontSize": 16,
+    "x": 50,
+    "y": 1850,
+    "textColor": "#333333"
+  }
+]
+```
+---
+```json
+[
+ {
+  "type": "text",
+  "content": "## Our Solar System 🪐",
+  "fontSize": 32,
+  "x": 100,
+  "y": 20,
+  "textColor": "#333333"
+ },
+ {
+  "type": "image",
+  "search": "solar system",
+  "x": 100,
+  "y": 100,
+  "height": 250,
+  "caption": "A visual representation of our solar system."
+ },
+ {
+  "type": "card",
+  "content": "Our solar system is a fascinating place! It consists of the Sun and all the celestial objects that orbit it, including planets, moons, asteroids, and comets.  It's located in the Milky Way galaxy. 💡",
+  "fontSize": 16,
+  "x": 100,
+  "y": 350,
+  "backgroundColor": "#E3F2FD",
+  "width": 400,
+  "height": 200
+ },
+ {
+  "type": "text",
+  "content": "### The Sun ☀️",
+  "fontSize": 24,
+  "x": 100,
+  "y": 600,
+  "textColor": "#333333"
+ },
+ {
+  "type": "card",
+  "content": "The Sun is a star – a giant ball of hot gas that provides light and heat to all the planets. It's the center of our solar system, and its gravity keeps everything in orbit.  It's primarily made of hydrogen and helium and generates energy through nuclear fusion.  🔥",
+  "fontSize": 14,
+  "x": 100,
+  "y": 700,
+  "backgroundColor": "#F3E5F5",
+  "width": 400,
+  "height": 250
+ },
+ {
+  "type": "text",
+  "content": "### The Planets 🌎",
+  "fontSize": 24,
+  "x": 100,
+  "y": 1000,
+  "textColor": "#333333"
+ },
+ {
+  "type": "card",
+  "content": "Let's explore the planets, starting with the inner, rocky planets and then moving to the outer, gas giants! ➡️",
+  "fontSize": 14,
+  "x": 100,
+  "y": 1100,
+  "backgroundColor": "#E3F2FD",
+  "width": 400,
+  "height": 200
+ },
+ {
+  "type": "image",
+  "search": "solar system planets",
+  "x": 100,
+  "y": 1300,
+  "height": 300,
+  "caption": "The eight planets of our solar system, shown in their approximate order from the Sun."
+ },
+ {
+  "type": "card",
+  "content": "Here's a brief overview of each planet:  <br>\n*   **Mercury:** Closest to the Sun, very hot and rocky. 🌡️<br>\n*   **Venus:**  Hot, cloudy, and toxic atmosphere. ☁️<br>\n*   **Earth:** Our home!  The only known planet with life. 🌍<br>\n*   **Mars:** The 'Red Planet', explored by many rovers. 🔴",
+  "fontSize": 14,
+  "x": 100,
+  "y": 1600,
+  "backgroundColor": "#F8F9FA",
+  "width": 400,
+  "height": 300
+ },
+ {
+  "type": "card",
+  "content": "Moving outwards, we have the gas giants: <br>\n*   **Jupiter:** The largest planet, with a famous Great Red Spot. 💫<br>\n*   **Saturn:** Known for its beautiful rings made of ice and rock. 💍<br>\n*   **Uranus:**  Rotates on its side! 🔄<br>\n*   **Neptune:**  The farthest planet, with strong winds. 🌬️",
+  "fontSize": 14,
+  "x": 100,
+  "y": 1900,
+  "backgroundColor": "#F8F9FA",
+  "width": 400,
+  "height": 300
+ },
+ {
+  "type": "text",
+  "content": "### Other Objects ☄️",
+  "fontSize": 24,
+  "x": 100,
+  "y": 2200,
+  "textColor": "#333333"
+ },
+ {
+  "type": "card",
+  "content": "Besides planets, our solar system contains many other objects: <br>\n*   **Moons:** Natural satellites that orbit planets. 🌙<br>\n*   **Asteroids:** Rocky objects, mostly found in the asteroid belt between Mars and Jupiter. 🧱<br>\n*   **Comets:** Icy bodies that release gas and dust as they approach the Sun. 🌠<br>\n*   **Dwarf Planets:**  Like Pluto, smaller than planets but still round. ⚫",
+  "fontSize": 14,
+  "x": 100,
+  "y": 2300,
+  "backgroundColor": "#E3F2FD",
+  "width": 400,
+  "height": 300
+ },
+ {
+  "type": "text",
+  "content": "### Key Takeaways 💡",
+  "fontSize": 24,
+  "x": 100,
+  "y": 2600,
+  "textColor": "#333333"
+ },
+ {
+  "type": "card",
+  "content": "Here's what we've learned:\n*   Our solar system is held together by the Sun's gravity.\n*   Planets are classified as either rocky or gas giants.\n*   There are many other objects in the solar system besides planets.\n*   It's a vast and fascinating place to explore! 🚀",
+  "fontSize": 14,
+  "x": 100,
+  "y": 2700,
+  "backgroundColor": "#FFF3E0",
+  "width": 400,
+  "height": 250
+ }
+]
+```
+---
+```json
+[
+ {
+  "type": "text",
+  "content": "## Our Solar System: A Cosmic Tour 🚀",
+  "fontSize": 32,
+  "x": 100,
+  "y": 20,
+  "textColor": "#333333"
+ },
+ {
+  "type": "card",
+  "content": "Our solar system is a fascinating place! It consists of the Sun and all the objects that orbit it, including planets, moons, asteroids, and comets.  Let's explore the eight planets in order from the Sun:",
+  "fontSize": 16,
+  "x": 100,
+  "y": 100,
+  "backgroundColor": "#E3F2FD",
+  "width": 400,
+  "height": 250
+ },
+ {
+  "type": "image",
+  "search": "solar system planets",
+  "x": 100,
+  "y": 300,
+  "height": 250,
+  "caption": "A visual representation of the planets in our solar system."
+ },
+ {
+  "type": "card",
+  "content": "### Mercury ⚡\n*   **Distance from Sun:** 58 million km\n*   **Diameter:** 4,880 km (Smallest planet)\n*   **Orbital Period:** 88 Earth days\n*   **Key Feature:** Heavily cratered surface, extreme temperature variations.",
+  "fontSize": 14,
+  "x": 100,
+  "y": 600,
+  "backgroundColor": "#F8F9FA",
+  "width": 350,
+  "height": 150
+ },
+ {
+  "type": "line",
+  "thickness": "s",
+  "x1": 100, "y1": 650,
+  "x2": 350, "y2": 650,
+  "color": "#666666"
+ },
+ {
+  "type": "card",
+  "content": "### Venus 💡\n*   **Distance from Sun:** 108 million km\n*   **Diameter:** 12,104 km\n*   **Orbital Period:** 225 Earth days\n*   **Key Feature:** Extremely hot, dense atmosphere composed mostly of carbon dioxide.  A runaway greenhouse effect makes it the hottest planet.",
+  "fontSize": 14,
+  "x": 100,
+  "y": 750,
+  "backgroundColor": "#F8F9FA",
+  "width": 350,
+  "height": 150
+ },
+ {
+  "type": "line",
+  "thickness": "s",
+  "x1": 100, "y1": 800,
+  "x2": 350, "y2": 800,
+  "color": "#666666"
+ },
+ {
+  "type": "card",
+  "content": "### Earth 🎯\n*   **Distance from Sun:** 150 million km\n*   **Diameter:** 12,756 km\n*   **Orbital Period:** 365.25 Earth days\n*   **Key Feature:** The only known planet to support life!  Abundant liquid water, a protective atmosphere, and a diverse ecosystem.",
+  "fontSize": 14,
+  "x": 100,
+  "y": 900,
+  "backgroundColor": "#F8F9FA",
+  "width": 350,
+  "height": 150
+ },
+ {
+  "type": "line",
+  "thickness": "s",
+  "x1": 100, "y1": 950,
+  "x2": 350, "y2": 950,
+  "color": "#666666"
+ },
+ {
+  "type": "card",
+  "content": "### Mars ⚡\n*   **Distance from Sun:** 228 million km\n*   **Diameter:** 6,792 km\n*   **Orbital Period:** 687 Earth days\n*   **Key Feature:** The 'Red Planet' due to iron oxide on its surface.  Evidence of past water, potential for past life.  Currently explored by rovers.",
+  "fontSize": 14,
+  "x": 100,
+  "y": 1050,
+  "backgroundColor": "#F8F9FA",
+  "width": 350,
+  "height": 150
+ },
+ {
+  "type": "line",
+  "thickness": "s",
+  "x1": 100, "y1": 1100,
+  "x2": 350, "y2": 1100,
+  "color": "#666666"
+ },
+ {
+  "type": "card",
+  "content": "### Jupiter 💡\n*   **Distance from Sun:** 778 million km\n*   **Diameter:** 142,984 km (Largest planet)\n*   **Orbital Period:** 11.86 Earth years\n*   **Key Feature:** A gas giant, primarily composed of hydrogen and helium.  Great Red Spot: a giant storm that has raged for centuries.  Many moons.",
+  "fontSize": 14,
+  "x": 100,
+  "y": 1250,
+  "backgroundColor": "#F8F9FA",
+  "width": 350,
+  "height": 150
+ },
+ {
+  "type": "line",
+  "thickness": "s",
+  "x1": 100, "y1": 1300,
+  "x2": 350, "y2": 1300,
+  "color": "#666666"
+ },
+ {
+  "type": "card",
+  "content": "### Saturn 🎯\n*   **Distance from Sun:** 1.43 billion km\n*   **Diameter:** 120,536 km\n*   **Orbital Period:** 29.46 Earth years\n*   **Key Feature:** Known for its prominent ring system, made up of ice and rock particles.  Also a gas giant, similar in composition to Jupiter.  Many moons.",
+  "fontSize": 14,
+  "x": 100,
+  "y": 1450,
+  "backgroundColor": "#F8F9FA",
+  "width": 350,
+  "height": 150
+ },
+ {
+  "type": "line",
+  "thickness": "s",
+  "x1": 100, "y1": 1500,
+  "x2": 350, "y2": 1500,
+  "color": "#666666"
+ },
+ {
+  "type": "card",
+  "content": "### Uranus ⚡\n*   **Distance from Sun:** 2.87 billion km\n*   **Diameter:** 51,118 km\n*   **Orbital Period:** 84 Earth years\n*   **Key Feature:** An ice giant, with a faint ring system.  Rotates on its side.  Pale blue-green color due to methane in its atmosphere.",
+  "fontSize": 14,
+  "x": 100,
+  "y": 1650,
+  "backgroundColor": "#F8F9FA",
+  "width": 350,
+  "height": 150
+ },
+ {
+  "type": "line",
+  "thickness": "s",
+  "x1": 100, "y1": 1700,
+  "x2": 350, "y2": 1700,
+  "color": "#666666"
+ },
+ {
+  "type": "card",
+  "content": "### Neptune 🎯\n*   **Distance from Sun:** 4.5 billion km\n*   **Diameter:** 49,528 km\n*   **Orbital Period:** 165 Earth years\n*   **Key Feature:** The farthest planet from the Sun.  Deep blue color due to methane in its atmosphere.  Strongest winds in the solar system.",
+  "fontSize": 14,
+  "x": 100,
+  "y": 1850,
+  "backgroundColor": "#F8F9FA",
+  "width": 350,
+  "height": 150
+ },
+ {
+  "type": "text",
+  "content": "## Key Takeaways 💡\n*   Planets vary greatly in size, composition, and distance from the Sun.",
+  "fontSize": 18,
+  "x": 100,
+  "y": 2000,
+  "textColor": "#333333"
+ },
+ {
+  "type": "text",
+  "content": " *   Gas giants (Jupiter & Saturn) are primarily composed of hydrogen and helium. Ice giants (Uranus & Neptune) contain more ice.",
+  "fontSize": 16,
+  "x": 100,
+  "y": 2030,
+  "textColor": "#333333"
+ },
+ {
+  "type": "text",
+  "content": " *   Earth is unique for supporting life!",
+  "fontSize": 16,
+  "x": 100,
+  "y": 2060,
+  "textColor": "#333333"
+ }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "## Photosynthesis: Capturing Sunlight to Fuel Life ⚡",
+    "fontSize": 32,
+    "x": 50,
+    "y": 50,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "Photosynthesis is the process used by plants, algae, and some bacteria to convert light energy into chemical energy.  It's the foundation of most food chains on Earth! 📊",
+    "fontSize": 16,
+    "x": 50,
+    "y": 150,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 200
+  },
+  {
+    "type": "text",
+    "content": "Here's the basic equation for photosynthesis:  $6CO_2 + 6H_2O + Light Energy \rightarrow C_6H_{12}O_6 + 6O_2$",
+    "fontSize": 18,
+    "x": 50,
+    "y": 400,
+    "textColor": "#333333"
+  },
+  {
+    "type": "image",
+    "search": "photosynthesis diagram",
+    "x": 50,
+    "y": 500,
+    "height": 250,
+    "caption": "A diagram illustrating the key components and stages of photosynthesis."
+  },
+  {
+    "type": "card",
+    "content": "Photosynthesis occurs in two main stages: \n1. **Light-Dependent Reactions:** Light energy is absorbed by chlorophyll and used to split water ($H_2O$), releasing oxygen ($O_2$). This process also generates ATP and NADPH.💡 \n2. **Light-Independent Reactions (Calvin Cycle):** ATP and NADPH are used to convert carbon dioxide ($CO_2$) into glucose ($C_6H_{12}O_6$). This is where the sugar is made! ⚡",
+    "fontSize": 16,
+    "x": 50,
+    "y": 700,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 300
+  },
+  {
+    "type": "text",
+    "content": "Here's a closer look at the stages:",
+    "fontSize": 20,
+    "x": 50,
+    "y": 950,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "**Light-Dependent Reactions:**\n- Location: Thylakoid membranes within chloroplasts.\n- Key Inputs: Water, Light\n- Key Outputs: Oxygen, ATP, NADPH",
+    "fontSize": 14,
+    "x": 50,
+    "y": 1000,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "card",
+    "content": "**Light-Independent Reactions (Calvin Cycle):**\n- Location: Stroma of chloroplasts.\n- Key Inputs: Carbon Dioxide, ATP, NADPH\n- Key Outputs: Glucose",
+    "fontSize": 14,
+    "x": 50,
+    "y": 1150,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "text",
+    "content": "Key Takeaways: Photosynthesis is vital for life as we know it. It produces the oxygen we breathe and the food that sustains ecosystems. 🎯",
+    "fontSize": 18,
+    "x": 50,
+    "y": 1300,
+    "textColor": "#333333"
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "This Sunday's Image: A vibrant depiction of a blooming sunflower field under a clear blue sky. The sunflowers are in various stages of bloom, facing towards the sun. The overall impression is one of warmth, joy, and natural beauty.",
+    "fontSize": 20,
+    "x": 50,
+    "y": 50,
+    "textColor": "#333333"
+  },
+  {
+    "type": "image",
+    "search": "sunflower field",
+    "x": 50,
+    "y": 150,
+    "height": 250,
+    "caption": "A field of sunflowers, symbolizing joy and optimism."
+  },
+  {
+    "type": "card",
+    "content": "Sunflowers are known for their heliotropism, the ability to turn their heads to follow the sun throughout the day. This behavior is crucial for maximizing sunlight exposure for photosynthesis.",
+    "fontSize": 16,
+    "x": 300,
+    "y": 250,
+    "backgroundColor": "#F3E5F5",
+    "width": 300,
+    "height": 150
+  },
+  {
+    "type": "text",
+    "content": "Did you know? The name 'sunflower' comes from their solar-like movement! 💡",
+    "fontSize": 14,
+    "x": 50,
+    "y": 400,
+    "textColor": "#666666",
+    "caption": "Fun Fact!"
+  },
+  {
+    "type": "line",
+    "thickness": "s",
+    "x1": 50,
+    "y1": 500,
+    "x2": 300,
+    "y2": 500,
+    "color": "#666666"
+  },
+  {
+    "type": "text",
+    "content": "Next steps: Research the different parts of a sunflower and their functions. 🌻",
+    "fontSize": 16,
+    "x": 50,
+    "y": 600,
+    "textColor": "#333333"
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "## Why is the Ocean Blue? 🌊",
+    "fontSize": 32,
+    "x": 100,
+    "y": 20,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "The ocean's blue color isn't just about the water itself! It's a fascinating interplay of light and how water interacts with it. Here's the breakdown:",
+    "fontSize": 16,
+    "x": 100,
+    "y": 70,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 250
+  },
+  {
+    "type": "card",
+    "content": "1. **Sunlight and the Electromagnetic Spectrum:** Sunlight is actually made up of *all* the colors of the rainbow!  These colors travel as waves, each with a different wavelength.  Blue and violet light have shorter wavelengths, while red and orange have longer wavelengths.  *Think of it like ripples on a pond – shorter ripples are blue, longer ripples are red.*",
+    "fontSize": 14,
+    "x": 100,
+    "y": 350,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 150
+  },
+  {
+    "type": "card",
+    "content": "2. **Absorption of Light:** When sunlight hits the ocean, the water molecules *absorb* different colors of light at different rates. Red, orange, and yellow light are absorbed quickly. Blue and violet light, with their shorter wavelengths, penetrate deeper into the water.",
+    "fontSize": 14,
+    "x": 100,
+    "y": 600,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 150
+  },
+  {
+    "type": "card",
+    "content": "3. **Scattering of Light (Rayleigh Scattering):**  Even though blue light penetrates deeper, it's also *scattered* by the water molecules. This scattering effect, called Rayleigh scattering, is more effective for shorter wavelengths (blue and violet).  This is why we see blue light coming back to our eyes from all directions!",
+    "fontSize": 14,
+    "x": 100,
+    "y": 850,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 150
+  },
+  {
+    "type": "image",
+    "search": "rayleigh scattering in water",
+    "x": 100,
+    "y": 100,
+    "height": 200,
+    "caption": "This diagram illustrates how sunlight is scattered by water molecules, with blue light scattering more effectively."
+  },
+  {
+    "type": "card",
+    "content": "Interestingly, if the ocean were deeper, it would appear more blue!  Also, on cloudy days, the ocean might appear gray because the clouds scatter all colors of light equally.",
+    "fontSize": 14,
+    "x": 100,
+    "y": 750,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 150
+  },
+  {
+    "type": "text",
+    "content": "**Key Takeaway:** The ocean appears blue because water molecules absorb red and yellow light, while scattering blue light. 💡",
+    "fontSize": 18,
+    "x": 100,
+    "y": 1000,
+    "textColor": "#333333"
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "## Our Solar System: A Cosmic Neighborhood 🪐",
+    "fontSize": 32,
+    "x": 100,
+    "y": 50,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "Our solar system is a gravitationally bound system consisting of the Sun and the objects that orbit it. This includes planets, moons, asteroids, comets, and dwarf planets.",
+    "fontSize": 18,
+    "x": 100,
+    "y": 150,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 250
+  },
+  {
+    "type": "image",
+    "search": "solar system",
+    "x": 100,
+    "y": 250,
+    "height": 300,
+    "caption": "A visual representation of our solar system."
+  },
+  {
+    "type": "text",
+    "content": "**The Sun:** The heart of our solar system, a star providing light and heat. It's a giant ball of hot gas (mostly hydrogen and helium) undergoing nuclear fusion.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 600,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": " **Planets:**  Eight planets orbit the Sun, categorized into inner, rocky planets & outer, gas giants.  In order from the Sun: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 650,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 300
+  },
+    {
+    "type": "text",
+    "content": "**Inner, Rocky Planets:** Mercury, Venus, Earth, and Mars.  These are smaller, denser, and have solid surfaces.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 950,
+    "textColor": "#333333"
+  },
+    {
+    "type": "card",
+    "content": "**Outer, Gas Giants:** Jupiter, Saturn, Uranus, and Neptune. These are much larger, less dense, and primarily composed of hydrogen and helium.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 950,
+    "backgroundColor": "#F8F9FA",
+    "width": 400,
+    "height": 300
+  },
+  {
+    "type": "card",
+    "content": "**Key Features of Planets:**\n* **Mercury:** Closest to the Sun, heavily cratered.\n* **Venus:** Thick atmosphere, extremely hot.\n* **Earth:**  Abundant liquid water, life!\n* **Mars:** Red planet, potential for past life.\n* **Jupiter:** Largest planet, Great Red Spot.\n* **Saturn:** Prominent rings.\n* **Uranus:** Rotates on its side.\n* **Neptune:**  Farthest planet, strong winds.",
+    "fontSize": 14,
+    "x": 500,
+    "y": 650,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 200
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 100, "y1": 700,
+    "x2": 400, "y2": 700,
+    "color": "#666666"
+  },
+  {
+    "type": "text",
+    "content": "Beyond Neptune lies the Kuiper Belt, home to Pluto and other icy bodies.  Further out is the Oort Cloud, a vast sphere of icy objects believed to be the source of long-period comets.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 1000,
+    "textColor": "#333333"
+  },
+   {
+    "type": "card",
+    "content": "**Asteroid Belt:** Located between Mars and Jupiter, a region populated by millions of asteroids. They are rocky remnants from the solar system's formation.",
+    "fontSize": 14,
+    "x": 500,
+    "y": 1000,
+    "backgroundColor": "#F8F9FA",
+    "width": 350,
+    "height": 200
+  },
+  {
+    "type": "text",
+    "content": "💡 **Mnemonic:** **M**y **V**ery **E**ducated **M**other **J**ust **S**erved **U**s **N**oodles. (Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune)",
+    "fontSize": 16,
+    "x": 100,
+    "y": 1200,
+    "textColor": "#333333"
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "# The Beginning of the Universe 🌌",
+    "fontSize": 36,
+    "x": 400,
+    "y": 50,
+    "textColor": "#1565C0"
+  },
+  {
+    "type": "text",
+    "content": "## The Big Bang Theory",
+    "fontSize": 24,
+    "x": 100,
+    "y": 150,
+    "textColor": "#E91E63"
+  },
+  {
+    "type": "card",
+    "content": "**The Big Bang** is the leading scientific explanation for how the universe expanded from an initial state of high density and temperature.\n\n💡 **Key Insight**: It describes the *expansion* of space itself, not an explosion in empty space!",
+    "fontSize": 16,
+    "x": 100,
+    "y": 200,
+    "backgroundColor": "#E3F2FD",
+    "width": 350,
+    "height": 120
+  },
+  {
+    "type": "text",
+    "content": "## Timeline of the Early Universe ⏱️",
+    "fontSize": 24,
+    "x": 100,
+    "y": 380,
+    "textColor": "#E91E63"
+  },
+  {
+    "type": "card",
+    "content": "**Planck Era**\n$t = 0$ to $10^{-43}$ seconds\n\n• Physics as we know it breaks down\n• Quantum gravity dominates\n• Temperature: $10^{32}$ K",
+    "fontSize": 14,
+    "x": 100,
+    "y": 430,
+    "backgroundColor": "#FFEBEE",
+    "width": 200,
+    "height": 100
+  },
+  {
+    "type": "card",
+    "content": "**Inflation**\n$10^{-36}$ to $10^{-32}$ seconds\n\n• Universe expands exponentially\n• Explains cosmic uniformity\n• Creates quantum fluctuations",
+    "fontSize": 14,
+    "x": 320,
+    "y": 430,
+    "backgroundColor": "#FFF3E0",
+    "width": 200,
+    "height": 100
+  },
+  {
+    "type": "card",
+    "content": "**Nucleosynthesis**\n3-20 minutes\n\n• First atomic nuclei form\n• Hydrogen, Helium, Lithium\n• Temperature: $10^9$ K",
+    "fontSize": 14,
+    "x": 540,
+    "y": 430,
+    "backgroundColor": "#E8F5E8",
+    "width": 200,
+    "height": 100
+  },
+  {
+    "type": "card",
+    "content": "**Recombination**\n380,000 years\n\n• First atoms form\n• Universe becomes transparent\n• Cosmic Microwave Background",
+    "fontSize": 14,
+    "x": 760,
+    "y": 430,
+    "backgroundColor": "#F3E5F5",
+    "width": 200,
+    "height": 100
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 300,
+    "y1": 480,
+    "x2": 320,
+    "y2": 480,
+    "color": "#666666"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 520,
+    "y1": 480,
+    "x2": 540,
+    "y2": 480,
+    "color": "#666666"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 740,
+    "y1": 480,
+    "x2": 760,
+    "y2": 480,
+    "color": "#666666"
+  },
+  {
+    "type": "text",
+    "content": "## Evidence for the Big Bang 🔍",
+    "fontSize": 24,
+    "x": 100,
+    "y": 600,
+    "textColor": "#E91E63"
+  },
+  {
+    "type": "card",
+    "content": "**Cosmic Microwave Background (CMB)**\n\n• Afterglow of the Big Bang\n• Temperature: 2.7 K throughout space\n• Tiny fluctuations show early structure\n• Discovered by Penzias & Wilson (1965)",
+    "fontSize": 16,
+    "x": 100,
+    "y": 650,
+    "backgroundColor": "#E3F2FD",
+    "width": 280,
+    "height": 140
+  },
+  {
+    "type": "card",
+    "content": "**Hubble's Law**\n\n$v = H_0 \\times d$\n\n• Galaxies moving away from us\n• More distant = faster recession\n• Shows universe is expanding\n• $H_0 \\approx 70$ km/s/Mpc",
+    "fontSize": 16,
+    "x": 400,
+    "y": 650,
+    "backgroundColor": "#E8F5E8",
+    "width": 280,
+    "height": 140
+  },
+  {
+    "type": "card",
+    "content": "**Light Element Abundances**\n\n• 75% Hydrogen, 25% Helium\n• Trace amounts of Lithium\n• Matches Big Bang predictions\n• Too much helium for stellar origin",
+    "fontSize": 16,
+    "x": 700,
+    "y": 650,
+    "backgroundColor": "#F3E5F5",
+    "width": 280,
+    "height": 140
+  },
+  {
+    "type": "image",
+    "search": "cosmic microwave background radiation map",
+    "x": 100,
+    "y": 840,
+    "height": 200,
+    "caption": "CMB temperature fluctuations across the sky"
+  },
+  {
+    "type": "text",
+    "content": "## Key Concepts to Remember 🎯",
+    "fontSize": 20,
+    "x": 500,
+    "y": 840,
+    "textColor": "#E91E63"
+  },
+  {
+    "type": "card",
+    "content": "**🌟 The universe began ~13.8 billion years ago**\n\n**🌟 Space itself expanded, not matter moving through space**\n\n**🌟 We can observe the early universe through the CMB**\n\n**🌟 The first stars didn't form until ~100 million years later**",
+    "fontSize": 16,
+    "x": 500,
+    "y": 880,
+    "backgroundColor": "#FFF3E0",
+    "width": 400,
+    "height": 150
+  },
+  {
+    "type": "text",
+    "content": "💭 *\"The universe is not only stranger than we imagine, it is stranger than we can imagine.\"* - J.B.S. Haldane",
+    "fontSize": 14,
+    "x": 300,
+    "y": 1080,
+    "textColor": "#666666"
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "🇵🇹 **The History of Portugal** 🇵🇹",
+    "fontSize": 32,
+    "x": 400,
+    "y": 50,
+    "textColor": "#2E7D32"
+  },
+  {
+    "type": "text",
+    "content": "*From Ancient Times to Modern Nation*",
+    "fontSize": 18,
+    "x": 450,
+    "y": 100,
+    "textColor": "#666666"
+  },
+  {
+    "type": "card",
+    "content": "⚔️ **Pre-Roman Portugal**\n\n• **Lusitanians** - fierce Celtic tribes\n• Resisted Roman conquest for decades\n• **Viriathus** - legendary leader who fought Romans (155-139 BCE)\n• Known for guerrilla warfare tactics",
+    "fontSize": 16,
+    "x": 50,
+    "y": 150,
+    "backgroundColor": "#E8F5E8",
+    "width": 280,
+    "height": 180
+  },
+  {
+    "type": "card",
+    "content": "🏛️ **Roman Rule (216 BCE - 409 CE)**\n\n• Province of **Lusitania** established\n• Latin language foundation\n• Roman roads, aqueducts, cities\n• Christianity introduced in 3rd century\n• Legacy: Portuguese language roots",
+    "fontSize": 16,
+    "x": 380,
+    "y": 150,
+    "backgroundColor": "#E3F2FD",
+    "width": 280,
+    "height": 180
+  },
+  {
+    "type": "card",
+    "content": "🕌 **Islamic Period (711-1249)**\n\n• **Moors** conquer Iberian Peninsula\n• Southern Portugal becomes **Al-Gharb**\n• Agricultural innovations, mathematics\n• Córdoba Caliphate influence\n• Christian **Reconquista** begins",
+    "fontSize": 16,
+    "x": 710,
+    "y": 150,
+    "backgroundColor": "#FFF3E0",
+    "width": 280,
+    "height": 180
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 330,
+    "y1": 240,
+    "x2": 380,
+    "y2": 240,
+    "color": "#666666"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 660,
+    "y1": 240,
+    "x2": 710,
+    "y2": 240,
+    "color": "#666666"
+  },
+  {
+    "type": "text",
+    "content": "👑 **Birth of Portugal as a Nation**",
+    "fontSize": 24,
+    "x": 100,
+    "y": 380,
+    "textColor": "#C62828"
+  },
+  {
+    "type": "card",
+    "content": "⚔️ **Formation (1139-1249)**\n\n• **1139**: Afonso I declares independence\n• Battle of Ourique - legendary victory\n• **1143**: Treaty of Zamora recognizes Portugal\n• **1249**: Conquest of Algarve completed\n• Europe's oldest stable borders established",
+    "fontSize": 16,
+    "x": 50,
+    "y": 420,
+    "backgroundColor": "#FFEBEE",
+    "width": 300,
+    "height": 200
+  },
+  {
+    "type": "image",
+    "search": "Portuguese medieval castle Guimaraes",
+    "x": 400,
+    "y": 420,
+    "height": 200,
+    "caption": "Guimarães Castle - Birthplace of Portugal"
+  },
+  {
+    "type": "text",
+    "content": "🌊 **Age of Discoveries (15th-16th centuries)**",
+    "fontSize": 24,
+    "x": 650,
+    "y": 380,
+    "textColor": "#1565C0"
+  },
+  {
+    "type": "card",
+    "content": "🧭 **Maritime Pioneers**\n\n• **Prince Henry the Navigator** (1394-1460)\n• School of Navigation at Sagres\n• **1415**: Conquest of Ceuta (Morocco)\n• Development of caravel ships\n• Systematic exploration of African coast",
+    "fontSize": 16,
+    "x": 650,
+    "y": 420,
+    "backgroundColor": "#E3F2FD",
+    "width": 320,
+    "height": 200
+  },
+  {
+    "type": "card",
+    "content": "🗺️ **Major Discoveries**\n\n• **1488**: Bartolomeu Dias rounds Cape of Good Hope\n• **1498**: Vasco da Gama reaches India\n• **1500**: Pedro Cabral discovers Brazil\n• **1519-1522**: Fernão de Magalhães circumnavigates globe\n• First global maritime empire",
+    "fontSize": 16,
+    "x": 50,
+    "y": 670,
+    "backgroundColor": "#F3E5F5",
+    "width": 320,
+    "height": 200
+  },
+  {
+    "type": "image",
+    "search": "Portuguese caravel ship age of discovery",
+    "x": 420,
+    "y": 670,
+    "height": 180,
+    "caption": "Portuguese Caravel - Revolutionary ship design"
+  },
+  {
+    "type": "card",
+    "content": "💰 **Global Empire Impact**\n\n• Trading posts from **Goa** to **Macau**\n• Spice trade monopoly\n• Brazilian gold and sugar wealth\n• Cultural exchange and colonization\n• Spread of Portuguese language",
+    "fontSize": 16,
+    "x": 750,
+    "y": 670,
+    "backgroundColor": "#FFF3E0",
+    "width": 280,
+    "height": 200
+  },
+  {
+    "type": "text",
+    "content": "⚡ **Crisis and Recovery**",
+    "fontSize": 24,
+    "x": 100,
+    "y": 920,
+    "textColor": "#E65100"
+  },
+  {
+    "type": "card",
+    "content": "👑 **Spanish Rule (1580-1640)**\n\n• **1580**: Philip II of Spain inherits throne\n• Portuguese independence lost\n• **Iberian Union** for 60 years\n• Elite resistance grows\n• **1640**: Restoration War begins",
+    "fontSize": 16,
+    "x": 50,
+    "y": 960,
+    "backgroundColor": "#FFEBEE",
+    "width": 280,
+    "height": 180
+  },
+  {
+    "type": "card",
+    "content": "🏛️ **Pombaline Era (18th century)**\n\n• **Marquês de Pombal** - powerful minister\n• **1755**: Great Lisbon Earthquake\n• Rebuilding with modern urban planning\n• Economic and educational reforms\n• Expulsion of Jesuits (1759)",
+    "fontSize": 16,
+    "x": 380,
+    "y": 960,
+    "backgroundColor": "#E8F5E8",
+    "width": 280,
+    "height": 180
+  },
+  {
+    "type": "card",
+    "content": "⚔️ **Napoleonic Wars (1807-1814)**\n\n• **1807**: French invasion begins\n• Royal family flees to **Brazil**\n• Peninsula War with British alliance\n• **Wellington** helps liberate Portugal\n• **1822**: Brazil declares independence",
+    "fontSize": 16,
+    "x": 710,
+    "y": 960,
+    "backgroundColor": "#E3F2FD",
+    "width
+---
