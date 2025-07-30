@@ -28,12 +28,12 @@ export const handleAIChatRequest = async (prompt: string, getPointerPosition: ()
                     console.error("Invalid card element (missing x/y):", element);
                     return;
                 }
-                const content = element.content || '';
+                const content = element.speakAloud || '';
                 const width = element.width || 500;
                 try {
-                    // Speak only if speakAloud is present
-                    if (element.speakAloud && typeof element.speakAloud === 'string') {
-                        speakText(element.speakAloud).catch(console.error);
+                    // Speak card content
+                    if (content && typeof content === 'string') {
+                        speakText(content).catch(console.error);
                     }
                     const { dataURL, height } = await renderMarkdownToImage(content, width, {
                         backgroundColor: element.backgroundColor || '#ffffff',
@@ -57,12 +57,12 @@ export const handleAIChatRequest = async (prompt: string, getPointerPosition: ()
                     console.error("Invalid text element (missing x/y):", element);
                     return;
                 }
-                const content = element.content || '';
+                const content = element.speakAloud || '';
                 const width = element.width || 550;
                 try {
-                    // Speak only if speakAloud is present
-                    if (element.speakAloud && typeof element.speakAloud === 'string') {
-                        speakText(element.speakAloud).catch(console.error);
+                    // Speak text content
+                    if (content && typeof content === 'string') {
+                        speakText(content).catch(console.error);
                     }
                     const { dataURL, height } = await renderMarkdownToImage(content, width, {
                         fontSize: '18px',

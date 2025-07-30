@@ -6393,3 +6393,1328 @@ As fases da lua são um dos fenômenos mais bonitos e regulares que podemos obse
 ]
 ```
 ---
+```json
+[
+  {
+    "type": "text",
+    "content": "Our Solar System",
+    "fontSize": 48,
+    "x": 960,
+    "y": 50,
+    "textColor": "#333333",
+    "speakAloud": "This is an overview of our solar system, which includes the Sun and all the objects that orbit it."
+  },
+  {
+    "type": "image",
+    "search": "solar system diagram",
+    "x": 100,
+    "y": 250,
+    "height": 400,
+    "speakAloud": "Here's a picture of our solar system, showing the Sun and the planets in their orbits."
+  },
+  {
+    "type": "card",
+    "content": "**The Sun**: The center of our solar system. It's a star that provides light and heat.",
+    "fontSize": 24,
+    "x": 100,
+    "y": 700,
+    "width": 350,
+    "height": 200,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "The Sun is a giant ball of hot gas. All the planets go around it."
+  },
+  {
+    "type": "card",
+    "content": "**Planets**: Eight planets orbit the Sun:\n1. **Mercury**: Small and closest to the Sun.\n2. **Venus**: Hot and cloudy.\n3. **Earth**: Our home, with liquid water! \n4. **Mars**: The 'Red Planet'.",
+    "fontSize": 20,
+    "x": 500,
+    "y": 700,
+    "width": 350,
+    "height": 250,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Planets are large objects that go around a star. Each has unique features."
+  },
+  {
+    "type": "card",
+    "content": "**Gas Giants**: Jupiter and Saturn are large planets made mostly of gas. Uranus and Neptune are ice giants.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 950,
+    "width": 350,
+    "height": 200,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Gas giants are much bigger than the rocky planets. They have strong winds and many moons."
+  },
+  {
+    "type": "card",
+    "content": "**Moons**: Many planets have moons that orbit them. Earth has one, but other planets have many!",
+    "fontSize": 20,
+    "x": 500,
+    "y": 950,
+    "width": 350,
+    "height": 200,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Moons are natural satellites that orbit planets. The Moon helps to control Earth's tides."
+  },
+  {
+    "type": "card",
+    "content": "**Asteroid Belt**: A region between Mars and Jupiter containing many **asteroids**.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 50,
+    "width": 350,
+    "height": 200,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "The Asteroid Belt is full of rocky objects of different sizes. Most asteroids are found here."
+  },
+  {
+    "type": "card",
+    "content": "**Dwarf Planets**: Pluto is an example of a dwarf planet. It is smaller than a planet and shares its orbit with other objects.",
+    "fontSize": 20,
+    "x": 500,
+    "y": 50,
+    "width": 350,
+    "height": 200,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "Dwarf planets are similar to planets but don't meet all the requirements to be a planet."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 100,
+    "y1": 300,
+    "x2": 900,
+    "y2": 300,
+    "speakAloud": "The planets orbit the Sun in elliptical paths. They aren't perfect circles."
+  },
+   {
+    "type": "card",
+    "content": "**Important Note**: The order of the planets from the Sun is: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.  Memorizing this order is very helpful!",
+    "fontSize": 18,
+    "x": 100,
+    "y": 50,
+    "width": 350,
+    "height": 200,
+    "backgroundColor": "#FFF3E0",
+    "speakAloud": "The order of planets is important, especially when learning about their characteristics. You can use a mnemonic to remember the order."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Why is the Sky Blue?",
+    "fontSize": 48,
+    "x": 960,
+    "y": 50,
+    "textColor": "#000000",
+    "speakAloud": "This explanation will explore the reasons behind the blue color of the sky."
+  },
+  {
+    "type": "card",
+    "content": "**Sunlight** is made of all the colors of the rainbow.  These colors travel in waves.",
+    "fontSize": 24,
+    "x": 100,
+    "y": 200,
+    "width": 400,
+    "height": 200,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Sunlight actually contains all the colors we see in a rainbow, and each color travels in a different kind of wave."
+  },
+  {
+    "type": "card",
+    "content": "When sunlight enters the Earth's **atmosphere**, it bumps into tiny air molecules like nitrogen and oxygen.",
+    "fontSize": 24,
+    "x": 100,
+    "y": 450,
+    "width": 400,
+    "height": 200,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "As sunlight travels through the air, it collides with small particles."
+  },
+  {
+    "type": "card",
+    "content": "**Rayleigh scattering** is the main reason the sky is blue. Blue and violet light have shorter wavelengths, so they are scattered more than other colors.",
+    "fontSize": 24,
+    "x": 100,
+    "y": 700,
+    "width": 400,
+    "height": 200,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Rayleigh scattering is a process where the shorter wavelengths of light – blue and violet – get scattered in all directions by the air molecules."
+  },
+  {
+    "type": "image",
+    "search": "rayleigh scattering diagram",
+    "x": 600,
+    "y": 200,
+    "height": 250,
+    "speakAloud": "This image shows how blue light is scattered more than other colors by the atmosphere."
+  },
+  {
+    "type": "card",
+    "content": "Why not violet?  The sun emits less violet light, and our eyes are also less sensitive to it.",
+    "fontSize": 24,
+    "x": 100,
+    "y": 950,
+    "width": 400,
+    "height": 200,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "Though violet light is scattered even more, the sun sends out less of it, and our eyes don't detect it as easily."
+  },
+  {
+    "type": "card",
+    "content": "At **sunset and sunrise**, the sunlight travels through more of the atmosphere.  This means the blue light is scattered away, and we see more of the orange and red light.",
+    "fontSize": 24,
+    "x": 100,
+    "y": 1200,
+    "width": 400,
+    "height": 200,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "During sunsets and sunrises, the light has to travel through more atmosphere, causing the blue light to scatter away, letting the red and orange colors through."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Our Solar System",
+    "fontSize": 48,
+    "x": 600,
+    "y": 30,
+    "textColor": "#0D47A1",
+    "speakAloud": "Welcome to our Solar System, a fascinating cosmic neighborhood."
+  },
+  {
+    "type": "card",
+    "content": "The **Solar System** is made up of the Sun and everything that travels around it.",
+    "fontSize": 20,
+    "x": 50,
+    "y": 150,
+    "width": 400,
+    "height": 100,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Our Solar System consists of the Sun and all the objects orbiting around it."
+  },
+  {
+    "type": "image",
+    "search": "Sun star",
+    "x": 680,
+    "y": 120,
+    "height": 200,
+    "speakAloud": "The Sun is at the very center of our Solar System, providing light and heat."
+  },
+  {
+    "type": "card",
+    "content": "The **Sun** is a star, a giant ball of very hot gas that gives off light and heat.",
+    "fontSize": 20,
+    "x": 1000,
+    "y": 150,
+    "width": 400,
+    "height": 100,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "The Sun is a star, a huge ball of hot gas that lights up our entire system."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 450,
+    "y1": 200,
+    "x2": 680,
+    "y2": 220,
+    "speakAloud": "The Solar System includes the Sun, which is its central star."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 1000,
+    "y1": 200,
+    "x2": 880,
+    "y2": 220,
+    "speakAloud": "The Sun is a star, the biggest object in our solar system."
+  },
+  {
+    "type": "text",
+    "content": "Parts of the Solar System",
+    "fontSize": 36,
+    "x": 100,
+    "y": 350,
+    "textColor": "#1565C0",
+    "speakAloud": "Let's explore the main parts of our Solar System."
+  },
+  {
+    "type": "card",
+    "content": "**Planets**: Large objects that orbit the Sun. There are 8! \n\n* **Inner Planets**: Mercury, Venus, Earth, Mars.\n* **Outer Planets**: Jupiter, Saturn, Uranus, Neptune.",
+    "fontSize": 20,
+    "x": 50,
+    "y": 420,
+    "width": 450,
+    "height": 220,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Planets are large objects that travel around the Sun. There are eight, divided into inner and outer groups."
+  },
+  {
+    "type": "image",
+    "search": "solar system planets lineup",
+    "x": 550,
+    "y": 380,
+    "height": 250,
+    "speakAloud": "This image shows the eight planets in our Solar System in order from the Sun."
+  },
+  {
+    "type": "card",
+    "content": "**Dwarf Planets**: Smaller than regular planets, like **Pluto**.",
+    "fontSize": 20,
+    "x": 1050,
+    "y": 420,
+    "width": 400,
+    "height": 100,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "Dwarf planets are smaller celestial bodies, with Pluto being a well-known example."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 500,
+    "y1": 530,
+    "x2": 550,
+    "y2": 500,
+    "speakAloud": "The Solar System is made of planets."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 1050,
+    "y1": 470,
+    "x2": 880,
+    "y2": 500,
+    "speakAloud": "It also includes dwarf planets, like Pluto."
+  },
+  {
+    "type": "card",
+    "content": "**Moons**: Objects that orbit planets, like Earth's Moon.",
+    "fontSize": 20,
+    "x": 50,
+    "y": 680,
+    "width": 350,
+    "height": 100,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "Moons are natural satellites that orbit planets, such as our own Earth's Moon."
+  },
+  {
+    "type": "card",
+    "content": "**Asteroids**: Rocky objects, mostly found in the **Asteroid Belt** between Mars and Jupiter.",
+    "fontSize": 20,
+    "x": 450,
+    "y": 680,
+    "width": 450,
+    "height": 120,
+    "backgroundColor": "#FFF3E0",
+    "speakAloud": "Asteroids are rocky space objects primarily located in the Asteroid Belt."
+  },
+  {
+    "type": "card",
+    "content": "**Comets**: Icy objects with a 'tail' when they get close to the Sun.",
+    "fontSize": 20,
+    "x": 950,
+    "y": 680,
+    "width": 400,
+    "height": 100,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "Comets are icy bodies that develop a bright tail when they approach the Sun."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 225,
+    "y1": 640,
+    "x2": 225,
+    "y2": 680,
+    "speakAloud": "Planets often have moons orbiting them."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 675,
+    "y1": 640,
+    "x2": 675,
+    "y2": 680,
+    "speakAloud": "Besides planets, there are also asteroids."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 1150,
+    "y1": 640,
+    "x2": 1150,
+    "y2": 680,
+    "speakAloud": "And sometimes, magnificent comets pass by."
+  },
+  {
+    "type": "text",
+    "content": "Key Concept: Gravity",
+    "fontSize": 36,
+    "x": 600,
+    "y": 850,
+    "textColor": "#0D47A1",
+    "speakAloud": "An important concept in the Solar System is gravity."
+  },
+  {
+    "type": "card",
+    "content": "**Gravity** is the force that pulls objects towards each other. The Sun's gravity keeps all the planets in orbit around it.",
+    "fontSize": 20,
+    "x": 450,
+    "y": 900,
+    "width": 600,
+    "height": 120,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Gravity is the invisible force that holds everything in the Solar System together, keeping planets in their paths around the Sun."
+  },
+
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Our Solar System",
+    "fontSize": 48,
+    "x": 600,
+    "y": 30,
+    "textColor": "#333333",
+    "speakAloud": "Welcome to our solar system, a family of celestial bodies orbiting our Sun."
+  },
+  {
+    "type": "card",
+    "content": "Our solar system includes the **Sun**, eight **planets**, dwarf planets, moons, asteroids, and comets.",
+    "fontSize": 22,
+    "x": 70,
+    "y": 150,
+    "width": 400,
+    "height": 120,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Our solar system is made up of the Sun, eight planets, and many other smaller objects."
+  },
+  {
+    "type": "image",
+    "search": "sun star",
+    "x": 650,
+    "y": 140,
+    "height": 150,
+    "speakAloud": "The Sun is at the center of our solar system, a huge star that gives us light and heat."
+  },
+  {
+    "type": "card",
+    "content": "The **Sun** is a star, and it's the center of our solar system. All planets orbit around it.",
+    "fontSize": 20,
+    "x": 550,
+    "y": 300,
+    "width": 350,
+    "height": 100,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "The Sun is a giant star that all the planets circle around, providing warmth and light."
+  },
+  {
+    "type": "card",
+    "content": "There are eight **planets** in our solar system. They are: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.",
+    "fontSize": 20,
+    "x": 70,
+    "y": 300,
+    "width": 400,
+    "height": 140,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Our solar system has eight planets, each with its unique characteristics, orbiting the Sun."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 470,
+    "y1": 370,
+    "x2": 550,
+    "y2": 350,
+    "speakAloud": "The planets are connected to the Sun, as they all orbit it."
+  },
+  {
+    "type": "card",
+    "content": "**Inner Planets**: These are rocky planets and are closer to the Sun: Mercury, Venus, Earth, Mars.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 500,
+    "width": 350,
+    "height": 100,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "The inner planets are made of rock and are the closest to the Sun."
+  },
+  {
+    "type": "card",
+    "content": "**Outer Planets**: These are gas giants and are farther from the Sun: Jupiter, Saturn, Uranus, Neptune.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 620,
+    "width": 350,
+    "height": 100,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "The outer planets are giant balls of gas and are found further away from the Sun."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 275,
+    "y1": 440,
+    "x2": 275,
+    "y2": 500,
+    "speakAloud": "The eight planets can be grouped into inner and outer planets."
+  },
+  {
+    "type": "image",
+    "search": "earth planet",
+    "x": 550,
+    "y": 450,
+    "height": 150,
+    "speakAloud": "This is a picture of Earth, our home planet, unique for having liquid water."
+  },
+  {
+    "type": "card",
+    "content": "Earth is special because it has liquid water and the right temperature for life.",
+    "fontSize": 20,
+    "x": 500,
+    "y": 620,
+    "width": 250,
+    "height": 100,
+    "backgroundColor": "#FFF3E0",
+    "speakAloud": "Earth is extraordinary as it's the only known planet that can support life."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 625,
+    "y1": 600,
+    "x2": 625,
+    "y2": 620,
+    "speakAloud": "This connects Earth to its important characteristics."
+  },
+  {
+    "type": "card",
+    "content": "Other objects include: \n- **Dwarf Planets**: Like Pluto. \n- **Moons**: Natural satellites orbiting planets. \n- **Asteroids**: Rocky bodies in space. \n- **Comets**: Icy bodies with tails.",
+    "fontSize": 20,
+    "x": 800,
+    "y": 450,
+    "width": 450,
+    "height": 200,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Beyond planets, our solar system also contains smaller celestial bodies like dwarf planets, moons, asteroids, and comets."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 950,
+    "y1": 400,
+    "x2": 950,
+    "y2": 450,
+    "speakAloud": "The solar system includes more than just the Sun and planets."
+  },
+  {
+    "type": "text",
+    "content": "Remember: The solar system is vast and full of amazing things!",
+    "fontSize": 28,
+    "x": 700,
+    "y": 700,
+    "textColor": "#333333",
+    "speakAloud": "Our solar system is a big and fascinating place."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Our **Solar System**",
+    "fontSize": 60,
+    "x": 600,
+    "y": 30,
+    "textColor": "#0D47A1",
+    "speakAloud": "Welcome to our Solar System, our home in the vast universe."
+  },
+  {
+    "type": "card",
+    "content": "The Solar System is made up of the **Sun** and everything that travels around it.",
+    "fontSize": 20,
+    "x": 75,
+    "y": 150,
+    "width": 400,
+    "height": 100,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Our Solar System includes the Sun and all the planets, moons, and other objects orbiting it."
+  },
+  {
+    "type": "image",
+    "search": "Sun illustration",
+    "x": 600,
+    "y": 150,
+    "height": 180,
+    "speakAloud": "The Sun is a huge star at the center of our Solar System."
+  },
+  {
+    "type": "card",
+    "content": "The **Sun** is a star, a giant ball of hot gas that gives off light and heat.",
+    "fontSize": 20,
+    "x": 1050,
+    "y": 180,
+    "width": 350,
+    "height": 100,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "The Sun is the most important part, providing light and warmth to all the planets."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 800,
+    "y1": 240,
+    "x2": 1050,
+    "y2": 230,
+    "speakAloud": "The Sun powers our entire Solar System."
+  },
+  {
+    "type": "text",
+    "content": "**Planets**",
+    "fontSize": 40,
+    "x": 200,
+    "y": 300,
+    "textColor": "#0D47A1",
+    "speakAloud": "Let's learn about the planets in our Solar System."
+  },
+  {
+    "type": "card",
+    "content": "There are **8 planets** that orbit the Sun. They are:",
+    "fontSize": 20,
+    "x": 75,
+    "y": 370,
+    "width": 400,
+    "height": 70,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Our Solar System has eight main planets orbiting the Sun."
+  },
+  {
+    "type": "card",
+    "content": "1. **Mercury**\n2. **Venus**\n3. **Earth**\n4. **Mars**\n5. **Jupiter**\n6. **Saturn**\n7. **Uranus**\n8. **Neptune**",
+    "fontSize": 20,
+    "x": 75,
+    "y": 450,
+    "width": 250,
+    "height": 220,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "The planets are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune, in order from the Sun."
+  },
+  {
+    "type": "image",
+    "search": "Solar system planets illustration",
+    "x": 450,
+    "y": 350,
+    "height": 280,
+    "speakAloud": "This image shows the order of the planets from the Sun."
+  },
+  {
+    "type": "card",
+    "content": "Each planet takes a different amount of time to orbit the Sun.",
+    "fontSize": 20,
+    "x": 700,
+    "y": 650,
+    "width": 350,
+    "height": 80,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "Every planet follows its own path around the Sun, and takes a different length of time to complete one journey."
+  },
+  {
+    "type": "card",
+    "content": "Some planets have **moons** that orbit them. Earth has one moon!",
+    "fontSize": 20,
+    "x": 1100,
+    "y": 600,
+    "width": 350,
+    "height": 90,
+    "backgroundColor": "#FFF3E0",
+    "speakAloud": "Many planets have their own moons, just like Earth has one moon that orbits it."
+  },
+  {
+    "type": "image",
+    "search": "Earth and Moon illustration",
+    "x": 1500,
+    "y": 550,
+    "height": 180,
+    "speakAloud": "Here you can see Earth and its beautiful moon."
+  },
+  {
+    "type": "text",
+    "content": "**Other Objects**",
+    "fontSize": 40,
+    "x": 150,
+    "y": 750,
+    "textColor": "#0D47A1",
+    "speakAloud": "Our Solar System isn't just planets and the Sun; it also has many other interesting things."
+  },
+  {
+    "type": "card",
+    "content": "Besides planets and moons, the Solar System also has:",
+    "fontSize": 20,
+    "x": 75,
+    "y": 820,
+    "width": 400,
+    "height": 70,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Beyond the major planets and moons, our Solar System contains many more kinds of objects."
+  },
+  {
+    "type": "card",
+    "content": "- **Dwarf Planets** (like Pluto)\n- **Asteroids** (rocky objects)\n- **Comets** (icy objects with tails)",
+    "fontSize": 20,
+    "x": 75,
+    "y": 900,
+    "width": 300,
+    "height": 130,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "These include dwarf planets like Pluto, rocky asteroids, and icy comets with bright tails."
+  },
+  {
+    "type": "image",
+    "search": "asteroid and comet illustration",
+    "x": 500,
+    "y": 800,
+    "height": 200,
+    "speakAloud": "This image shows an asteroid and a comet, looking quite different from planets."
+  },
+  {
+    "type": "card",
+    "content": "The **Oort Cloud** and **Kuiper Belt** are regions far out that contain icy objects.",
+    "fontSize": 20,
+    "x": 1000,
+    "y": 850,
+    "width": 450,
+    "height": 90,
+    "backgroundColor": "#FFF3E0",
+    "speakAloud": "Far beyond the planets are special regions called the Kuiper Belt and Oort Cloud, which are filled with icy objects."
+  },
+  {
+    "type": "text",
+    "content": "It's all part of the **Milky Way Galaxy**!",
+    "fontSize": 36,
+    "x": 1500,
+    "y": 950,
+    "textColor": "#0D47A1",
+    "speakAloud": "Our Solar System is just a tiny part of the much larger Milky Way Galaxy."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Our **Solar System**",
+    "fontSize": 48,
+    "x": 680,
+    "y": 30,
+    "textColor": "#333333",
+    "speakAloud": "Let's explore our amazing Solar System!",
+    "width": 560
+  },
+  {
+    "type": "card",
+    "content": "The **Solar System** is a big neighborhood in space.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 150,
+    "width": 350,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Our Solar System is like a giant cosmic neighborhood."
+  },
+  {
+    "type": "card",
+    "content": "It includes our **Sun**, planets, moons, and other objects.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 250,
+    "width": 350,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "It includes the Sun, all the planets, their moons, and many other things."
+  },
+  {
+    "type": "image",
+    "search": "cartoon sun smiling",
+    "x": 600,
+    "y": 140,
+    "height": 180,
+    "speakAloud": "The Sun is at the very center of our Solar System.",
+    "width": 180
+  },
+  {
+    "type": "card",
+    "content": "The **Sun** is a huge star at the center. It gives us light and heat!",
+    "fontSize": 20,
+    "x": 850,
+    "y": 170,
+    "width": 380,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "The Sun is a giant bright star that warms our Earth."
+  },
+  {
+    "type": "text",
+    "content": "The **Planets**",
+    "fontSize": 36,
+    "x": 100,
+    "y": 400,
+    "textColor": "#333333",
+    "speakAloud": "Now, let's look at the planets in order.",
+    "width": 200
+  },
+  {
+    "type": "card",
+    "content": "There are **8 main planets** that orbit the Sun.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 480,
+    "width": 350,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "There are eight main planets that travel around the Sun."
+  },
+  {
+    "type": "image",
+    "search": "cartoon solar system planets orbit",
+    "x": 480,
+    "y": 380,
+    "height": 280,
+    "speakAloud": "Each planet has its own path around the Sun.",
+    "width": 480
+  },
+  {
+    "type": "card",
+    "content": "They are: **Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune**.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 580,
+    "width": 350,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "The planets in order from the Sun are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune."
+  },
+  {
+    "type": "card",
+    "content": "Our **Earth** is the third planet from the Sun.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 680,
+    "width": 350,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "Our home, Earth, is the third planet from the Sun."
+  },
+  {
+    "type": "card",
+    "content": "**Orbit**: To travel in a circle around something.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 780,
+    "width": 350,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "Orbit means to move around something in a curved path, like planets around the Sun."
+  },
+  {
+    "type": "image",
+    "search": "cartoon Earth planet",
+    "x": 580,
+    "y": 700,
+    "height": 180,
+    "speakAloud": "This is a fun picture of our beautiful home planet, Earth.",
+    "width": 180
+  },
+  {
+    "type": "text",
+    "content": "Why is it important?",
+    "fontSize": 36,
+    "x": 1100,
+    "y": 380,
+    "textColor": "#333333",
+    "speakAloud": "Why is it important to know about our solar system?",
+    "width": 300
+  },
+  {
+    "type": "card",
+    "content": "Understanding the Solar System helps us learn about our **place in space**.",
+    "fontSize": 20,
+    "x": 1000,
+    "y": 480,
+    "width": 380,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Learning about the Solar System helps us understand where we are in the universe."
+  },
+  {
+    "type": "card",
+    "content": "It teaches us about planets, stars, and how everything moves!",
+    "fontSize": 20,
+    "x": 1000,
+    "y": 580,
+    "width": 380,
+    "backgroundColor": "#FFF3E0",
+    "speakAloud": "It's fun to learn about all the planets, stars, and how they all move together!"
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Our **Solar System**",
+    "fontSize": 48,
+    "x": 60,
+    "y": 50,
+    "textColor": "#333333",
+    "speakAloud": "Our Solar System is a fascinating place to explore!"
+  },
+  {
+    "type": "card",
+    "content": "A **Solar System** is a family of planets, moons, asteroids, and comets that all orbit around a star. Ours orbits around the Sun.",
+    "fontSize": 20,
+    "x": 60,
+    "y": 140,
+    "width": 380,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "A solar system is a group of planets and other space objects that spin around a star. Our solar system has the Sun at its center."
+  },
+  {
+    "type": "image",
+    "search": "solar system planets orbit sun",
+    "x": 550,
+    "y": 60,
+    "height": 400,
+    "speakAloud": "This image shows the planets orbiting the Sun in our solar system."
+  },
+  {
+    "type": "text",
+    "content": "**The Sun**",
+    "fontSize": 36,
+    "x": 60,
+    "y": 300,
+    "textColor": "#333333",
+    "speakAloud": "Let's learn about the Sun."
+  },
+  {
+    "type": "card",
+    "content": "The Sun is a **star** and the center of our Solar System. It gives us light and warmth.",
+    "fontSize": 20,
+    "x": 60,
+    "y": 360,
+    "width": 380,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "The Sun is a huge star at the middle of our solar system. It gives us all the light and heat we need to live."
+  },
+  {
+    "type": "text",
+    "content": "**The Planets**",
+    "fontSize": 36,
+    "x": 60,
+    "y": 480,
+    "textColor": "#333333",
+    "speakAloud": "Now, let's talk about the planets."
+  },
+  {
+    "type": "card",
+    "content": "There are **8 planets** in our Solar System, orbiting the Sun. They are: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.",
+    "fontSize": 20,
+    "x": 60,
+    "y": 540,
+    "width": 380,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Our solar system has eight planets that go around the Sun. These are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune."
+  },
+  {
+    "type": "text",
+    "content": "What makes Earth special?",
+    "fontSize": 28,
+    "x": 500,
+    "y": 500,
+    "textColor": "#333333",
+    "speakAloud": "What is it that makes our home planet, Earth, so special?"
+  },
+  {
+    "type": "card",
+    "content": "Earth is the **only planet** we know of that has liquid water and can support life.",
+    "fontSize": 20,
+    "x": 500,
+    "y": 550,
+    "width": 380,
+    "backgroundColor": "#FFF3E0",
+    "speakAloud": "Earth is the only planet we know that has water in liquid form and can support life."
+  },
+  {
+    "type": "text",
+    "content": "**Other Objects**",
+    "fontSize": 36,
+    "x": 60,
+    "y": 700,
+    "textColor": "#333333",
+    "speakAloud": "Beyond the Sun and planets, our solar system has many other interesting things."
+  },
+  {
+    "type": "card",
+    "content": "Our Solar System also has **moons** (like Earth's Moon), **asteroids** (rocky objects), and **comets** (icy dirt balls with tails).",
+    "fontSize": 20,
+    "x": 60,
+    "y": 760,
+    "width": 380,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "There are also other things floating around in our solar system, like moons, rocky asteroids, and icy comets."
+  },
+  {
+    "type": "image",
+    "search": "Earth and Moon",
+    "x": 950,
+    "y": 520,
+    "height": 200,
+    "speakAloud": "This image shows Earth and its moon floating in space."
+  },
+  {
+    "type": "image",
+    "search": "asteroid belt",
+    "x": 950,
+    "y": 740,
+    "height": 200,
+    "speakAloud": "This image presents the asteroid belt, a region filled with many rocky objects."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Our **Solar System**",
+    "fontSize": 48,
+    "x": 680,
+    "y": 30,
+    "textColor": "#333333",
+    "speakAloud": "Let's learn about our Solar System."
+  },
+  {
+    "type": "card",
+    "content": "Our Solar System is made up of the **Sun** and everything that orbits around it, including planets, moons, asteroids, and comets.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 150,
+    "width": 380,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "The Solar System includes the Sun and all the things that go around it, like planets and moons."
+  },
+  {
+    "type": "image",
+    "search": "solar system planets sun diagram",
+    "x": 580,
+    "y": 100,
+    "height": 300,
+    "speakAloud": "This image shows the sun at the center and planets orbiting around it."
+  },
+  {
+    "type": "text",
+    "content": "The **Sun**",
+    "fontSize": 36,
+    "x": 130,
+    "y": 450,
+    "textColor": "#333333",
+    "speakAloud": "First, let's talk about the Sun."
+  },
+  {
+    "type": "card",
+    "content": "The Sun is a **star**, and it's the center of our Solar System. It gives us light and heat.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 500,
+    "width": 380,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "The Sun is a star in the middle of our Solar System, giving us light and warmth."
+  },
+  {
+    "type": "text",
+    "content": "**Planets**",
+    "fontSize": 36,
+    "x": 800,
+    "y": 450,
+    "textColor": "#333333",
+    "speakAloud": "Next are the planets."
+  },
+  {
+    "type": "card",
+    "content": "There are **8 planets** in our Solar System. They are: \n* Mercury\n* Venus\n* Earth\n* Mars\n* Jupiter\n* Saturn\n* Uranus\n* Neptune",
+    "fontSize": 20,
+    "x": 750,
+    "y": 500,
+    "width": 380,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "There are eight planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune."
+  },
+  {
+    "type": "text",
+    "content": "**Orbit**",
+    "fontSize": 30,
+    "x": 1500,
+    "y": 150,
+    "textColor": "#333333",
+    "speakAloud": "What does it mean to orbit?"
+  },
+  {
+    "type": "card",
+    "content": "To **orbit** means to travel around something in a curved path, like how planets go around the Sun.",
+    "fontSize": 20,
+    "x": 1450,
+    "y": 200,
+    "width": 380,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "Orbit means to move in a circle around another object."
+  },
+  {
+    "type": "text",
+    "content": "**Moons**",
+    "fontSize": 30,
+    "x": 1500,
+    "y": 450,
+    "textColor": "#333333",
+    "speakAloud": "What about moons?"
+  },
+  {
+    "type": "card",
+    "content": "**Moons** are natural objects that orbit planets. Earth has one moon, but other planets have many!",
+    "fontSize": 20,
+    "x": 1450,
+    "y": 500,
+    "width": 380,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "Moons are natural objects that go around planets. Earth has one, but some planets have many."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 490,
+    "y1": 250,
+    "x2": 570,
+    "y2": 250,
+    "speakAloud": "The main concept points to an image of the solar system."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 300,
+    "y1": 440,
+    "x2": 300,
+    "y2": 490,
+    "speakAloud": "This line connects the Sun title to its definition card."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 940,
+    "y1": 440,
+    "x2": 940,
+    "y2": 490,
+    "speakAloud": "This line connects the Planets title to the list of planets."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 1640,
+    "y1": 190,
+    "x2": 1640,
+    "y2": 200,
+    "speakAloud": "This line connects the Orbit title to its definition."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 1640,
+    "y1": 490,
+    "x2": 1640,
+    "y2": 500,
+    "speakAloud": "This line connects the Moons title to its explanation."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "**Our Solar System**",
+    "fontSize": 48,
+    "x": 600,
+    "y": 30,
+    "textColor": "#333333",
+    "speakAloud": "Understanding our solar system: the sun, planets, and more."
+  },
+  {
+    "type": "card",
+    "content": "Our **Solar System** is a big neighborhood in space.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 150,
+    "width": 350,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "The solar system describes our neighborhood in space, where everything orbits the Sun."
+  },
+  {
+    "type": "card",
+    "content": "At the center is our **Sun**, a huge star that gives us light and heat.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 300,
+    "width": 350,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "The Sun is at the very center of our solar system, providing all the light and warmth."
+  },
+  {
+    "type": "image",
+    "search": "cartoon sun",
+    "x": 150,
+    "y": 450,
+    "height": 150,
+    "speakAloud": "An image of the Sun, the giant star at the heart of our solar system."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 275,
+    "y1": 250,
+    "x2": 275,
+    "y2": 290,
+    "speakAloud": "This line shows that the solar system has the Sun at its center."
+  },
+  {
+    "type": "card",
+    "content": "Around the Sun, **planets** orbit in paths called ellipses.",
+    "fontSize": 20,
+    "x": 550,
+    "y": 150,
+    "width": 350,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Planets travel around the Sun in special paths called orbits."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 460,
+    "y1": 200,
+    "x2": 540,
+    "y2": 200,
+    "speakAloud": "This line connects the solar system to the planets that are part of it."
+  },
+  {
+    "type": "card",
+    "content": "There are **eight main planets**: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.",
+    "fontSize": 20,
+    "x": 550,
+    "y": 300,
+    "width": 350,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "There are eight planets in our solar system, each with its own unique characteristics."
+  },
+  {
+    "type": "image",
+    "search": "planets orbiting sun",
+    "x": 600,
+    "y": 450,
+    "height": 200,
+    "speakAloud": "An illustration showing the planets revolving around the Sun."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 725,
+    "y1": 250,
+    "x2": 725,
+    "y2": 290,
+    "speakAloud": "This line indicates that planets revolve around the Sun."
+  },
+  {
+    "type": "card",
+    "content": "The solar system also has **moons**, **asteroids**, and **comets**.",
+    "fontSize": 20,
+    "x": 1000,
+    "y": 150,
+    "width": 350,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Beyond planets, our solar system also includes moons, asteroids, and comets."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 910,
+    "y1": 200,
+    "x2": 990,
+    "y2": 200,
+    "speakAloud": "This line connects the wider solar system to its other components."
+  },
+  {
+    "type": "card",
+    "content": "**Moons** orbit planets (like Earth's Moon). **Asteroids** are rocky chunks, and **comets** are icy balls with tails.",
+    "fontSize": 20,
+    "x": 1000,
+    "y": 300,
+    "width": 350,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "Moons orbit planets, while asteroids and comets are smaller objects orbiting the Sun."
+  },
+  {
+    "type": "image",
+    "search": "moon asteroid comet simplified",
+    "x": 1050,
+    "y": 450,
+    "height": 180,
+    "speakAloud": "An image illustrating a moon, an asteroid, and a comet."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 1175,
+    "y1": 250,
+    "x2": 1175,
+    "y2": 290,
+    "speakAloud": "This line points from other components to their descriptions."
+  },
+  {
+    "type": "card",
+    "content": "Understanding our solar system helps us learn about our place in the huge **universe**.",
+    "fontSize": 20,
+    "x": 700,
+    "y": 750,
+    "width": 350,
+    "backgroundColor": "#FFF3E0",
+    "speakAloud": "Learning about the solar system helps us understand our small place in the vast universe."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 425,
+    "y1": 650,
+    "x2": 780,
+    "y2": 740,
+    "speakAloud": "This line leads from the Sun and planets to the importance of understanding the solar system."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 800,
+    "y1": 650,
+    "x2": 780,
+    "y2": 740,
+    "speakAloud": "This line leads from planets and more to the importance of understanding the solar system."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 1180,
+    "y1": 650,
+    "x2": 880,
+    "y2": 740,
+    "speakAloud": "This line illustrates that objects like moons and asteroids also contribute to our understanding."
+  }
+]
+```
+---

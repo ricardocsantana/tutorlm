@@ -6,6 +6,7 @@ import { Move, Pen, Eraser, Type, File, Image, Download, Group, GripVertical, Tr
 import { useAppStore } from '../store/useAppStore';
 import { ToolButton } from './ToolButton.tsx';
 import { LanguageSelector } from './LanguageSelector.tsx';
+import { DifficultySelector } from './DifficultySelector';
 import { useShallow } from 'zustand/react/shallow';
 
 interface MobileToolbarProps {
@@ -63,6 +64,7 @@ export const MobileToolbar: React.FC<MobileToolbarProps> = ({
 
                         <div className="col-span-4 -m-1 mt-1">
                             <LanguageSelector isMobile />
+                            <DifficultySelector isMobile />
                         </div>
                     </motion.div>
                 )}

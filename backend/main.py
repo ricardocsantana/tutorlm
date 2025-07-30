@@ -38,8 +38,8 @@ load_dotenv()
 # --- CONFIGURATION ---
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 UNSPLASH_API_KEY = os.getenv("UNSPLASH_ACCESS_KEY") # <-- Added for image search
-MULTIMODAL_MODEL_NAME = "google/gemma-3n-e4b-it"
-#MULTIMODAL_MODEL_NAME = "anthropic/claude-sonnet-4"
+#MULTIMODAL_MODEL_NAME = "google/gemma-3n-e4b-it"
+MULTIMODAL_MODEL_NAME = "google/gemini-2.5-flash"
 UPLOADS_DIR = Path("uploads")
 UPLOADS_DIR.mkdir(exist_ok=True)
 TEXT_SIM_THRESHOLD = float(os.getenv("TEXT_SIM_THRESHOLD", "0.5"))
@@ -48,6 +48,7 @@ TEXT_SIM_THRESHOLD = float(os.getenv("TEXT_SIM_THRESHOLD", "0.5"))
 logging.info("Initializing application state...")
 rag_state = { "text_retriever": None }
 current_language = {"lang": "en_US"}  # Default language
+difficulty_level = {"difficulty": "easy"}  # Default difficulty
 
 device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
 logging.info(f"Using device: {device}")
@@ -292,6 +293,7 @@ async def chat_handler(request: Request):
     user_prompt = body.get("prompt")
     # Add language to prompt
     lang = current_language.get("lang", "en")
+    difficulty = difficulty_level.get("difficulty", "easy")
     logging.info(f"Received chat request with prompt: '{user_prompt[:50]}...' (lang: {lang})")
     if not user_prompt:
         raise HTTPException(status_code=400, detail="Prompt is required.")
@@ -306,98 +308,79 @@ async def chat_handler(request: Request):
         except Exception as e:
             logging.error(f"Error during RAG retrieval: {e}")
 
-    system_text = """# SYSTEM PERSONA: TutorLM - The Visual Learning Architect
+    system_text = """
+You are TutorLM, an expert visual educator. Your purpose is to convert any given topic into a single, valid JSON array representing a visual learning canvas.
 
-You are TutorLM, an expert in visual pedagogy and instructional design. Your purpose is to transform any given topic into a clear, engaging, and logically structured visual learning experience. You achieve this by generating a single, valid JSON array that represents a canvas layout. You think like a teacher, designing a visual narrative that flows from core concepts to supporting details and examples.
+Your entire output MUST be a single, valid JSON array. Do not add explanations or JSON.
 
----
+Core Principles
+Visual Narrative: Think like a teacher. Design a logical flow from the main topic to key concepts, definitions, and examples.
 
-## CORE DIRECTIVE
+Clarity & Brevity: Keep all text concise. Use bold for key terms and LaTeX for math (e.g., $E=mc^2$).
 
-Your entire output **MUST** be a single, valid JSON array. Do not include any introductory text, commentary, or markdown code fences (```json ... ```) around the final output.
+Logical Layout: Arrange elements on a 1920x1080 canvas. x, y coordinates represent the top-left corner of each element. Ensure elements do not overlap and are visually aligned for clarity and readability.
 
----
+Universal Rule
+Narration: Every element MUST have a speakAloud field containing a brief (1-2 sentence) narration of its content for text-to-speech. The speakAloud field must contain plain text (no markdown, no LaTeX).
 
-## YOUR THOUGHT PROCESS (Internal Monologue - Do not output this)
+Element Colors (card backgroundColor)
+Category	Color	Use Case
+Key Concept	#E3F2FD	Core ideas or process steps.
+Definition	#E8F5E9	Explanations of terms.
+Example	#F3E5F5	Concrete examples.
+Important Note	#FFF3E0	Crucial facts or tips.
 
-1.  **Deconstruct the Topic**: Identify the main idea, key concepts, definitions, and supporting examples.
-2.  **Plan the Visual Flow**: Sketch a mental layout. Will it be top-to-bottom? Left-to-right? A hub-and-spoke model? Start with a title, then the main definition, then branch out to key concepts.
-3.  **Allocate Elements**: Assign each piece of information to the best element type (e.g., `card` for a definition, `image` for illustration, `line` for connection).
-4.  **Position Elements**: Calculate `x, y` coordinates for each element on a 1920x1080 canvas. Ensure logical spacing (at least `50px` margin between elements) to avoid overlap.
-5.  **Write Content & Narration**: For each element, write concise `content` and a brief, corresponding `speakAloud` narration (1-2 sentences).
-6.  **Assemble the JSON**: Construct the final JSON array based on the plan, ensuring every rule and schema is followed perfectly.
+Export to Sheets
+JSON Element Schemas
+1. Text (for titles/labels)
+JSON
 
----
-
-## DESIGN & LAYOUT RULES
-
-### Canvas & Coordinates
-* **Canvas Size**: Assume a virtual canvas of `1920px` width by `1080px` height.
-* **x, y coordinates represent the top-left corner of every element.
-* **Logical Flow**: Arrange elements in a sequence that is easy to follow (e.g., top-to-bottom, left-to-right).
-* **Spacing**: Maintain clear spacing between elements. Do not let them overlap.
-
-### Content & Style
-* **Brevity**: Keep all text concise and focused. Use bullet points or short phrases.
-* **Emphasis**: Use markdown `**bold**` for key terms.
-* **Math**: Use LaTeX for all mathematical notation (e.g., `$E = mc^2$`).
-* **Narration**: Every element **MUST** have a `speakAloud` field containing 1-2 sentences for a text-to-speech (TTS) engine. This text should be a clear, simple narration of the element's content.
-
-### Color Palette (Use these `backgroundColor` values for `card` elements)
-| Category          | Color Code | Use Case                                |
-| ----------------- | ---------- | --------------------------------------- |
-| **Main Topic/Title** | (no bg)    | For `text` elements that act as titles. |
-| **Key Concept** | `#E3F2FD`  | Blue: Core ideas or steps in a process. |
-| **Definition** | `#E8F5E9`  | Green: Explanations of terms.           |
-| **Example** | `#F3E5F5`  | Purple: Concrete examples or case studies. |
-| **Important Note** | `#FFF3E0`  | Orange: Crucial facts, warnings, or tips. |
-
----
-
-## JSON ELEMENT SCHEMAS
-
-### 1. Text
-Used for titles and labels.
-```json
 {
   "type": "text",
-  "content": "Text content. Can include **bold** and $math$.",
-  "fontSize": 24, // Use 36 for titles, 24 for labels
-  "x": 100, // horizontal position (from left)
-  "y": 200, // vertical position (from top)
+  "content": "Text with **bold** or $math$.",
+  "fontSize": 36,
+  "x": 100,
+  "y": 100,
   "textColor": "#333333",
-  "speakAloud": "The clear, spoken-word version of the text content."
+  "speakAloud": "Spoken-word version of the text."
 }
+2. Card (for content blocks)
+JSON
+
 {
   "type": "card", 
-  "content": "The main content, formatted with **bold** terms or bullet points.",
-  "fontSize": 24, // Use 18-24
+  "content": "Main content, using **bold** or bullet points.",
+  "fontSize": 20,
   "x": 100,
   "y": 200,
   "width": 350,
-  "height": 200,
-  "backgroundColor": "#F8F9FA", // Use a color from the palette
-  "speakAloud": "A brief explanation of what is on this card."
+  "backgroundColor": "#E3F2FD",
+  "speakAloud": "A brief explanation of this card's content."
 }
+3. Line (for connections)
+JSON
+
 {
   "type": "line",
-  "thickness": "m", // 's', 'm', or 'l'
-  "x1": 100, // start x
-  "y1": 200, // start y
-  "x2": 300, // end x
-  "y2": 400, // end y
-  "speakAloud": "A brief description of the relationship (e.g., 'This leads to...')."
+  "thickness": "m",
+  "x1": 100, "y1": 200,
+  "x2": 300, "y2": 400,
+  "speakAloud": "Describes the connection (e.g., 'This leads to...')."
 }
+4. Image (for illustration)
+JSON
+
 {
   "type": "image",
   "search": "a simple, clear search query for an image",
   "x": 100,
-  "y": 200,
+  "y": 500,
   "height": 150,
   "speakAloud": "A description of what the image illustrates."
 }"""
-    # Add language info to system prompt
+    # Add language and difficulty info to system prompt
     system_text += f"\n\nThe user has selected the language: '{lang}'. Output all text and speakAloud fields in this language."
+    system_text += f"\n\nThe user has selected the explanation difficulty: '{difficulty}'. Easy corresponds to elementary level, medium to secondary level, and hard to college level. Make your explanation at this level."
 
     if retrieved_text:
         system_text += f"\n\nUse the following text context to answer the user's question:\n---\n{retrieved_text}\n---"
@@ -506,4 +489,19 @@ async def set_language(request: Request):
     current_language["lang"] = lang
     logging.info(f"Language set to: {lang}")
     return {"status": "ok", "lang": lang}
+
+# --- DIFFICULTY ENDPOINT ---
+@app.post("/api/set-difficulty")
+async def set_difficulty(request: Request):
+    """
+    Receives the selected difficulty from the frontend and stores it in memory.
+    """
+    data = await request.json()
+    difficulty = data.get("difficulty")
+    if not difficulty:
+        logging.error("Missing 'difficulty' in request body.")
+        raise HTTPException(status_code=400, detail="Missing 'difficulty' in request body.")
+    difficulty_level["difficulty"] = difficulty
+    logging.info(f"Difficulty set to: {difficulty}")
+    return {"status": "ok", "difficulty": difficulty}
 

@@ -5,6 +5,7 @@ import { Move, Pen, Eraser, Type, File, Image, Download, Group, Trash2 } from 'l
 import { useAppStore } from '../store/useAppStore';
 import { ToolButton } from './ToolButton';
 import { LanguageSelector } from './LanguageSelector';
+import { DifficultySelector } from './DifficultySelector';
 import { useShallow } from 'zustand/react/shallow';
 
 interface ToolbarProps {
@@ -49,6 +50,7 @@ export const DesktopToolbar: React.FC<ToolbarProps> = ({
             <ToolButton label="Clear Canvas" icon={Trash2} onClick={onClearCanvas} disabled={isUploading} />
             <div className="w-px h-6 bg-gray-200 mx-1" />
             <LanguageSelector />
+            <DifficultySelector />
         </div>
     );
 };

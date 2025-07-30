@@ -49,6 +49,7 @@ export interface AppState {
     isUploading: boolean;
     penMode: 'free' | 'line';
     recognitionLang: string; // ✨ STATE ADDED
+    difficulty: string; // ✨ STATE ADDED
     actions: {
         setCurrentTool: (tool: Tool) => void;
         setPenColor: (color: string) => void;
@@ -68,6 +69,7 @@ export interface AppState {
         setIsUploading: (isUploading: boolean) => void;
         setPenMode: (mode: 'free' | 'line') => void;
         setRecognitionLang: (lang: string) => void; // ✨ ACTION ADDED
+        setDifficulty: (difficulty: string) => void; // ✨ ACTION ADDED
         clearCanvas: () => void;
     };
 }
@@ -86,6 +88,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     isUploading: false,
     penMode: 'free',
     recognitionLang: 'en-US', // ✨ DEFAULT LANGUAGE
+    difficulty: 'easy', // ✨ DEFAULT DIFFICULTY
     actions: {
         setCurrentTool: (tool) => set({ currentTool: tool, selectedElementId: null }),
         setPenColor: (color) => set({ penColor: color }),
@@ -134,6 +137,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         setIsUploading: (isUploading) => set({ isUploading }),
         setPenMode: (mode) => set({ penMode: mode }),
         setRecognitionLang: (lang) => set({ recognitionLang: lang }), // ✨ ACTION IMPLEMENTED
+        setDifficulty: (difficulty) => set({ difficulty }), // ✨ ACTION IMPLEMENTED
         clearCanvas: () => set({
             lines: [], elements: [], selectedElementId: null, editingElementId: null
         }),
