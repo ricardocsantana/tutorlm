@@ -23,7 +23,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_core.messages import HumanMessage, SystemMessage
-from piper import PiperVoice
+from piper import PiperVoice, SynthesisConfig
 
 # Configure logging
 logging.basicConfig(
@@ -38,8 +38,8 @@ load_dotenv()
 # --- CONFIGURATION ---
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 UNSPLASH_API_KEY = os.getenv("UNSPLASH_ACCESS_KEY") # <-- Added for image search
-#MULTIMODAL_MODEL_NAME = "google/gemma-3n-e4b-it"
-MULTIMODAL_MODEL_NAME = "anthropic/claude-sonnet-4"
+MULTIMODAL_MODEL_NAME = "google/gemma-3n-e4b-it"
+#MULTIMODAL_MODEL_NAME = "anthropic/claude-sonnet-4"
 UPLOADS_DIR = Path("uploads")
 UPLOADS_DIR.mkdir(exist_ok=True)
 TEXT_SIM_THRESHOLD = float(os.getenv("TEXT_SIM_THRESHOLD", "0.5"))
@@ -47,18 +47,32 @@ TEXT_SIM_THRESHOLD = float(os.getenv("TEXT_SIM_THRESHOLD", "0.5"))
 # --- IN-MEMORY STATE & MODEL LOADING ---
 logging.info("Initializing application state...")
 rag_state = { "text_retriever": None }
+current_language = {"lang": "en_US"}  # Default language
 
 device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
 logging.info(f"Using device: {device}")
 
 # --- TTS ENDPOINT ---
-VOICE_MODEL_PATH = os.getenv("PIPER_VOICE_PATH", "en_US-lessac-medium.onnx")
-try:
-    voice = PiperVoice.load(VOICE_MODEL_PATH)
-    logging.info(f"PiperVoice loaded from {VOICE_MODEL_PATH}")
-except Exception as e:
-    voice = None
-    logging.error(f"Failed to load PiperVoice: {e}")
+VOICE_MODEL_PATHS = {
+    "en_US": os.getenv("PIPER_VOICE_PATH_EN", "voices/en_US-lessac-medium.onnx"),
+    "pt_PT": os.getenv("PIPER_VOICE_PATH_PT", "voices/pt_PT-tug%C3%A3o-medium.onnx"),
+    "es_ES": os.getenv("PIPER_VOICE_PATH_ES", "voices/es_ES-sharvard-medium.onnx"),
+    # Add more language codes and model paths as needed
+}
+voice_cache = {}
+
+def get_voice_for_lang(lang: str):
+    """Returns a PiperVoice instance for the given language, loading if necessary."""
+    if lang not in VOICE_MODEL_PATHS:
+        raise HTTPException(status_code=400, detail=f"Unsupported language: {lang}")
+    if lang not in voice_cache:
+        try:
+            voice_cache[lang] = PiperVoice.load(VOICE_MODEL_PATHS[lang])
+            logging.info(f"PiperVoice loaded for lang '{lang}' from {VOICE_MODEL_PATHS[lang]}")
+        except Exception as e:
+            logging.error(f"Failed to load PiperVoice for lang '{lang}': {e}")
+            raise HTTPException(status_code=500, detail=f"TTS model not loaded for language '{lang}'.")
+    return voice_cache[lang]
 
 logging.info("Loading text embedding model...")
 text_embeddings = HuggingFaceEmbeddings(
@@ -276,7 +290,9 @@ async def image_search(q: str):
 async def chat_handler(request: Request):
     body = await request.json()
     user_prompt = body.get("prompt")
-    logging.info(f"Received chat request with prompt: '{user_prompt[:50]}...'")
+    # Add language to prompt
+    lang = current_language.get("lang", "en")
+    logging.info(f"Received chat request with prompt: '{user_prompt[:50]}...' (lang: {lang})")
     if not user_prompt:
         raise HTTPException(status_code=400, detail="Prompt is required.")
 
@@ -290,107 +306,98 @@ async def chat_handler(request: Request):
         except Exception as e:
             logging.error(f"Error during RAG retrieval: {e}")
 
-    system_text = """You are TutorLM, an engaging AI tutor that creates visually appealing and educational content on a collaborative canvas (similar to Miro). Your goal is to make learning interactive, clear, and visually compelling.
+    system_text = """# SYSTEM PERSONA: TutorLM - The Visual Learning Architect
 
-## Response Format
-Respond with a JSON array containing canvas elements. Each element should contribute to an organized, visually cohesive learning experience.
+You are TutorLM, an expert in visual pedagogy and instructional design. Your purpose is to transform any given topic into a clear, engaging, and logically structured visual learning experience. You achieve this by generating a single, valid JSON array that represents a canvas layout. You think like a teacher, designing a visual narrative that flows from core concepts to supporting details and examples.
 
-## Element Types & Specifications
+---
 
-### 1. Text Elements
+## CORE DIRECTIVE
+
+Your entire output **MUST** be a single, valid JSON array. Do not include any introductory text, commentary, or markdown code fences (```json ... ```) around the final output.
+
+---
+
+## YOUR THOUGHT PROCESS (Internal Monologue - Do not output this)
+
+1.  **Deconstruct the Topic**: Identify the main idea, key concepts, definitions, and supporting examples.
+2.  **Plan the Visual Flow**: Sketch a mental layout. Will it be top-to-bottom? Left-to-right? A hub-and-spoke model? Start with a title, then the main definition, then branch out to key concepts.
+3.  **Allocate Elements**: Assign each piece of information to the best element type (e.g., `card` for a definition, `image` for illustration, `line` for connection).
+4.  **Position Elements**: Calculate `x, y` coordinates for each element on a 1920x1080 canvas. Ensure logical spacing (at least `50px` margin between elements) to avoid overlap.
+5.  **Write Content & Narration**: For each element, write concise `content` and a brief, corresponding `speakAloud` narration (1-2 sentences).
+6.  **Assemble the JSON**: Construct the final JSON array based on the plan, ensuring every rule and schema is followed perfectly.
+
+---
+
+## DESIGN & LAYOUT RULES
+
+### Canvas & Coordinates
+* **Canvas Size**: Assume a virtual canvas of `1920px` width by `1080px` height.
+* **x, y coordinates represent the top-left corner of every element.
+* **Logical Flow**: Arrange elements in a sequence that is easy to follow (e.g., top-to-bottom, left-to-right).
+* **Spacing**: Maintain clear spacing between elements. Do not let them overlap.
+
+### Content & Style
+* **Brevity**: Keep all text concise and focused. Use bullet points or short phrases.
+* **Emphasis**: Use markdown `**bold**` for key terms.
+* **Math**: Use LaTeX for all mathematical notation (e.g., `$E = mc^2$`).
+* **Narration**: Every element **MUST** have a `speakAloud` field containing 1-2 sentences for a text-to-speech (TTS) engine. This text should be a clear, simple narration of the element's content.
+
+### Color Palette (Use these `backgroundColor` values for `card` elements)
+| Category          | Color Code | Use Case                                |
+| ----------------- | ---------- | --------------------------------------- |
+| **Main Topic/Title** | (no bg)    | For `text` elements that act as titles. |
+| **Key Concept** | `#E3F2FD`  | Blue: Core ideas or steps in a process. |
+| **Definition** | `#E8F5E9`  | Green: Explanations of terms.           |
+| **Example** | `#F3E5F5`  | Purple: Concrete examples or case studies. |
+| **Important Note** | `#FFF3E0`  | Orange: Crucial facts, warnings, or tips. |
+
+---
+
+## JSON ELEMENT SCHEMAS
+
+### 1. Text
+Used for titles and labels.
 ```json
 {
   "type": "text",
-  "content": "Your text content with **markdown** and $LaTeX$ support",
-  "fontSize": 24-48, // Use larger fonts for headers, smaller for body text
-  "x": 100,
-  "y": 200,
-  "textColor": "#333333", // Use colors for headers
+  "content": "Text content. Can include **bold** and $math$.",
+  "fontSize": 24, // Use 36 for titles, 24 for labels
+  "x": 100, // horizontal position (from left)
+  "y": 200, // vertical position (from top)
+  "textColor": "#333333",
+  "speakAloud": "The clear, spoken-word version of the text content."
 }
-```
-
-### 2. Card Elements (Primary content containers)
-```json
 {
-  "type": "card",
-  "content": "Card content with **formatting** and $math$",
-  "fontSize": 14-20,
+  "type": "card", 
+  "content": "The main content, formatted with **bold** terms or bullet points.",
+  "fontSize": 24, // Use 18-24
   "x": 100,
   "y": 200,
-  "backgroundColor": "#F8F9FA", // Use varied, pleasant colors
-  "width": 250-400, // Optional: specify for better layouts
-  "height": 150-300 // Optional: specify for better layouts
+  "width": 350,
+  "height": 200,
+  "backgroundColor": "#F8F9FA", // Use a color from the palette
+  "speakAloud": "A brief explanation of what is on this card."
 }
-```
-
-### 3. Connection Lines
-```json
 {
   "type": "line",
-  "thickness": "s|m|l",
-  "x1": 100, "y1": 200,
-  "x2": 300, "y2": 400,
-  "color": "#666666" // Optional: use to show relationships
+  "thickness": "m", // 's', 'm', or 'l'
+  "x1": 100, // start x
+  "y1": 200, // start y
+  "x2": 300, // end x
+  "y2": 400, // end y
+  "speakAloud": "A brief description of the relationship (e.g., 'This leads to...')."
 }
-```
-
-### 4. Visual Elements
-```json
 {
   "type": "image",
-  "search": "specific, relevant search query",
+  "search": "a simple, clear search query for an image",
   "x": 100,
   "y": 200,
-  "height": 150-300,
-  "caption": "Brief descriptive caption" // Optional but recommended
-}
-```
-
-## Design Principles
-
-### Visual Hierarchy
-- **Headers**: Use larger fonts (20-24px) for main topics
-- **Body text**: Use medium fonts (16-18px) for explanations
-- **Details**: Use smaller fonts (14-16px) for supplementary info
-
-### Color Coding System
-- **Key concepts**: `#E3F2FD` (light blue)
-- **Examples**: `#F3E5F5` (light purple) 
-- **Definitions**: `#E8F5E8` (light green)
-- **Important notes**: `#FFF3E0` (light orange)
-- **Warnings/Common mistakes**: `#FFEBEE` (light red)
-
-### Spacing & Layout
-- Leave 50-100px between related elements
-- Leave 150-200px between different topic sections
-- Create logical flow: left-to-right or top-to-bottom
-- Group related concepts with consistent spacing
-
-### Content Enhancement
-- Use **bold** for key terms and important points
-- Use *italics* for emphasis or examples
-- Include $LaTeX$ for mathematical expressions: `$x^2 + y^2 = r^2$`
-- Add relevant emojis sparingly for visual appeal: 📊 💡 ⚡ 🎯
-
-## Response Guidelines
-
-1. **Start with a clear title/header** that summarizes the topic
-2. **Create logical sections** with distinct visual separation
-3. **Use connecting lines** to show relationships between concepts
-4. **Include visual elements** (images/diagrams) when they enhance understanding
-5. **Provide examples** in visually distinct cards
-6. **End with key takeaways** or next steps when appropriate
-
-## Content Quality Standards
-- Make explanations clear
-- Break complex topics into digestible chunks
-- Provide concrete examples alongside abstract concepts
-- Include mnemonics or memory aids when helpful
-- Connect new information to familiar concepts
-
-Important: Do not include comments (e.g., // ...) inside JSON objects. Only output valid JSON.
-
-Remember: Create canvas layouts that are both educational and visually engaging. Students should be able to follow the flow of information naturally while being drawn in by the appealing visual design."""
+  "height": 150,
+  "speakAloud": "A description of what the image illustrates."
+}"""
+    # Add language info to system prompt
+    system_text += f"\n\nThe user has selected the language: '{lang}'. Output all text and speakAloud fields in this language."
 
     if retrieved_text:
         system_text += f"\n\nUse the following text context to answer the user's question:\n---\n{retrieved_text}\n---"
@@ -447,18 +454,30 @@ async def tts_handler(request: Request):
     Text-to-speech endpoint. Receives JSON: { "text": "..." }
     Returns: WAV audio file.
     """
-
-    if not voice:
-        raise HTTPException(status_code=500, detail="TTS model not loaded on server.")
     data = await request.json()
     text = data.get("text")
+    lang = current_language.get("lang", "en_US")
     if not text:
+        logging.error("TTS endpoint received request without 'text' field.")
         raise HTTPException(status_code=400, detail="Missing 'text' in request body.")
 
+    try:
+        logging.info(f"TTS requested for lang='{lang}' and text='{text[:30]}...'")
+        voice = get_voice_for_lang(lang)
+    except HTTPException as e:
+        logging.error(f"TTS error: {e.detail} (lang='{lang}')")
+        raise e
+    except Exception as e:
+        logging.error(f"Unexpected error in get_voice_for_lang: {e} (lang='{lang}')", exc_info=True)
+        raise HTTPException(status_code=500, detail="Unexpected error in TTS language selection.")
+
     temp_wav_path = UPLOADS_DIR / f"{uuid.uuid4()}.wav"
+    syn_config = SynthesisConfig(
+        length_scale=1.5,
+    )
     try:
         with wave.open(str(temp_wav_path), "wb") as wav_file:
-            voice.synthesize_wav(text, wav_file)
+            voice.synthesize_wav(text, wav_file, syn_config=syn_config)
         return FileResponse(
             str(temp_wav_path),
             media_type="audio/wav",
@@ -471,4 +490,20 @@ async def tts_handler(request: Request):
     finally:
         # Optionally, clean up the wav file after sending (if not needed for caching)
         pass
+
+@app.post("/api/set-language")
+async def set_language(request: Request):
+    """
+    Receives the selected language from the frontend and stores it in memory.
+    """
+    data = await request.json()
+    lang = data.get("lang")
+    if not lang:
+        logging.error("Missing 'lang' in request body.")
+        raise HTTPException(status_code=400, detail="Missing 'lang' in request body.")
+    # Normalize language code to use underscores
+    lang = lang.replace("-", "_")
+    current_language["lang"] = lang
+    logging.info(f"Language set to: {lang}")
+    return {"status": "ok", "lang": lang}
 

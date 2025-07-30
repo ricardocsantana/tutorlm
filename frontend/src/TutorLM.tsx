@@ -100,7 +100,7 @@ const TutorLM: React.FC = () => {
     }, [selectedElementId, editingElementId, actions, startListening, stopListening]);
 
     return (
-        <div className="h-screen w-screen bg-gray-50 overflow-hidden relative font-sans touch-none" style={{ cursor: cursorStyle }}>
+        <div className="h-screen w-screen bg-slate-50 overflow-hidden relative font-sans touch-none" style={{ cursor: cursorStyle }}>
             <Notification notification={notification} />
             <div className="absolute top-7 left-7 z-50 select-none text-5xl" style={{ fontFamily: "'Satisfy', cursive" }}>TutorLM</div>
             <WelcomeMessage show={showWelcome} />

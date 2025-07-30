@@ -4020,3 +4020,2376 @@ I'm unable to determine the specific content of the image. If you have questions
     "backgroundColor": "#E3F2FD",
     "width
 ---
+```json
+[
+  {
+    "type": "text",
+    "content": "**Our Solar System: Planet Placement**",
+    "fontSize": 24,
+    "x": 400,
+    "y": 50,
+    "textColor": "#2C3E50",
+    "speakAloud": "Let's explore how planets are arranged in our solar system from closest to farthest from the Sun."
+  },
+  {
+    "type": "image",
+    "search": "sun yellow star",
+    "x": 100,
+    "y": 150,
+    "height": 80,
+    "speakAloud": "At the center of our solar system is the Sun, a massive star that provides heat and light to all the planets."
+  },
+  {
+    "type": "text",
+    "content": "**Sun**\n(Center)",
+    "fontSize": 14,
+    "x": 110,
+    "y": 250,
+    "textColor": "#E67E22",
+    "speakAloud": ""
+  },
+  {
+    "type": "card",
+    "content": "**Inner Planets**\n(Rocky, closer to Sun)\n\n• **Mercury** - Closest\n• **Venus** - Hottest\n• **Earth** - Our home\n• **Mars** - The red planet",
+    "fontSize": 14,
+    "x": 250,
+    "y": 150,
+    "width": 200,
+    "height": 140,
+    "backgroundColor": "#E8F5E8",
+    "speakAloud": "The four inner planets are rocky worlds relatively close to the Sun. Mercury is closest, followed by Venus, Earth, and Mars."
+  },
+  {
+    "type": "card",
+    "content": "**Asteroid Belt**\n\nSeparates inner and outer planets",
+    "fontSize": 12,
+    "x": 500,
+    "y": 180,
+    "width": 150,
+    "height": 80,
+    "backgroundColor": "#F5F5F5",
+    "speakAloud": "Between Mars and Jupiter lies the asteroid belt, a region filled with rocky debris that separates the inner and outer planets."
+  },
+  {
+    "type": "card",
+    "content": "**Outer Planets**\n(Gas giants, farther from Sun)\n\n• **Jupiter** - Largest planet\n• **Saturn** - Famous rings\n• **Uranus** - Tilted sideways\n• **Neptune** - Farthest giant",
+    "fontSize": 14,
+    "x": 700,
+    "y": 150,
+    "width": 200,
+    "height": 140,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "The four outer planets are much larger gas giants. Jupiter is the biggest, Saturn has spectacular rings, Uranus rotates on its side, and Neptune is the windiest."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 180,
+    "y1": 190,
+    "x2": 250,
+    "y2": 190,
+    "speakAloud": ""
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 450,
+    "y1": 220,
+    "x2": 500,
+    "y2": 220,
+    "speakAloud": ""
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 650,
+    "y1": 220,
+    "x2": 700,
+    "y2": 220,
+    "speakAloud": ""
+  },
+  {
+    "type": "card",
+    "content": "**Distance Pattern**\n\nPlanets get farther apart as distance from Sun increases\n\n**Mercury to Venus:** 67 million km\n**Earth to Mars:** 78 million km\n**Jupiter to Saturn:** 650 million km",
+    "fontSize": 14,
+    "x": 300,
+    "y": 350,
+    "width": 300,
+    "height": 120,
+    "backgroundColor": "#FFF3E0",
+    "speakAloud": "An interesting pattern emerges: the spacing between planets increases dramatically as we move away from the Sun, with outer planets being much farther apart."
+  },
+  {
+    "type": "card",
+    "content": "**Memory Trick**\n\n*My Very Educated Mother Just Served Us Nachos*\n\n**M**ercury, **V**enus, **E**arth, **M**ars, **J**upiter, **S**aturn, **U**ranus, **N**eptune",
+    "fontSize": 14,
+    "x": 650,
+    "y": 350,
+    "width": 280,
+    "height": 120,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "Here's a helpful memory trick to remember the planet order: My Very Educated Mother Just Served Us Nachos."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "**Our Solar System: Planet Positions**",
+    "fontSize": 24,
+    "x": 400,
+    "y": 50,
+    "textColor": "#1565C0",
+    "speakAloud": "Let's explore the positions of planets in our solar system, starting from the Sun and moving outward."
+  },
+  {
+    "type": "image",
+    "search": "sun yellow star",
+    "x": 100,
+    "y": 150,
+    "height": 80,
+    "speakAloud": "At the center is our Sun, the star that holds everything together with its gravity."
+  },
+  {
+    "type": "text",
+    "content": "**Sun**\n(Center)",
+    "fontSize": 14,
+    "x": 90,
+    "y": 240,
+    "textColor": "#FF6F00",
+    "speakAloud": ""
+  },
+  {
+    "type": "card",
+    "content": "**Inner Planets**\n(Rocky planets closer to Sun)",
+    "fontSize": 14,
+    "x": 250,
+    "y": 120,
+    "width": 180,
+    "height": 60,
+    "backgroundColor": "#FFF3E0",
+    "speakAloud": "The inner planets are rocky and closer to the Sun."
+  },
+  {
+    "type": "text",
+    "content": "1. **Mercury**\nClosest to Sun",
+    "fontSize": 12,
+    "x": 200,
+    "y": 200,
+    "textColor": "#666",
+    "speakAloud": "Mercury is the closest planet to the Sun."
+  },
+  {
+    "type": "text",
+    "content": "2. **Venus**\nHottest planet",
+    "fontSize": 12,
+    "x": 300,
+    "y": 200,
+    "textColor": "#666",
+    "speakAloud": "Venus is the second planet and the hottest in our solar system."
+  },
+  {
+    "type": "text",
+    "content": "3. **Earth**\nOur home planet",
+    "fontSize": 12,
+    "x": 400,
+    "y": 200,
+    "textColor": "#2E7D32",
+    "speakAloud": "Earth is third from the Sun and our home planet with life."
+  },
+  {
+    "type": "text",
+    "content": "4. **Mars**\nThe red planet",
+    "fontSize": 12,
+    "x": 500,
+    "y": 200,
+    "textColor": "#D32F2F",
+    "speakAloud": "Mars is the fourth planet, known as the red planet."
+  },
+  {
+    "type": "card",
+    "content": "**Asteroid Belt**\nRocky debris between Mars and Jupiter",
+    "fontSize": 12,
+    "x": 360,
+    "y": 280,
+    "width": 200,
+    "height": 50,
+    "backgroundColor": "#F5F5F5",
+    "speakAloud": "Between Mars and Jupiter lies the asteroid belt, filled with rocky debris."
+  },
+  {
+    "type": "card",
+    "content": "**Outer Planets**\n(Gas giants farther from Sun)",
+    "fontSize": 14,
+    "x": 250,
+    "y": 370,
+    "width": 180,
+    "height": 60,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "The outer planets are much larger gas giants, farther from the Sun."
+  },
+  {
+    "type": "text",
+    "content": "5. **Jupiter**\nLargest planet",
+    "fontSize": 12,
+    "x": 180,
+    "y": 450,
+    "textColor": "#FF8F00",
+    "speakAloud": "Jupiter is the fifth planet and the largest in our solar system."
+  },
+  {
+    "type": "text",
+    "content": "6. **Saturn**\nPlanet with rings",
+    "fontSize": 12,
+    "x": 300,
+    "y": 450,
+    "textColor": "#FBC02D",
+    "speakAloud": "Saturn is sixth and famous for its beautiful ring system."
+  },
+  {
+    "type": "text",
+    "content": "7. **Uranus**\nIce giant, tilted",
+    "fontSize": 12,
+    "x": 420,
+    "y": 450,
+    "textColor": "#00ACC1",
+    "speakAloud": "Uranus is the seventh planet, an ice giant that rotates on its side."
+  },
+  {
+    "type": "text",
+    "content": "8. **Neptune**\nFarthest planet",
+    "fontSize": 12,
+    "x": 540,
+    "y": 450,
+    "textColor": "#1976D2",
+    "speakAloud": "Neptune is the eighth and farthest planet from the Sun."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 180,
+    "y1": 190,
+    "x2": 200,
+    "y2": 200,
+    "speakAloud": ""
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 180,
+    "y1": 190,
+    "x2": 300,
+    "y2": 200,
+    "speakAloud": ""
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 180,
+    "y1": 190,
+    "x2": 400,
+    "y2": 200,
+    "speakAloud": ""
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 180,
+    "y1": 190,
+    "x2": 500,
+    "y2": 200,
+    "speakAloud": ""
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 340,
+    "y1": 430,
+    "x2": 180,
+    "y2": 450,
+    "speakAloud": ""
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 340,
+    "y1": 430,
+    "x2": 300,
+    "y2": 450,
+    "speakAloud": ""
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 340,
+    "y1": 430,
+    "x2": 420,
+    "y2": 450,
+    "speakAloud": ""
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 340,
+    "y1": 430,
+    "x2": 540,
+    "y2": 450,
+    "speakAloud": ""
+  },
+  {
+    "type": "card",
+    "content": "**Key Pattern:**\nPlanets get **farther apart** and **colder** as distance from Sun increases",
+    "fontSize": 14,
+    "x": 50,
+    "y": 520,
+    "width": 300,
+    "height": 80,
+    "backgroundColor": "#E8F5E8",
+    "speakAloud": "Remember this key pattern: planets get farther apart and colder as their distance from the Sun increases."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "**The History of Portugal**\nFrom County to Global Empire",
+    "fontSize": 24,
+    "x": 200,
+    "y": 50,
+    "textColor": "#1976D2",
+    "speakAloud": "Let's explore Portugal's fascinating journey from a small medieval county to one of the world's greatest maritime empires."
+  },
+  {
+    "type": "card",
+    "content": "**1139 - Birth of a Nation**\nAlfonso Henriques defeats his mother and declares independence from León. Portugal becomes Europe's first nation-state with defined borders.",
+    "fontSize": 16,
+    "x": 50,
+    "y": 150,
+    "backgroundColor": "#E3F2FD",
+    "width": 280,
+    "height": 120,
+    "speakAloud": "Portugal's story begins in 1139 when Alfonso Henriques fought for independence and created Europe's first true nation-state."
+  },
+  {
+    "type": "card",
+    "content": "**1415-1500s - Age of Discovery**\nPrince Henry the Navigator launches exploration. Portuguese reach Africa, India, and Brazil, creating the first global empire.",
+    "fontSize": 16,
+    "x": 370,
+    "y": 150,
+    "backgroundColor": "#FFF3E0",
+    "width": 280,
+    "height": 120,
+    "speakAloud": "The 15th and 16th centuries marked Portugal's golden age, when brave explorers like Vasco da Gama opened new sea routes and built a global empire."
+  },
+  {
+    "type": "image",
+    "search": "Portuguese caravels Age of Discovery",
+    "x": 690,
+    "y": 150,
+    "height": 120,
+    "speakAloud": "Portuguese caravels like these small, fast ships made long ocean voyages possible for the first time."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 330,
+    "y1": 210,
+    "x2": 370,
+    "y2": 210,
+    "speakAloud": "This independence led directly to Portugal's age of exploration."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 650,
+    "y1": 210,
+    "x2": 690,
+    "y2": 210,
+    "speakAloud": "These explorations were made possible by advanced ship technology."
+  },
+  {
+    "type": "card",
+    "content": "**1580-1640 - Spanish Rule**\nPortugal loses independence to Spain after King Sebastian dies without heir. 60 years of Spanish domination follow.",
+    "fontSize": 16,
+    "x": 50,
+    "y": 320,
+    "backgroundColor": "#FFEBEE",
+    "width": 280,
+    "height": 120,
+    "speakAloud": "Portugal's golden age ended when Spain took control for sixty years, during which Portugal lost much of its empire to Dutch and English rivals."
+  },
+  {
+    "type": "card",
+    "content": "**1640-1800s - Restoration**\nPortugal regains independence. Focus shifts to Brazil, which becomes the empire's crown jewel and main source of wealth.",
+    "fontSize": 16,
+    "x": 370,
+    "y": 320,
+    "backgroundColor": "#E8F5E8",
+    "width": 280,
+    "height": 120,
+    "speakAloud": "After regaining independence, Portugal rebuilt its strength by focusing on Brazil, which became incredibly wealthy from gold and sugar."
+  },
+  {
+    "type": "card",
+    "content": "**1910-1974 - Republic & Dictatorship**\nMonarchy ends in 1910. António Salazar's authoritarian Estado Novo regime rules from 1933-1974.",
+    "fontSize": 16,
+    "x": 50,
+    "y": 490,
+    "backgroundColor": "#F3E5F5",
+    "width": 280,
+    "height": 120,
+    "speakAloud": "The 20th century brought political upheaval, with Portugal becoming a republic, then enduring decades under Salazar's strict dictatorship."
+  },
+  {
+    "type": "card",
+    "content": "**1974-Present - Carnation Revolution**\nPeaceful revolution ends dictatorship. Portugal joins EU in 1986, becomes modern democratic nation.",
+    "fontSize": 16,
+    "x": 370,
+    "y": 490,
+    "backgroundColor": "#E8F5E8",
+    "width": 280,
+    "height": 120,
+    "speakAloud": "The Carnation Revolution of 1974 peacefully ended dictatorship, leading to democracy, EU membership, and Portugal's transformation into a modern European nation."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 190,
+    "y1": 270,
+    "x2": 190,
+    "y2": 320,
+    "speakAloud": "Spanish rule temporarily interrupted Portugal's independence."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 510,
+    "y1": 270,
+    "x2": 510,
+    "y2": 320,
+    "speakAloud": "This led to a new focus on Brazil and colonial wealth."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 190,
+    "y1": 440,
+    "x2": 190,
+    "y2": 490,
+    "speakAloud": "Political changes continued into the modern era."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 330,
+    "y1": 550,
+    "x2": 370,
+    "y2": 550,
+    "speakAloud": "Finally leading to today's democratic Portugal."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "**Moon Phases: Why the Moon Changes Shape**",
+    "fontSize": 24,
+    "x": 200,
+    "y": 50,
+    "textColor": "#1565C0",
+    "speakAloud": "Let's explore why the moon appears to change shape throughout the month."
+  },
+  {
+    "type": "card",
+    "content": "**The Key Idea**\n\nThe Moon doesn't actually change shape - it's always a sphere! What changes is how much of the **sunlit side** we can see from Earth.",
+    "fontSize": 16,
+    "x": 50,
+    "y": 120,
+    "backgroundColor": "#E3F2FD",
+    "width": 300,
+    "height": 120,
+    "speakAloud": "The most important thing to understand is that the moon is always round - we just see different amounts of its sunny side."
+  },
+  {
+    "type": "image",
+    "search": "sun earth moon diagram phases",
+    "x": 400,
+    "y": 120,
+    "height": 200,
+    "speakAloud": "This diagram shows how the sun, earth, and moon are positioned during different phases."
+  },
+  {
+    "type": "text",
+    "content": "**The 8 Main Moon Phases**",
+    "fontSize": 20,
+    "x": 100,
+    "y": 280,
+    "textColor": "#1565C0",
+    "speakAloud": "There are eight main phases the moon goes through in its 29.5 day cycle."
+  },
+  {
+    "type": "card",
+    "content": "**1. New Moon** 🌑\nMoon between Earth & Sun\nWe see the **dark side**",
+    "fontSize": 14,
+    "x": 50,
+    "y": 320,
+    "backgroundColor": "#F3E5F5",
+    "width": 140,
+    "height": 80,
+    "speakAloud": "New moon happens when the moon is between Earth and the sun, so we see its dark side."
+  },
+  {
+    "type": "card",
+    "content": "**2. Waxing Crescent** 🌒\nThin sliver appears\n**Growing** larger",
+    "fontSize": 14,
+    "x": 210,
+    "y": 320,
+    "backgroundColor": "#F3E5F5",
+    "width": 140,
+    "height": 80,
+    "speakAloud": "Waxing crescent is when we first see a thin sliver of light, and it's growing larger each night."
+  },
+  {
+    "type": "card",
+    "content": "**3. First Quarter** 🌓\nHalf of moon visible\nRight side **illuminated**",
+    "fontSize": 14,
+    "x": 370,
+    "y": 320,
+    "backgroundColor": "#F3E5F5",
+    "width": 140,
+    "height": 80,
+    "speakAloud": "First quarter shows exactly half the moon lit up - the right side from our view."
+  },
+  {
+    "type": "card",
+    "content": "**4. Waxing Gibbous** 🌔\nMore than half visible\nAlmost **full**",
+    "fontSize": 14,
+    "x": 530,
+    "y": 320,
+    "backgroundColor": "#F3E5F5",
+    "width": 140,
+    "height": 80,
+    "speakAloud": "Waxing gibbous means more than half is visible and it's almost full."
+  },
+  {
+    "type": "card",
+    "content": "**5. Full Moon** 🌕\nEarth between Sun & Moon\n**Entire face** illuminated",
+    "fontSize": 14,
+    "x": 50,
+    "y": 420,
+    "backgroundColor": "#FFF3E0",
+    "width": 140,
+    "height": 80,
+    "speakAloud": "Full moon occurs when Earth is between the sun and moon, so we see the entire sunlit side."
+  },
+  {
+    "type": "card",
+    "content": "**6. Waning Gibbous** 🌖\nMore than half visible\n**Shrinking** each night",
+    "fontSize": 14,
+    "x": 210,
+    "y": 420,
+    "backgroundColor": "#F3E5F5",
+    "width": 140,
+    "height": 80,
+    "speakAloud": "Waning gibbous looks similar to waxing gibbous, but now it's shrinking each night."
+  },
+  {
+    "type": "card",
+    "content": "**7. Last Quarter** 🌗\nHalf of moon visible\nLeft side **illuminated**",
+    "fontSize": 14,
+    "x": 370,
+    "y": 420,
+    "backgroundColor": "#F3E5F5",
+    "width": 140,
+    "height": 80,
+    "speakAloud": "Last quarter shows the left half illuminated - opposite of first quarter."
+  },
+  {
+    "type": "card",
+    "content": "**8. Waning Crescent** 🌘\nThin sliver remains\nSoon to be **new** again",
+    "fontSize": 14,
+    "x": 530,
+    "y": 420,
+    "backgroundColor": "#F3E5F5",
+    "width": 140,
+    "height": 80,
+    "speakAloud": "Waning crescent is the final thin sliver before returning to new moon."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 190,
+    "y1": 360,
+    "x2": 210,
+    "y2": 360,
+    "speakAloud": ""
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 350,
+    "y1": 360,
+    "x2": 370,
+    "y2": 360,
+    "speakAloud": ""
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 510,
+    "y1": 360,
+    "x2": 530,
+    "y2": 360,
+    "speakAloud": ""
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 120,
+    "y1": 400,
+    "x2": 120,
+    "y2": 420,
+    "speakAloud": ""
+  },
+  {
+    "type": "card",
+    "content": "**Why This Happens**\n\n• The Moon **orbits Earth** every 29.5 days\n• The **Sun always lights** half the Moon\n• Our **viewing angle** changes as the Moon moves\n• This creates the illusion of changing shapes",
+    "fontSize": 16,
+    "x": 100,
+    "y": 540,
+    "backgroundColor": "#E8F5E8",
+    "width": 400,
+    "height": 120,
+    "speakAloud": "The phases happen because as the moon orbits Earth, our viewing angle changes, showing us different amounts of the sunlit side."
+  },
+  {
+    "type": "text",
+    "content": "**Remember**: Waxing = Growing  •  Waning = Shrinking",
+    "fontSize": 16,
+    "x": 200,
+    "y": 680,
+    "textColor": "#D32F2F",
+    "speakAloud": "Remember that waxing means growing larger, and waning means shrinking smaller."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Solving: $2x^2 + x - 1 = 0$",
+    "fontSize": 20,
+    "x": 200,
+    "y": 50,
+    "textColor": "#1976D2",
+    "speakAloud": "Let's solve this quadratic equation step by step using the quadratic formula."
+  },
+  {
+    "type": "card",
+    "content": "**Quadratic Formula**\n\n$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$\n\nFor equation: $ax^2 + bx + c = 0$",
+    "fontSize": 16,
+    "x": 50,
+    "y": 120,
+    "width": 300,
+    "height": 120,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "We'll use the quadratic formula where a equals 2, b equals 1, and c equals negative 1."
+  },
+  {
+    "type": "card",
+    "content": "**Identify coefficients:**\n\n$a = 2$\n$b = 1$ \n$c = -1$",
+    "fontSize": 16,
+    "x": 400,
+    "y": 120,
+    "width": 200,
+    "height": 120,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "First, we identify our coefficients from the standard form."
+  },
+  {
+    "type": "card",
+    "content": "**Calculate discriminant:**\n\n$b^2 - 4ac$\n$= 1^2 - 4(2)(-1)$\n$= 1 + 8 = 9$",
+    "fontSize": 16,
+    "x": 50,
+    "y": 280,
+    "width": 250,
+    "height": 120,
+    "backgroundColor": "#E8F5E8",
+    "speakAloud": "The discriminant is 9, which is positive, so we'll have two real solutions."
+  },
+  {
+    "type": "card",
+    "content": "**Apply the formula:**\n\n$x = \\frac{-1 \\pm \\sqrt{9}}{2(2)}$\n\n$x = \\frac{-1 \\pm 3}{4}$",
+    "fontSize": 16,
+    "x": 350,
+    "y": 280,
+    "width": 250,
+    "height": 120,
+    "backgroundColor": "#FFF3E0",
+    "speakAloud": "Now we substitute our values into the quadratic formula."
+  },
+  {
+    "type": "card",
+    "content": "**Solutions:**\n\n$x_1 = \\frac{-1 + 3}{4} = \\frac{2}{4} = \\frac{1}{2}$\n\n$x_2 = \\frac{-1 - 3}{4} = \\frac{-4}{4} = -1$",
+    "fontSize": 18,
+    "x": 200,
+    "y": 440,
+    "width": 300,
+    "height": 120,
+    "backgroundColor": "#E8F5E8",
+    "speakAloud": "The two solutions are x equals one half and x equals negative one."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 350,
+    "y1": 180,
+    "x2": 400,
+    "y2": 280,
+    "speakAloud": "These coefficients lead us to calculate the discriminant."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 300,
+    "y1": 340,
+    "x2": 350,
+    "y2": 340,
+    "speakAloud": "The discriminant helps us apply the quadratic formula."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 475,
+    "y1": 400,
+    "x2": 400,
+    "y2": 440,
+    "speakAloud": "This gives us our final two solutions."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Solving: $3x^2 = x$",
+    "fontSize": 24,
+    "x": 200,
+    "y": 50,
+    "textColor": "#1976D2",
+    "speakAloud": "Let's solve the equation 3x squared equals x step by step"
+  },
+  {
+    "type": "card",
+    "content": "**Step 1: Move all terms to one side**\n\n$3x^2 = x$\n\n$3x^2 - x = 0$",
+    "fontSize": 16,
+    "x": 50,
+    "y": 120,
+    "backgroundColor": "#E3F2FD",
+    "width": 280,
+    "height": 120,
+    "speakAloud": "First, we move all terms to one side by subtracting x from both sides"
+  },
+  {
+    "type": "card",
+    "content": "**Step 2: Factor out the common term**\n\n$3x^2 - x = 0$\n\n$x(3x - 1) = 0$",
+    "fontSize": 16,
+    "x": 380,
+    "y": 120,
+    "backgroundColor": "#F3E5F5",
+    "width": 280,
+    "height": 120,
+    "speakAloud": "Next, we factor out x, which is common to both terms"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 330,
+    "y1": 180,
+    "x2": 380,
+    "y2": 180,
+    "speakAloud": "This leads us to the next step"
+  },
+  {
+    "type": "card",
+    "content": "**Step 3: Apply Zero Product Property**\n\nIf $x(3x - 1) = 0$, then:\n\n$x = 0$ **or** $3x - 1 = 0$",
+    "fontSize": 16,
+    "x": 120,
+    "y": 280,
+    "backgroundColor": "#E8F5E8",
+    "width": 340,
+    "height": 120,
+    "speakAloud": "Using the zero product property, either factor can equal zero"
+  },
+  {
+    "type": "card",
+    "content": "**Solution 1:**\n\n$x = 0$",
+    "fontSize": 16,
+    "x": 50,
+    "y": 440,
+    "backgroundColor": "#FFF3E0",
+    "width": 150,
+    "height": 80,
+    "speakAloud": "Our first solution is x equals zero"
+  },
+  {
+    "type": "card",
+    "content": "**Solution 2:**\n\n$3x - 1 = 0$\n$3x = 1$\n$x = \\frac{1}{3}$",
+    "fontSize": 16,
+    "x": 250,
+    "y": 440,
+    "backgroundColor": "#FFF3E0",
+    "width": 150,
+    "height": 120,
+    "speakAloud": "For the second solution, we solve 3x minus 1 equals zero to get x equals one third"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 290,
+    "y1": 400,
+    "x2": 125,
+    "y2": 440,
+    "speakAloud": "Both solutions come from our factored form"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 290,
+    "y1": 400,
+    "x2": 325,
+    "y2": 440,
+    "speakAloud": "These are our two final answers"
+  },
+  {
+    "type": "text",
+    "content": "**Final Answer:** $x = 0$ or $x = \\frac{1}{3}$",
+    "fontSize": 20,
+    "x": 150,
+    "y": 580,
+    "textColor": "#1976D2",
+    "speakAloud": "Therefore, the equation has two solutions: x equals zero and x equals one third"
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Solving: $3x^2 = x$",
+    "fontSize": 20,
+    "x": 200,
+    "y": 50,
+    "textColor": "#1976D2",
+    "speakAloud": "Let's solve the equation three x squared equals x step by step."
+  },
+  {
+    "type": "card",
+    "content": "**Step 1: Move all terms to one side**\n\n$3x^2 = x$\n$3x^2 - x = 0$",
+    "fontSize": 16,
+    "x": 50,
+    "y": 120,
+    "backgroundColor": "#E3F2FD",
+    "width": 280,
+    "height": 100,
+    "speakAloud": "First, we subtract x from both sides to get everything on the left side."
+  },
+  {
+    "type": "card",
+    "content": "**Step 2: Factor out x**\n\n$3x^2 - x = 0$\n$x(3x - 1) = 0$",
+    "fontSize": 16,
+    "x": 350,
+    "y": 120,
+    "backgroundColor": "#F3E5F5",
+    "width": 280,
+    "height": 100,
+    "speakAloud": "Next, we factor out x from both terms to get x times three x minus one equals zero."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 330,
+    "y1": 170,
+    "x2": 350,
+    "y2": 170,
+    "speakAloud": "This leads us to the next step."
+  },
+  {
+    "type": "card",
+    "content": "**Step 3: Use Zero Product Property**\n\nIf $x(3x - 1) = 0$, then:\n$x = 0$ **or** $3x - 1 = 0$",
+    "fontSize": 16,
+    "x": 50,
+    "y": 260,
+    "backgroundColor": "#E8F5E8",
+    "width": 280,
+    "height": 100,
+    "speakAloud": "Using the zero product property, either x equals zero or three x minus one equals zero."
+  },
+  {
+    "type": "card",
+    "content": "**Step 4: Solve each equation**\n\n$x = 0$\n\n$3x - 1 = 0$\n$3x = 1$\n$x = \\frac{1}{3}$",
+    "fontSize": 16,
+    "x": 350,
+    "y": 260,
+    "backgroundColor": "#FFF3E0",
+    "width": 280,
+    "height": 120,
+    "speakAloud": "Solving each equation gives us x equals zero and x equals one third."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 330,
+    "y1": 310,
+    "x2": 350,
+    "y2": 310,
+    "speakAloud": "This gives us our final answer."
+  },
+  {
+    "type": "text",
+    "content": "**Solutions:** $x = 0$ and $x = \\frac{1}{3}$",
+    "fontSize": 18,
+    "x": 200,
+    "y": 420,
+    "textColor": "#D32F2F",
+    "speakAloud": "Therefore, the solutions are x equals zero and x equals one third."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "**Planetary Positions in Our Solar System**",
+    "fontSize": 24,
+    "x": 300,
+    "y": 50,
+    "textColor": "#1565C0",
+    "speakAloud": "Let's explore the positions of planets in our solar system, arranged by their distance from the Sun."
+  },
+  {
+    "type": "image",
+    "search": "sun yellow star",
+    "x": 100,
+    "y": 150,
+    "height": 80,
+    "speakAloud": "At the center of our solar system is the Sun, which provides heat and light to all the planets."
+  },
+  {
+    "type": "text",
+    "content": "**Sun**\n(Center)",
+    "fontSize": 14,
+    "x": 110,
+    "y": 240,
+    "textColor": "#FF6F00",
+    "speakAloud": ""
+  },
+  {
+    "type": "card",
+    "content": "**Inner Planets**\n(Rocky, close to Sun)\n\n1. **Mercury** - 36 million miles\n2. **Venus** - 67 million miles\n3. **Earth** - 93 million miles\n4. **Mars** - 142 million miles",
+    "fontSize": 14,
+    "x": 250,
+    "y": 150,
+    "width": 220,
+    "height": 120,
+    "backgroundColor": "#FFF3E0",
+    "speakAloud": "The four inner planets are rocky and relatively close to the Sun. Mercury is closest, followed by Venus, our Earth, and then Mars."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 180,
+    "y1": 190,
+    "x2": 250,
+    "y2": 190,
+    "speakAloud": ""
+  },
+  {
+    "type": "card",
+    "content": "**Asteroid Belt**\n\nRocky debris between\nMars and Jupiter\n\n~280 million miles from Sun",
+    "fontSize": 14,
+    "x": 500,
+    "y": 150,
+    "width": 180,
+    "height": 120,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "Between Mars and Jupiter lies the asteroid belt, a region filled with rocky debris and small celestial bodies."
+  },
+  {
+    "type": "card",
+    "content": "**Outer Planets**\n(Gas giants, far from Sun)\n\n5. **Jupiter** - 484 million miles\n6. **Saturn** - 887 million miles\n7. **Uranus** - 1.8 billion miles\n8. **Neptune** - 2.8 billion miles",
+    "fontSize": 14,
+    "x": 250,
+    "y": 300,
+    "width": 220,
+    "height": 140,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "The four outer planets are much larger gas giants, located far from the Sun. Jupiter is the largest, followed by Saturn with its famous rings, then Uranus and Neptune."
+  },
+  {
+    "type": "text",
+    "content": "**Key Facts:**",
+    "fontSize": 18,
+    "x": 500,
+    "y": 300,
+    "textColor": "#2E7D32",
+    "speakAloud": "Here are some important facts about planetary positions."
+  },
+  {
+    "type": "card",
+    "content": "• Planets orbit the Sun in **elliptical paths**\n\n• Distance varies as planets move\n\n• **Astronomical Unit (AU)** = Earth's average distance from Sun\n\n• Outer planets take **much longer** to orbit",
+    "fontSize": 14,
+    "x": 500,
+    "y": 330,
+    "width": 200,
+    "height": 140,
+    "backgroundColor": "#E8F5E8",
+    "speakAloud": "Planets follow elliptical orbits, so their distances change. We measure space distances in astronomical units, and the farther planets take much longer to complete their orbits."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 470,
+    "y1": 210,
+    "x2": 250,
+    "y2": 300,
+    "speakAloud": ""
+  }
+]
+```
+
+**Speak-Aloud**: Our solar system is organized with the Sun at the center and eight planets arranged by distance. The inner rocky planets - Mercury, Venus, Earth, and Mars - are close to the Sun. Beyond the asteroid belt lie the outer gas giants - Jupiter, Saturn, Uranus, and Neptune - which are much farther away and take years to complete their orbits around our star.
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "**As Fases da Lua**",
+    "fontSize": 24,
+    "x": 300,
+    "y": 50,
+    "textColor": "#1976D2",
+    "speakAloud": "Vamos explorar as diferentes fases da lua e entender porque ela muda de forma"
+  },
+  {
+    "type": "card",
+    "content": "A lua não produz luz própria - apenas **reflete a luz do Sol**. As diferentes formas que vemos dependem da posição da lua em relação à Terra e ao Sol.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 120,
+    "backgroundColor": "#E3F2FD",
+    "width": 600,
+    "height": 80,
+    "speakAloud": "A lua não tem luz própria, apenas reflete a luz solar. A forma que vemos depende das posições relativas da lua, terra e sol"
+  },
+  {
+    "type": "image",
+    "search": "lua nova dark moon phase",
+    "x": 80,
+    "y": 250,
+    "height": 80,
+    "speakAloud": "Na lua nova, ela está entre a terra e o sol, então não conseguimos vê-la"
+  },
+  {
+    "type": "text",
+    "content": "**Lua Nova**\nInvisível no céu",
+    "fontSize": 14,
+    "x": 80,
+    "y": 340,
+    "textColor": "#333",
+    "speakAloud": "Esta é a fase da lua nova"
+  },
+  {
+    "type": "image",
+    "search": "crescente crescent moon phase",
+    "x": 220,
+    "y": 250,
+    "height": 80,
+    "speakAloud": "No crescente, vemos uma pequena fatia iluminada do lado direito"
+  },
+  {
+    "type": "text",
+    "content": "**Crescente**\nPequena fatia à direita",
+    "fontSize": 14,
+    "x": 220,
+    "y": 340,
+    "textColor": "#333",
+    "speakAloud": "Esta é a lua crescente"
+  },
+  {
+    "type": "image",
+    "search": "quarto crescente first quarter moon",
+    "x": 360,
+    "y": 250,
+    "height": 80,
+    "speakAloud": "No quarto crescente, metade da lua está iluminada"
+  },
+  {
+    "type": "text",
+    "content": "**Quarto Crescente**\nMetade iluminada",
+    "fontSize": 14,
+    "x": 360,
+    "y": 340,
+    "textColor": "#333",
+    "speakAloud": "Esta é o quarto crescente"
+  },
+  {
+    "type": "image",
+    "search": "lua cheia full moon bright",
+    "x": 500,
+    "y": 250,
+    "height": 80,
+    "speakAloud": "Na lua cheia, vemos toda a face iluminada da lua"
+  },
+  {
+    "type": "text",
+    "content": "**Lua Cheia**\nCompletamente iluminada",
+    "fontSize": 14,
+    "x": 500,
+    "y": 340,
+    "textColor": "#333",
+    "speakAloud": "Esta é a lua cheia"
+  },
+  {
+    "type": "image",
+    "search": "quarto minguante last quarter moon",
+    "x": 640,
+    "y": 250,
+    "height": 80,
+    "speakAloud": "No quarto minguante, a metade esquerda está iluminada"
+  },
+  {
+    "type": "text",
+    "content": "**Quarto Minguante**\nMetade esquerda iluminada",
+    "fontSize": 14,
+    "x": 640,
+    "y": 340,
+    "textColor": "#333",
+    "speakAloud": "Esta é o quarto minguante"
+  },
+  {
+    "type": "card",
+    "content": "**Porque mudam as formas?**\n\nÀ medida que a lua orbita a Terra, diferentes partes da sua superfície são iluminadas pelo Sol. Nós vemos apenas a parte que está tanto **virada para a Terra** como **iluminada pelo Sol**.",
+    "fontSize": 16,
+    "x": 100,
+    "y": 420,
+    "backgroundColor": "#F3E5F5",
+    "width": 600,
+    "height": 100,
+    "speakAloud": "As formas mudam porque a lua orbita a terra e diferentes partes ficam iluminadas pelo sol em momentos diferentes"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 130,
+    "y1": 250,
+    "x2": 250,
+    "y2": 250,
+    "speakAloud": "As fases seguem uma sequência ordenada"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 270,
+    "y1": 250,
+    "x2": 390,
+    "y2": 250,
+    "speakAloud": "Cada fase dura cerca de uma semana"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 410,
+    "y1": 250,
+    "x2": 530,
+    "y2": 250,
+    "speakAloud": "O ciclo completo demora cerca de 28 dias"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 550,
+    "y1": 250,
+    "x2": 670,
+    "y2": 250,
+    "speakAloud": "Depois do quarto minguante, volta à lua nova"
+  },
+  {
+    "type": "card",
+    "content": "**Ciclo Lunar: 28 dias**\n\nO ciclo completo das fases lunares demora aproximadamente **28 dias** - o tempo que a lua leva a dar uma volta completa à Terra.",
+    "fontSize": 16,
+    "x": 250,
+    "y": 560,
+    "backgroundColor": "#E8F5E8",
+    "width": 400,
+    "height": 80,
+    "speakAloud": "O ciclo completo das fases lunares demora 28 dias, que é o tempo de uma órbita completa da lua"
+  }
+]
+```
+
+As fases da lua são um dos fenômenos mais bonitos e regulares que podemos observar no céu! Cada fase representa uma posição diferente da lua na sua órbita em torno da Terra, criando esse espetáculo celestial que se repete mensalmente.
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "The **Moon** goes through phases because of how sunlight illuminates it as it orbits the Earth.",
+    "speakAloud": "The Moon doesn't produce its own light; we see it because it reflects sunlight. Its phases are a result of the changing angles of sunlight reflecting off its surface as it orbits Earth."
+  },
+  {
+    "type": "card",
+    "content": "Here's a breakdown of the main phases:",
+    "speakAloud": "Let's explore the primary phases of the Moon, starting with the New Moon."
+  },
+  {
+    "type": "image",
+    "search": "new moon animation",
+    "x": 200, "y": 250,
+    "height": 150,
+    "speakAloud": "This is the New Moon phase. It appears dark because the sunlit side is facing away from Earth."
+  },
+  {
+    "type": "text",
+    "content": "<strong>New Moon</strong>: Completely dark, between Earth and Sun.",
+    "speakAloud": "The New Moon is when the Moon is positioned between the Earth and the Sun, making it appear dark from our perspective."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 350, "y1": 200, "x2": 550, "y2": 200,
+    "speakAloud": "The Moon begins to show a sliver of light as it moves in its orbit."
+  },
+  {
+    "type": "image",
+    "search": "waxing crescent moon",
+    "x": 200, "y": 300,
+    "height": 150,
+    "speakAloud": "This is the Waxing Crescent. 'Waxing' means increasing in illumination."
+  },
+  {
+    "type": "text",
+    "content": "<strong>Waxing Crescent</strong>:  A small sliver of light visible. ($0-$40\%$ illuminated)",
+    "speakAloud": "The Waxing Crescent appears as a thin, curved crescent, gradually increasing in size."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 350, "y1": 300, "x2": 550, "y2": 300,
+    "speakAloud": "As the Moon orbits, more of the sunlit side becomes visible."
+  },
+  {
+    "type": "image",
+    "search": "first quarter moon",
+    "x": 200, "y": 400,
+    "height": 150,
+    "speakAloud": "This is the First Quarter. Half of the Moon appears lit."
+  },
+  {
+    "type": "text",
+    "content": "<strong>First Quarter</strong>:  Half of the Moon appears illuminated. ($50\%$ illuminated)",
+    "speakAloud": "The First Quarter Moon is when exactly half of the Moon's face is illuminated."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 350, "y1": 400, "x2": 550, "y2": 400,
+    "speakAloud": "The illuminated portion continues to grow."
+  },
+  {
+    "type": "image",
+    "search": "waxing gibbous moon",
+    "x": 200, "y": 500,
+    "height": 150,
+    "speakAloud": "This is a Waxing Gibbous moon. 'Gibbous' means more than half is illuminated."
+  },
+  {
+    "type": "text",
+    "content": "<strong>Waxing Gibbous</strong>: More than half of the Moon is illuminated. ($51\%$ - $99\%$ illuminated)",
+    "speakAloud": "The Waxing Gibbous continues to grow, with more than half of its face lit up."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 350, "y1": 500, "x2": 550, "y2": 500,
+    "speakAloud": "The Moon reaches its fullest illumination."
+  },
+  {
+    "type": "image",
+    "search": "full moon animation",
+    "x": 200, "y": 600,
+    "height": 150,
+    "speakAloud": "This is the Full Moon. The entire face of the Moon is illuminated."
+  },
+  {
+    "type": "text",
+    "content": "<strong>Full Moon</strong>:  The entire visible face is illuminated. ($100\%$ illuminated)",
+    "speakAloud": "The Full Moon is when the Earth is between the Sun and the Moon, so the entire sunlit side faces us."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 350, "y1": 600, "x2": 550, "y2": 600,
+    "speakAloud": "The illuminated portion starts to decrease."
+  },
+  {
+    "type": "image",
+    "search": "waning gibbous moon",
+    "x": 200, "y": 700,
+    "height": 150,
+    "speakAloud": "This is the Waning Gibbous. 'Waning' means decreasing in illumination."
+  },
+  {
+    "type": "text",
+    "content": "<strong>Waning Gibbous</strong>: More than half of the Moon is illuminated, but decreasing. ($99\%$ - $51\%$ illuminated)",
+    "speakAloud": "The Waning Gibbous is the reverse of the Waxing Gibbous, with more than half illuminated but shrinking."
+  },
+ {
+    "type": "line",
+    "thickness": "m",
+    "x1": 350, "y1": 700, "x2": 550, "y2": 700,
+    "speakAloud": "Finally it transforms to a crescent again."
+  },
+  {
+    "type": "image",
+    "search": "third quarter moon",
+    "x": 200, "y": 800,
+    "height": 150,
+    "speakAloud": "This is the Third Quarter. Again, half of the moon is illuminated."
+  },
+  {
+    "type": "text",
+    "content": "<strong>Third Quarter</strong>: Half of the Moon is illuminated, but the opposite half from the First Quarter. ($50\%$ illuminated)",
+    "speakAloud": "The Third Quarter Moon is 180 degrees opposite to the First Quarter, showing the other half illuminated."
+  },
+  {
+    "type": "image",
+    "search": "waning crescent moon",
+    "x": 200, "y": 900,
+    "height": 150,
+    "speakAloud": "The Waning Crescent is shrinking again until it is a New Moon. "
+  },
+    {
+    "type": "text",
+    "content": "<strong>Waning Crescent</strong>: A small sliver of light visible, shrinking towards the New Moon. ($0-$40\%$ illuminated)",
+    "speakAloud": "The Waning Crescent is the final phase before the New Moon, a thin sliver diminishing until it disappears completely."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "A História de Portugal",
+    "speakAloud": "Vamos explorar a rica história de Portugal, desde as suas origens até aos dias de hoje."
+  },
+  {
+    "type": "card",
+    "content": "Origens e Formação (Século XII)",
+    "speakAloud": "Portugal nasceu como um condado no reino de Leão e Castela, com a sua independência sendo conquistada no século XII." ,
+    "backgroundColor": "#E3F2FD"
+  },
+  {
+    "type": "image",
+    "search": "Dom Afonso Henriques",
+    "x": 150, "y": 250,
+    "height": 200,
+    "speakAloud": "Dom Afonso Henriques foi o primeiro rei de Portugal e liderou a luta pela independência."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 100, "y1": 350, "x2": 400, "y2": 350,
+    "speakAloud": "A independência de Portugal marcou o início de uma era de expansão e exploração."
+  },
+  {
+    "type": "card",
+    "content": "A Era dos Descobrimentos (Séculos XV-XVI)",
+    "speakAloud": "Portugal liderou a Era dos Descobrimentos, explorando novas rotas comerciais e estabelecendo um vasto império." ,
+    "backgroundColor": "#F3E5F5"
+  },
+  {
+    "type": "image",
+    "search": "Vasco da Gama",
+    "x": 150, "y": 450,
+    "height": 200,
+    "speakAloud": "Vasco da Gama descobriu a rota marítima para a Índia, abrindo novas oportunidades comerciais."
+  },
+  {
+    "type": "card",
+    "content": "O Império Português",
+    "speakAloud": "O império português estendeu-se por África, Ásia e América do Sul, influenciando a cultura e a economia global.",
+    "backgroundColor": "#F3E5F5"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 100, "y1": 550, "x2": 400, "y2": 550,
+    "speakAloud": "O império português gerou riqueza e poder, mas também levou a desafios e conflitos."
+  },
+  {
+    "type": "card",
+    "content": "Crise e Restauração (Século XVII)",
+    "speakAloud": "No século XVII, Portugal enfrentou crises políticas e económicas, culminando na Restauração da Independência em 1640.",
+    "backgroundColor": "#E8F5E8"
+  },
+    {
+    "type": "image",
+    "search": "Restauração da Independência Portugal",
+    "x": 150, "y": 650,
+    "height": 200,
+    "speakAloud": "A Restauração da Independência reafirmou a soberania portuguesa e o início de um novo período."
+  },
+  {
+    "type": "card",
+    "content": "Século XIX e XX: Perdas Coloniais e Ditadura",
+    "speakAloud": "O século XIX foi marcado pelas perdas das colónias e por um período de instabilidade política, seguido pela ditadura do Estado Novo.",
+    "backgroundColor": "#F3E5F5"
+  },
+  {
+     "type": "line",
+    "thickness": "m",
+    "x1": 100, "y1": 750, "x2": 400, "y2": 750,
+    "speakAloud": "A ditadura do Estado Novo influenciou profundamente a sociedade e a política portuguesa."
+  },
+  {
+    "type": "card",
+    "content": "Democratização e Portugal Contemporâneo",
+    "speakAloud": "A democratização em 1974 marcou o fim da ditadura e o início de uma nova era para Portugal, com a entrada na União Europeia e o desenvolvimento económico.",
+    "backgroundColor": "#E8F5E8"
+  },
+  {
+    "type": "image",
+    "search": "Portugal União Europeia",
+    "x": 150, "y": 850,
+    "height": 200,
+    "speakAloud": "A integração em 1986 impulsionou o crescimento económico e social de Portugal."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Gravidade: A força que nos mantém no chão.",
+    "fontSize": 20,
+    "x": 100, "y": 100,
+    "textColor": "#333333",
+    "speakAloud": "A gravidade é uma força fundamental que atrai objetos com massa uns aos outros. Na Terra, ela é a responsável por nos manter no chão e fazer com que os objetos caiam."
+  },
+  {
+    "type": "card",
+    "content": "**O que é a gravidade?**  A gravidade é a atração mútua entre objetos que têm massa. Quanto maior a massa de um objeto, maior a sua força gravitacional.  A distância também importa; quanto mais próximos os objetos, mais forte é a atração.",
+    "fontSize": 16,
+    "x": 100, "y": 250,
+    "backgroundColor": "#E3F2FD",
+    "width": 400, "height": 200,
+    "speakAloud": "A gravidade é causada pela massa dos objetos. Objetos maiores têm uma gravidade mais forte, e a distância afeta a força da atração."
+  },
+  {
+    "type": "image",
+    "search": "apple falling",
+    "x": 450, "y": 250,
+    "height": 200,
+    "speakAloud": "Este exemplo ilustra a força da gravidade, fazendo com que a maçã caia em direção à Terra."
+  },
+  {
+    "type": "text",
+    "content": "Aceleração devido à gravidade: $g \approx 9.8 \, m/s^2$",
+    "fontSize": 18,
+    "x": 100, "y": 400,
+    "textColor": "#333333",
+    "speakAloud": "Na Terra, a aceleração devido à gravidade é aproximadamente 9.8 metros por segundo ao quadrado. Isso significa que a velocidade de um objeto em queda aumenta em 9.8 metros por segundo a cada segundo."
+  },
+  {
+    "type": "card",
+    "content": "**Impacto da gravidade:** A gravidade é responsável por manter os planetas em órbita em torno das estrelas e as luas em órbita em torno dos planetas. Sem a gravidade, o universo seria um lugar muito diferente!",
+    "fontSize": 16,
+    "x": 450, "y": 400,
+    "backgroundColor": "#F3E5F5",
+    "width": 400, "height": 200,
+    "speakAloud": "A gravidade não é apenas sobre objetos caindo; é a força que organiza o universo em larga escala."
+  },
+   {
+    "type": "line",
+    "thickness": "m",
+    "x1": 100, "y1": 350, "x2": 450, "y2": 350,
+    "speakAloud": "A gravidade é uma força universal que afeta todos os objetos com massa."
+  },
+  {
+    "type": "text",
+    "content": "Exemplos de variações da gravidade: Lua, planetas, estrelas.",
+    "fontSize": 16,
+    "x": 100, "y": 500,
+    "textColor": "#333333",
+    "speakAloud": "A força da gravidade varia dependendo da massa e distância dos objetos."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Our Solar System",
+    "speakAloud": "Let's explore our solar system, a fascinating place with planets, moons, and more orbiting a star!",
+    "fontSize": 24,
+    "textColor": "#333333",
+    "x": 100,
+    "y": 50
+  },
+  {
+    "type": "card",
+    "content": "The Sun",
+    "backgroundColor": "#FFF3E0",
+    "width": 300,
+    "height": 200,
+    "x": 100,
+    "y": 250,
+    "speakAloud": "The Sun is a star at the center of our solar system. It provides light and heat, making life on Earth possible!"
+  },
+  {
+    "type": "image",
+    "search": "solar system",
+    "x": 450,
+    "y": 250,
+    "height": 200,
+    "speakAloud": "This is a general image of our Solar system, showing the Sun and the planets in their orbits."
+  },
+  {
+    "type": "card",
+    "content": "Planets: Inner Rocky Planets",
+    "backgroundColor": "#F3E5F5",
+    "width": 300,
+    "height": 200,
+    "x": 100,
+    "y": 450,
+    "speakAloud": "The inner planets are Mercury, Venus, Earth, and Mars. They're rocky and relatively small.",
+    "fontSize": 16
+  },
+  {
+    "type": "text",
+    "content": "Mercury: Closest to the Sun",
+    "speakAloud": "Mercury is the smallest planet and closest to the Sun. It has extreme temperature variations.",
+    "fontSize": 14,
+    "textColor": "#333333",
+    "x": 100,
+    "y": 470
+  },
+  {
+    "type": "text",
+    "content": "Venus: Hottest Planet",
+    "speakAloud": "Venus is incredibly hot due to its thick atmosphere. It's often called Earth's sister planet.",
+    "fontSize": 14,
+    "textColor": "#333333",
+    "x": 100,
+    "y": 490
+  },
+  {
+    "type": "text",
+    "content": "Earth: Our Home",
+    "speakAloud": "Earth is the only known planet to support life. It has liquid water and a breathable atmosphere.",
+    "fontSize": 14,
+    "textColor": "#333333",
+    "x": 100,
+    "y": 510
+  },
+  {
+    "type": "text",
+    "content": "Mars: The Red Planet",
+    "speakAloud": "Mars is known for its reddish appearance. Scientists are exploring it for signs of past or present life.",
+    "fontSize": 14,
+    "textColor": "#333333",
+    "x": 100,
+    "y": 530
+  },
+  {
+    "type": "card",
+    "content": "Planets: Outer Gas Giants",
+    "backgroundColor": "#F8F9FA",
+    "width": 300,
+    "height": 200,
+    "x": 450,
+    "y": 450,
+    "speakAloud": "The outer planets are Jupiter, Saturn, Uranus, and Neptune. They are much larger and are primarily composed of gas.",
+    "fontSize": 16
+  },
+  {
+    "type": "text",
+    "content": "Jupiter: The Largest Planet",
+    "speakAloud": "Jupiter is the largest planet in our solar system. It has a giant red spot, which is a massive storm.",
+    "fontSize": 14,
+    "textColor": "#333333",
+    "x": 450,
+    "y": 470
+  },
+  {
+    "type": "text",
+    "content": "Saturn: Rings of Ice",
+    "speakAloud": "Saturn is famous for its beautiful rings made of ice and rock particles.",
+    "fontSize": 14,
+    "textColor": "#333333",
+    "x": 450,
+    "y": 490
+  },
+   {
+    "type": "text",
+    "content": "Uranus: Tilted on its Side",
+    "speakAloud": "Uranus rotates on its side, which is unusual for a planet. It's an ice giant.",
+    "fontSize": 14,
+    "textColor": "#333333",
+    "x": 450,
+    "y": 510
+  },
+  {
+    "type": "text",
+    "content": "Neptune: Farthest Planet",
+    "speakAloud": "Neptune is the farthest planet from the Sun.  It's a cold, windy ice giant.",
+    "fontSize": 14,
+    "textColor": "#333333",
+    "x": 450,
+    "y": 530
+  },
+  {
+    "type": "line",
+    "thickness": "thin",
+    "x1": 200, "y1": 400, "x2": 300, "y2": 400,
+    "speakAloud": "These planets orbit the Sun in elliptical paths, not perfect circles."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "## Introduction to Solutions",
+    "speakAloud": "Welcome! We'll explore what solutions are in mathematics. A solution is a value that makes an equation true."
+  },
+  {
+    "type": "card",
+    "content": "**What is an Equation?** An equation is a statement that two expressions are equal. It contains an equals sign (=).",
+    "speakAloud": "An equation shows that two things are equal.  For example, 2 + 2 = 4 is an equation."
+  },
+  {
+    "type": "text",
+    "content": "Let's look at a simple example:",
+    "speakAloud": "Here's where we start to define what a solution is."
+  },
+  {
+    "type": "card",
+    "content": "$x + 3 = 5$ is an equation. We want to find the value of $x$ that makes this equation true.",
+    "speakAloud": "This equation has a variable, $x$, which we need to find the value for to make the equation correct."
+  },
+  {
+    "type": "image",
+    "search": "solving equations",
+    "x": 150, "y": 250,
+    "height": 200,
+    "speakAloud": "This image shows the process of finding a solution to an equation."
+  },
+  {
+    "type": "text",
+    "content": "To find the solution, we perform operations on both sides of the equation.",
+    "speakAloud": "We manipulate the equation to isolate the variable on one side."
+  },
+  {
+    "type": "card",
+    "content": "In our example, we subtract 3 from both sides: $x + 3 - 3 = 5 - 3$, which simplifies to $x = 2$.",
+    "speakAloud": "By subtracting 3 from both sides we find that $x$ equals 2."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 100, "y1": 350, "x2": 400, "y2": 350,
+    "speakAloud": "This line shows the relationship between the equation and its solution."
+  },
+  {
+    "type": "text",
+    "content": "Therefore, the solution to the equation $x + 3 = 5$ is $x = 2$.",
+    "speakAloud": "So, we've found that the value of $x$ that makes the equation true is 2."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "The Moon has different 'faces' due to its synchronous rotation with Earth.",
+    "speakAloud": "The Moon always shows us the same side because it rotates once for every orbit. This is called synchronous rotation.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 100,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": " **Near Side:** The side we always see. It's heavily cratered and has large maria.",
+    "speakAloud": "The near side is familiar, covered in dark basaltic plains called maria from ancient volcanic eruptions, and many impact craters.",
+    "fontSize": 16,
+    "x": 400,
+    "y": 100,
+    "backgroundColor": "#F8F9FA",
+    "width": 300,
+    "height": 200
+  },
+  {
+    "type": "image",
+    "search": "moon near side map",
+    "x": 100,
+    "y": 250,
+    "height": 200,
+    "speakAloud": "This image shows a map of the Moon's near side, highlighting the maria and craters."
+  },
+  {
+    "type": "card",
+    "content": " **Far Side:**  The side we never see from Earth. It's quite different from the near side.",
+    "speakAloud": "The far side, also called the hidden side, remained a mystery until space exploration. It has a thicker crust and fewer maria.",
+    "fontSize": 16,
+    "x": 400,
+    "y": 250,
+    "backgroundColor": "#F8F9FA",
+    "width": 300,
+    "height": 200
+  },
+    {
+    "type": "image",
+    "search": "moon far side map",
+    "x": 100,
+    "y": 400,
+    "height": 200,
+    "speakAloud": "This image is a map of the Moon's far side"
+  },
+  {
+    "type": "card",
+    "content": " **Key Differences:** The far side has a much thicker crust than the near side, and fewer large maria. It's also more heavily cratered.",
+    "speakAloud": "The differences in crust thickness and maria distribution are due to different geological processes over billions of years.",
+    "fontSize": 14,
+    "x": 320,
+    "y": 400,
+    "backgroundColor": "#F8F9FA",
+    "width": 300,
+    "height": 200
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 200,
+    "y1": 300,
+    "x2": 500,
+    "y2": 300,
+    "speakAloud": "Here's a connection between the near and far sides."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "As diferentes fases do amor",
+    "speakAloud": "Vamos explorar as diferentes fases que o amor pode passar, desde o início até a maturidade.",
+    "fontSize": 20,
+    "textColor": "#333333",
+    "x": 100,
+    "y": 100
+  },
+  {
+    "type": "card",
+    "content": "Primeira Fase: Atração e Idealização",
+    "speakAloud": "Nesta fase inicial, há uma forte atração física e emocional.  A pessoa idealiza o outro, focando apenas nos seus pontos positivos.",
+    "backgroundColor": "#F8F9FA",
+    "width": 300,
+    "height": 200,
+    "x": 400,
+    "y": 100
+  },
+  {
+    "type": "image",
+    "search": "two people falling in love",
+    "x": 600,
+    "y": 100,
+    "height": 200,
+    "speakAloud": "Esta imagem representa a sensação inicial de cair no amor."
+  },
+  {
+    "type": "card",
+    "content": "Segunda Fase: Paixão e Intimidade",
+    "speakAloud": "A paixão domina, com forte desejo e necessidade de proximidade. A intimidade emocional aumenta, mas pode ser instável e intensa.",
+    "backgroundColor": "#F8F9FA",
+    "width": 300,
+    "height": 200,
+    "x": 400,
+    "y": 300
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 400, "y1": 200, "x2": 600, "y2": 200,
+    "speakAloud": "A paixão pode evoluir para uma conexão mais profunda."
+  },
+  {
+    "type": "card",
+    "content": "Terceira Fase: Compromisso e Realidade",
+    "speakAloud": "A paixão diminui e o casal enfrenta a realidade, aprendendo a lidar com diferenças e construir um relacionamento duradouro. O compromisso e a confiança são fundamentais.",
+    "backgroundColor": "#F8F9FA",
+    "width": 300,
+    "height": 200,
+    "x": 400,
+    "y": 500
+  },
+  {
+    "type": "text",
+    "content": "Este ciclo pode se repetir em diferentes momentos do relacionamento.",
+    "speakAloud": "É comum que o amor passe por diferentes fases ao longo da vida.",
+    "fontSize": 16,
+    "textColor": "#333333",
+    "x": 100,
+    "y": 600
+  },
+  {
+    "type": "card",
+    "content": "Importante: Cada relacionamento é único!",
+    "speakAloud": "Lembre-se que cada relacionamento tem o seu próprio ritmo e dinâmica. Não existe uma fórmula única para o amor.",
+    "backgroundColor": "#FFF3E0",
+    "width": 300,
+    "height": 200,
+    "x": 700,
+    "y": 500
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "**Fotossíntese:** O processo pelo qual as plantas convertem luz solar em energia.",
+    "speakAloud": "A fotossíntese é fundamental para a vida na Terra. As plantas usam a luz do sol para criar seu próprio alimento.",
+    "fontSize": 20,
+    "x": 50,
+    "y": 50,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "A fotossíntese ocorre nas folhas das plantas, em estruturas chamadas **cloroplastos**. Eles contêm **clorofila**, que absorve a luz solar.",
+    "speakAloud": "A clorofila é o pigmento verde que dá às plantas a sua cor.  Ela é essencial para capturar a energia da luz solar.",
+    "backgroundColor": "#E3F2FD",
+    "x": 300,
+    "y": 50,
+    "width": 350,
+    "height": 200
+  },
+  {
+    "type": "image",
+    "search": "fotossíntese diagrama",
+    "x": 50,
+    "y": 250,
+    "height": 300,
+    "speakAloud": "Esta imagem mostra o processo da fotossíntese em detalhes, com as moléculas de água e dióxido de carbono entrando e a glicose e oxigênio saindo."
+  },
+  {
+    "type": "text",
+    "content": "As duas fases principais são a **fase clara** e a **fase escura** (Ciclo de Calvin).",
+    "speakAloud": "A fotossíntese tem duas etapas principais: a fase clara e a fase escura. Vamos entender cada uma delas.",
+    "fontSize": 18,
+    "x": 50,
+    "y": 450,
+    "textColor": "#333333"
+  },
+  {
+     "type": "card",
+    "content": "**Fase Clara:** A luz solar é capturada e a água é quebrada, liberando oxigênio.",
+    "speakAloud": "Na fase clara, a energia da luz solar é usada para quebrar moléculas de água e liberar oxigênio na atmosfera. Este é o oxigênio que respiramos!",
+    "backgroundColor": "#F3E5F5",
+    "x": 300,
+    "y": 450,
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "card",
+    "content": "**Fase Escura (Ciclo de Calvin):** O dióxido de carbono é usado para criar glicose (açúcar) que alimenta a planta.",
+    "speakAloud": "Na fase escura, o dióxido de carbono do ar é combinado com outras moléculas para produzir glicose, um tipo de açúcar que a planta usa como alimento.",
+    "backgroundColor": "#F3E5F5",
+    "x": 300,
+    "y": 600,
+    "width": 350,
+    "height": 150
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 100, "y1": 400, "x2": 400, "y2": 400,
+    "speakAloud": "A fase clara e a fase escura são interdependentes para criar a energia que as plantas precisam."
+  },
+  {
+    "type": "text",
+    "content": "A equação geral da fotossíntese é:  $6CO_2 + 6H_2O + \text{luz} \rightarrow C_6H_{12}O_6 + 6O_2$",
+    "speakAloud": "Esta é a equação química que resume a fotossíntese.  Ela mostra os ingredientes e os produtos do processo.",
+    "fontSize": 16,
+    "x": 50,
+    "y": 700,
+    "textColor": "#333333"
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "**Fotossíntese** é o processo pelo qual as plantas convertem luz solar em energia.",
+    "speakAloud": "A fotossíntese é a base da vida na Terra, permitindo que as plantas produzam o alimento que precisam para crescer.  Este processo utiliza a energia da luz solar.",
+    "fontSize": 20,
+    "x": 50,
+    "y": 50,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "A fotossíntese ocorre nas **cloroplastos** das células vegetais, que contêm a clorofila.",
+    "speakAloud": "As cloroplastos são as fábricas de fotossíntese dentro das células das plantas. A clorofila é o pigmento que dá às plantas a sua cor verde e absorve a luz solar.",
+    "backgroundColor": "#E3F2FD",
+    "x": 300,
+    "y": 50,
+    "width": 300,
+    "height": 200
+  },
+  {
+    "type": "image",
+    "search": "chloroplast diagram",
+    "x": 50,
+    "y": 250,
+    "height": 200,
+    "speakAloud": "Esta imagem mostra um diagrama de uma cloroplasto, a estrutura onde a fotossíntese acontece."
+  },
+  {
+    "type": "card",
+    "content": "A equação geral da fotossíntese é:  $6CO_2 + 6H_2O + \text{luz} \rightarrow C_6H_{12}O_6 + 6O_2$ ",
+    "speakAloud": "A equação da fotossíntese mostra que o dióxido de carbono e a água, na presença de luz solar, são transformados em glicose e oxigénio.",
+    "backgroundColor": "#F3E5F5",
+    "x": 300,
+    "y": 250,
+    "width": 300,
+    "height": 200
+  },
+  {
+    "type": "text",
+    "content": "As plantas absorvem dióxido de carbono do ar através dos estômatos e água através das raízes.",
+    "speakAloud": "A água e o dióxido de carbono são os ingredientes principais da fotossíntese e entram na planta por diferentes vias.",
+    "fontSize": 16,
+    "x": 50,
+    "y": 450,
+    "textColor": "#333333"
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 150, "y1": 300, "x2": 150, "y2": 450,
+    "speakAloud": "A água é absorvida pelas raízes e transportada para as folhas."
+  },
+  {
+    "type": "text",
+    "content": "O oxigénio é libertado para a atmosfera como subproduto.",
+    "speakAloud": "O oxigénio que respiramos é um subproduto essencial da fotossíntese, liberado pelas plantas na atmosfera.",
+    "fontSize": 16,
+    "x": 50,
+    "y": 600,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "A fotossíntese é vital para a vida na Terra, fornecendo alimento e oxigénio.",
+    "speakAloud": "Sem a fotossíntese, não haveria alimento para a maioria dos organismos e também não teríamos o oxigénio necessário para respirar.",
+    "backgroundColor": "#E8F5E8",
+    "x": 300,
+    "y": 450,
+    "width": 300,
+    "height": 200
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Fotossíntese",
+    "speakAloud": "A fotossíntese é o processo pelo qual as plantas convertem luz, água e dióxido de carbono em oxigénio e energia na forma de açúcar."
+  },
+  {
+    "type": "card",
+    "content": "**Definição:** Processo que transforma energia luminosa em energia química.",
+    "speakAloud": "A fotossíntese é essencial para a vida na Terra, pois produz o oxigénio que respiramos e forma a base da cadeia alimentar.",
+    "backgroundColor": "#E8F5E8",
+    "x": 100,
+    "y": 100,
+    "width": 300,
+    "height": 200
+  },
+  {
+    "type": "image",
+    "search": "fotossíntese diagrama",
+    "x": 450,
+    "y": 100,
+    "height": 300,
+    "speakAloud": "Este diagrama mostra os principais componentes e etapas da fotossíntese."
+  },
+  {
+    "type": "card",
+    "content": "**Ingredientes:** Luz solar, água ($H_2O$), dióxido de carbono ($CO_2$)",
+    "speakAloud": "As plantas absorvem água pelas raízes e dióxido de carbono pelas folhas através de pequenos poros chamados estômatos.",
+    "backgroundColor": "#F3E5F5",
+    "x": 100,
+    "y": 350,
+    "width": 300,
+    "height": 200
+  },
+  {
+    "type": "card",
+    "content": "**O que é produzido?:** Oxigénio ($O_2$) e glicose (açúcar que serve de alimento para a planta)",
+    "speakAloud": "O oxigénio é libertado na atmosfera e a glicose é utilizada pela planta para crescer e se desenvolver.",
+    "backgroundColor": "#F3E5F5",
+    "x": 450,
+    "y": 350,
+    "width": 300,
+    "height": 200
+  },
+   {
+    "type": "line",
+    "thickness": "thin",
+    "x1": 200,
+    "y1": 250,
+    "x2": 200,
+    "y2": 350,
+    "speakAloud": "A água entra pelas raízes e o dióxido de carbono pelas folhas."
+  },
+  {
+    "type": "line",
+    "thickness": "thin",
+    "x1": 300,
+    "y1": 250,
+    "x2": 300,
+    "y2": 350,
+    "speakAloud": "A luz solar fornece a energia para o processo."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "**Photosynthesis** is the process plants use to convert light energy into chemical energy in the form of sugars.",
+    "speakAloud": "Photosynthesis is how plants make their own food. It's a really important process for life on Earth!",
+    "fontSize": 20,
+    "x": 100,
+    "y": 100,
+    "textColor": "#333333"
+  },
+  {
+    "type": "card",
+    "content": "The process uses sunlight, water, and carbon dioxide.  It releases oxygen as a byproduct.",
+    "speakAloud": "Plants take in water through their roots and carbon dioxide from the air. Sunlight provides the energy to power the reaction.",
+    "backgroundColor": "#E3F2FD",
+    "x": 400,
+    "y": 100,
+    "width": 300,
+    "height": 200
+  },
+  {
+    "type": "image",
+    "search": "photosynthesis diagram",
+    "x": 100,
+    "y": 250,
+    "height": 300,
+    "speakAloud": "This diagram shows the key ingredients and outputs of photosynthesis."
+  },
+  {
+    "type": "card",
+    "content": "Key ingredients: Sunlight, Water ($H_2O$), Carbon Dioxide ($CO_2$)",
+    "speakAloud": "These are the essential substances plants need for photosynthesis. Water is absorbed from the soil, and carbon dioxide enters through tiny pores in the leaves called stomata.",
+    "backgroundColor": "#F3E5F5",
+    "x": 400,
+    "y": 250,
+    "width": 300,
+    "height": 200
+  },
+  {
+    "type": "card",
+    "content": "Output: Glucose ($C_6H_{12}O_6$) (sugar) and Oxygen ($O_2$) ",
+    "speakAloud": "Glucose is the plant's food source, giving it energy to grow. Oxygen is released into the atmosphere, which animals and humans breathe.",
+    "backgroundColor": "#F3E5F5",
+    "x": 400,
+    "y": 400,
+    "width": 300,
+    "height": 200
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 200,
+    "y1": 150,
+    "x2": 200,
+    "y2": 350,
+    "speakAloud": "Sunlight and water are combined to create sugars."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 600,
+    "y1": 150,
+    "x2": 600,
+    "y2": 350,
+    "speakAloud": "Carbon Dioxide is used in the process."
+  },
+  {
+    "type": "text",
+    "content": "Photosynthesis is crucial for life as we know it!",
+    "speakAloud": "Without photosynthesis, there would be very little oxygen in the atmosphere and most life on Earth could not exist.",
+    "fontSize": 18,
+    "x": 100,
+    "y": 550,
+    "textColor": "#333333"
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Como se faz o **azeite**?",
+    "speakAloud": "Vamos aprender como o azeite é produzido e qual a sua importância na culinária.",
+    "fontSize": 20,
+    "textColor": "#333333",
+    "x": 100,
+    "y": 50
+  },
+  {
+    "type": "card",
+    "content": "**Da oliveira à garrafa:** O processo de extração do azeite é um cuidado com a qualidade.",
+    "speakAloud": "O azeite é extraído das azeitonas, seguindo um processo que visa preservar o sabor e os nutrientes.",
+    "backgroundColor": "#E3F2FD",
+    "x": 100,
+    "y": 150,
+    "width": 400,
+    "height": 200
+  },
+  {
+    "type": "image",
+    "search": "oliveira azeitonas",
+    "x": 100,
+    "y": 350,
+    "height": 200,
+    "speakAloud": "Esta imagem mostra a oliveira e as azeitonas, a matéria-prima para fazer o azeite."
+  },
+    {
+    "type": "card",
+    "content": "**Processo de Extração:** As azeitonas são lavadas, moídas e pressionadas. Existem dois tipos principais: prensagem a frio e prensagem a quente.",
+    "speakAloud": "O azeite é extraído das azeitonas através de prensagem, que pode ser a frio ou a quente. A prensagem a frio preserva melhor o sabor e os nutrientes.",
+    "backgroundColor": "#F3E5F5",
+    "x": 500,
+    "y": 150,
+    "width": 400,
+    "height": 200
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 200,
+    "y1": 250,
+    "x2": 700,
+    "y2": 250,
+    "speakAloud": "A prensagem a frio é mais saudável."
+  },
+  {
+    "type": "card",
+    "content": "**Tipos de Azeite:** Azeite virgem extra, azeite extra virgem, azeite lampante.  O azeite extra virgem é o de melhor qualidade.",
+    "speakAloud": "Existem diferentes tipos de azeite, cada um com características específicas. O azeite extra virgem é considerado o de maior qualidade.",
+    "backgroundColor": "#E8F5E8",
+    "x": 100,
+    "y": 350,
+    "width": 400,
+    "height": 200
+  },
+    {
+    "type": "text",
+    "content": "**Utilização:** Ideal para temperar saladas, cozinhar e finalizar pratos.",
+    "speakAloud": "O azeite é muito utilizado na culinária, tanto para temperar quanto para cozinhar.",
+    "fontSize": 16,
+    "textColor": "#333333",
+    "x": 100,
+    "y": 550
+  },
+  {
+    "type": "card",
+    "content": "**Armazenamento:** Guarde em local fresco e escuro, longe da luz e do calor.",
+    "speakAloud": "Para manter as qualidades do azeite, é importante armazená-lo corretamente.",
+    "backgroundColor": "#FFF3E0",
+    "x": 500,
+    "y": 350,
+    "width": 400,
+    "height": 200
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Resolvendo a conta: $4 \times 8 = ?$",
+    "speakAloud": "Vamos resolver esta multiplicação simples. Precisamos encontrar o produto de 4 vezes 8.",
+    "fontSize": 20,
+    "textColor": "#333333",
+    "x": 100,
+    "y": 100
+  },
+  {
+    "type": "card",
+    "content": "Multiplicação: $4 \times 8$",
+    "speakAloud": "A multiplicação é uma forma abreviada de adição repetida.  Neste caso, estamos somando 4 oito vezes. Podemos pensar nisso como 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4.",
+    "fontSize": 16,
+    "backgroundColor": "#F3E5F5",
+    "width": 300,
+    "height": 200,
+    "x": 250,
+    "y": 120
+  },
+  {
+    "type": "text",
+    "content": "Calculando:",
+    "speakAloud": "Vamos começar a somar: 4 + 4 = 8.  Depois, 8 + 4 = 12.  Continuamos com 12 + 4 = 16 e assim por diante.",
+    "fontSize": 18,
+    "textColor": "#333333",
+    "x": 250,
+    "y": 200
+  },
+  {
+    "type": "text",
+    "content": "Resposta:",
+    "speakAloud": "Portanto, $4 \times 8 = 32$.",
+    "fontSize": 20,
+    "textColor": "#333333",
+    "x": 350,
+    "y": 200
+  },
+  {
+    "type": "image",
+    "search": "4 times 8 visual",
+    "x": 100,
+    "y": 250,
+    "height": 150,
+    "speakAloud": "Esta imagem ajuda a visualizar a multiplicação como a soma de grupos iguais."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 200, "y1": 150, "x2": 200, "y2": 250,
+    "speakAloud": "Isto mostra a relação entre a multiplicação e a adição."
+  }
+]
+```
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Photosynthesis: Converting Light into Life",
+    "fontSize": 36,
+    "x": 960,
+    "y": 50,
+    "textColor": "#333333",
+    "speakAloud": "Photosynthesis is the process that plants and some other organisms use to convert light energy into chemical energy in the form of sugars."
+  },
+  {
+    "type": "card",
+    "content": "**Definition:** The process by which plants use sunlight, water, and carbon dioxide to create oxygen and energy in the form of sugar (glucose).",
+    "fontSize": 20,
+    "x": 100,
+    "y": 200,
+    "width": 400,
+    "height": 250,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "Photosynthesis essentially transforms light energy, water, and carbon dioxide into usable energy for the plant, releasing oxygen as a byproduct."
+  },
+  {
+    "type": "image",
+    "search": "photosynthesis diagram",
+    "x": 100,
+    "y": 450,
+    "height": 300,
+    "speakAloud": "This diagram shows the key components and steps involved in the process of photosynthesis, including the inputs and outputs."
+  },
+  {
+    "type": "card",
+    "content": "**Key Ingredients:**\n*   **Sunlight:** Provides the energy for the process.\n*   **Water ($H_2O$):** Absorbed through the roots.\n*   **Carbon Dioxide ($CO_2$):** Taken in from the atmosphere through tiny pores called stomata.",
+    "fontSize": 18,
+    "x": 650,
+    "y": 200,
+    "width": 300,
+    "height": 250,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Plants need sunlight, water, and carbon dioxide to carry out photosynthesis efficiently. Each plays a crucial role in providing the necessary resources."
+  },
+  {
+    "type": "card",
+    "content": "**The Process (Simplified):**\n1.  **Light-Dependent Reactions:** Sunlight is absorbed by chlorophyll.\n2.  **Light-Independent Reactions (Calvin Cycle):** CO2 is converted into glucose using the energy from the light-dependent reactions.",
+    "fontSize": 18,
+    "x": 100,
+    "y": 700,
+    "width": 500,
+    "height": 200,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Photosynthesis occurs in two main stages: the light-dependent reactions, which capture light energy, and the light-independent reactions, which use that energy to produce sugar."
+  },
+  {
+    "type": "card",
+    "content": "**Where it Happens:** Chloroplasts, specifically within the cells of leaves.",
+    "fontSize": 18,
+    "x": 650,
+    "y": 700,
+    "width": 300,
+    "height": 200,
+    "backgroundColor": "#E8F5E9",
+    "speakAloud": "Photosynthesis takes place inside organelles called chloroplasts, which are mainly found in the cells of plant leaves."
+  },
+  {
+    "type": "card",
+    "content": "**Importance:**\n*   Produces oxygen essential for animal life.\n*   Forms the base of most food chains.\n*   Removes carbon dioxide from the atmosphere.",
+    "fontSize": 18,
+    "x": 100,
+    "y": 950,
+    "width": 500,
+    "height": 200,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "Photosynthesis is vital for life on Earth, as it generates the oxygen we breathe, forms the foundation of food chains, and helps regulate the planet's climate."
+  },
+  {
+    "type": "line",
+    "thickness": "m",
+    "x1": 100,
+    "y1": 800,
+    "x2": 1400,
+    "y2": 800,
+    "speakAloud": "The products of photosynthesis - glucose and oxygen - are crucial for the survival of plants and many other organisms."
+  }
+]
+```
+---

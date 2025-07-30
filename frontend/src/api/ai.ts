@@ -2,7 +2,7 @@
 
 import { BACKEND_URL } from '../config';
 import { useAppStore, type LineData } from '../store/useAppStore';
-import renderMarkdownToImage from '../utils/RenderToImage';
+import renderMarkdownToImage from '../utils/renderToImage';
 import { speakText } from '../utils/tts';
 
 /**
@@ -31,9 +31,9 @@ export const handleAIChatRequest = async (prompt: string, getPointerPosition: ()
                 const content = element.content || '';
                 const width = element.width || 500;
                 try {
-                    // Speak card content
-                    if (content && typeof content === 'string') {
-                        speakText(content).catch(console.error);
+                    // Speak only if speakAloud is present
+                    if (element.speakAloud && typeof element.speakAloud === 'string') {
+                        speakText(element.speakAloud).catch(console.error);
                     }
                     const { dataURL, height } = await renderMarkdownToImage(content, width, {
                         backgroundColor: element.backgroundColor || '#ffffff',
@@ -60,9 +60,9 @@ export const handleAIChatRequest = async (prompt: string, getPointerPosition: ()
                 const content = element.content || '';
                 const width = element.width || 550;
                 try {
-                    // Speak text content
-                    if (content && typeof content === 'string') {
-                        speakText(content).catch(console.error);
+                    // Speak only if speakAloud is present
+                    if (element.speakAloud && typeof element.speakAloud === 'string') {
+                        speakText(element.speakAloud).catch(console.error);
                     }
                     const { dataURL, height } = await renderMarkdownToImage(content, width, {
                         fontSize: '18px',

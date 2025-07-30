@@ -27,7 +27,16 @@ export const DesktopToolbar: React.FC<ToolbarProps> = ({
     );
 
     return (
-        <div className="flex items-center gap-3 bg-white/95 backdrop-blur-xl p-3 rounded-2xl shadow-2xl">
+        <div
+            className="flex items-center gap-3 px-5 py-3 rounded-full"
+            style={{
+                background: 'rgba(255, 255, 255, 0.25)',
+                boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1px solid rgba(255, 255, 255, 0.18)',
+            }}
+        >
             <ToolButton label="Navigate" icon={Move} active={currentTool === 'move'} onClick={() => actions.setCurrentTool('move')} disabled={isUploading} />
             <ToolButton label="Draw" icon={Pen} active={currentTool === 'pen'} onClick={() => actions.setCurrentTool('pen')} disabled={isUploading} />
             <ToolButton label="Erase" icon={Eraser} active={currentTool === 'eraser'} onClick={() => actions.setCurrentTool('eraser')} disabled={isUploading} />

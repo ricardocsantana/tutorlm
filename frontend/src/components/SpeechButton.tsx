@@ -44,10 +44,13 @@ export const SpeechButton: React.FC<SpeechButtonProps> = ({ onStart, onStop }) =
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                     disabled={isUploading || aiState !== 'idle'}
-                    className="p-5 rounded-full bg-gradient-to-br bg-gradient-to-tr from-[#745bff] via-[#f95bf6] to-[#ff7a41] text-white transition-transform duration-200 active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="relative p-5 rounded-full bg-gradient-to-br from-[#745bff] via-[#f95bf6] to-[#ff7a41] text-white transition-transform duration-200 active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-fuchsia-400/30 hover:shadow-2xl hover:shadow-fuchsia-400/50 before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-br before:from-[#745bff] before:via-[#f95bf6] before:to-[#ff7a41] before:blur-md before:opacity-60 before:animate-pulse"
                     title="Click or Hold Spacebar to Talk"
+                    style={{ overflow: 'visible' }}
                 >
-                    <Mic size={28} />  
+                    <span className="relative z-10 flex items-center justify-center">
+                        <Mic size={28} />
+                    </span>
                 </motion.button>
             )}
         </AnimatePresence>

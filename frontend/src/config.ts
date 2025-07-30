@@ -8,10 +8,7 @@ export const BACKEND_URL = 'http://localhost:8000';
 export const SUPPORTED_LANGUAGES: { [key: string]: string } = {
     'en-US': 'English',
     'es-ES': 'Español',
-    'fr-FR': 'Français',
-    'de-DE': 'Deutsch',
     'pt-PT': 'Português',
-    'it-IT': 'Italiano',
 };
 
 /**
