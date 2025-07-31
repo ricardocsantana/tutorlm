@@ -2610,3 +2610,133 @@ You asked me to provide information about the planets in our solar system. I res
 ]
 ```
 ---
+
+---
+```json
+[
+  {
+    "type": "text",
+    "content": "Our Solar System",
+    "fontSize": 60,
+    "x": 100,
+    "y": 50,
+    "textColor": "#333333",
+    "speakAloud": "This is an overview of our solar system, including the Sun and all the planets that orbit it."
+  },
+  {
+    "type": "image",
+    "search": "solar system image",
+    "x": 500,
+    "y": 150,
+    "width": 300,
+    "height": 200,
+    "speakAloud": "This image shows the Sun and the planets in our solar system, illustrating their relative positions."
+  },
+  {
+    "type": "card",
+    "content": "The **Sun**: A star at the center of our solar system. It provides light and heat to all the planets.",
+    "fontSize": 24,
+    "x": 100,
+    "y": 350,
+    "width": 350,
+    "height": 150,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "The Sun is a giant ball of hot gas, mostly hydrogen and helium. It's incredibly important for life on Earth."
+  },
+  {
+    "type": "card",
+    "content": "**Planets**: Large celestial bodies that orbit the Sun. There are eight planets in our solar system.",
+    "fontSize": 24,
+    "x": 450,
+    "y": 350,
+    "width": 350,
+    "height": 150,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Planets are different sizes and have different characteristics. Some are rocky, and some are gas giants."
+  },
+  {
+    "type": "card",
+    "content": "The **Inner Planets**: Mercury, Venus, Earth, and Mars. These are rocky planets close to the Sun.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 550,
+    "width": 350,
+    "height": 120,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "These planets are smaller and have solid surfaces. They are closer to the Sun, so they are hotter."
+  },
+  {
+    "type": "card",
+    "content": "Mercury is the smallest planet and closest to the Sun. Venus is very hot and covered in thick clouds. Earth is our home, with liquid water and life! Mars is known as the 'Red Planet'.",
+    "fontSize": 18,
+    "x": 100,
+    "y": 670,
+    "width": 350,
+    "height": 180,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "Each inner planet has unique features. Mercury is very hot during the day and cold at night. Venus has a toxic atmosphere. Mars has polar ice caps."
+  },
+  {
+    "type": "card",
+    "content": "The **Outer Planets**: Jupiter, Saturn, Uranus, and Neptune. These are gas giants far from the Sun.",
+    "fontSize": 20,
+    "x": 450,
+    "y": 550,
+    "width": 350,
+    "height": 120,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "These planets are much larger than the inner planets and are made mostly of gases like hydrogen and helium."
+  },
+  {
+    "type": "card",
+    "content": "Jupiter is the largest planet, with a giant red spot (a huge storm). Saturn has beautiful rings made of ice and rock. Uranus rotates on its side! Neptune is a very windy, blue planet.",
+    "fontSize": 18,
+    "x": 450,
+    "y": 670,
+    "width": 350,
+    "height": 180,
+    "backgroundColor": "#F3E5F5",
+    "speakAloud": "The outer planets are very cold and have strong winds. Saturn's rings are made of billions of small particles."
+  },
+  {
+    "type": "line",
+    "x1": 200, "y1": 400,
+    "x2": 300, "y2": 400,
+    "speakAloud": "The planets orbit the Sun in elliptical paths."
+  },
+   {
+    "type": "card",
+    "content": " **Dwarf Planets**: Pluto is a dwarf planet. It's smaller than the other planets and doesn't clear its orbit.",
+    "fontSize": 20,
+    "x": 100,
+    "y": 790,
+    "width": 350,
+    "height": 120,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Dwarf planets are similar to planets but don't meet all the criteria. Pluto was once considered a planet."
+  },
+    {
+    "type": "card",
+    "content": " **Asteroid Belt**: Located between Mars and Jupiter, it contains many rocky objects called asteroids.",
+    "fontSize": 20,
+    "x": 450,
+    "y": 790,
+    "width": 350,
+    "height": 120,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "The asteroid belt is a region of space filled with fragments of rock and metal."
+  },
+    {
+    "type": "card",
+    "content": "**Moons**: Natural satellites that orbit planets. Earth has one moon, while some planets have many!",
+    "fontSize": 20,
+    "x": 100,
+    "y": 910,
+    "width": 350,
+    "height": 120,
+    "backgroundColor": "#E3F2FD",
+    "speakAloud": "Moons are fascinating objects that can have different sizes and compositions."
+  }
+]
+```
+---
