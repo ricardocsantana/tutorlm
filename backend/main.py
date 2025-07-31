@@ -10,6 +10,7 @@ import wave
 from dotenv import load_dotenv
 from pathlib import Path
 from typing import Dict, Any
+from collections import defaultdict, deque
 
 from fastapi import FastAPI, UploadFile, File, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -38,8 +39,8 @@ load_dotenv()
 # --- CONFIGURATION ---
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 UNSPLASH_API_KEY = os.getenv("UNSPLASH_ACCESS_KEY") # <-- Added for image search
-#MULTIMODAL_MODEL_NAME = "google/gemma-3n-e4b-it"
-MULTIMODAL_MODEL_NAME = "google/gemini-2.5-flash"
+MULTIMODAL_MODEL_NAME = "google/gemma-3n-e4b-it"
+#MULTIMODAL_MODEL_NAME = "google/gemini-2.5-flash"
 UPLOADS_DIR = Path("uploads")
 UPLOADS_DIR.mkdir(exist_ok=True)
 TEXT_SIM_THRESHOLD = float(os.getenv("TEXT_SIM_THRESHOLD", "0.5"))
@@ -49,6 +50,10 @@ logging.info("Initializing application state...")
 rag_state = { "text_retriever": None }
 current_language = {"lang": "en_US"}  # Default language
 difficulty_level = {"difficulty": "easy"}  # Default difficulty
+
+# --- CHAT HISTORY STATE ---
+MAX_CHAT_HISTORY = 5
+chat_histories = defaultdict(lambda: deque(maxlen=MAX_CHAT_HISTORY))
 
 device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
 logging.info(f"Using device: {device}")
@@ -77,17 +82,15 @@ def get_voice_for_lang(lang: str):
 
 logging.info("Loading text embedding model...")
 text_embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2",
+    model_name="./local_models/all-MiniLM-L6-v2",
     model_kwargs={'device': device}
 )
 
 logging.info(f"Initializing LLM client with model: {MULTIMODAL_MODEL_NAME}...")
 llm = ChatOpenAI(
     model=MULTIMODAL_MODEL_NAME,
-    api_key=OPENROUTER_API_KEY,
-    base_url="https://openrouter.ai/api/v1",
-    #api_key="ollama",
-    #base_url="http://localhost:11434/v1",
+    base_url="http://127.0.0.1:1234/v1",
+    api_key="lmstudio",
     max_tokens=2048,
 )
 logging.info("All models loaded successfully.")
@@ -291,12 +294,27 @@ async def image_search(q: str):
 async def chat_handler(request: Request):
     body = await request.json()
     user_prompt = body.get("prompt")
-    # Add language to prompt
+    session_id = body.get("session_id", "default")
     lang = current_language.get("lang", "en")
     difficulty = difficulty_level.get("difficulty", "easy")
     logging.info(f"Received chat request with prompt: '{user_prompt[:50]}...' (lang: {lang})")
     if not user_prompt:
         raise HTTPException(status_code=400, detail="Prompt is required.")
+
+    # --- Check Unsplash availability early ---
+    unsplash_available = False
+    if UNSPLASH_API_KEY:
+        try:
+            async with httpx.AsyncClient(timeout=2.0) as client:
+                ping = await client.get(
+                    "https://api.unsplash.com/photos/random",
+                    headers={"Authorization": f"Client-ID {UNSPLASH_API_KEY}"},
+                    params={"count": 1}
+                )
+                if ping.status_code == 200:
+                    unsplash_available = True
+        except Exception as e:
+            logging.warning(f"Unsplash API not reachable: {e}")
 
     retrieved_text = ""
     if rag_state["text_retriever"]:
@@ -308,31 +326,56 @@ async def chat_handler(request: Request):
         except Exception as e:
             logging.error(f"Error during RAG retrieval: {e}")
 
+    # --- Build system prompt, conditionally including image schema ---
     system_text = """
 You are TutorLM, an expert visual educator. Your purpose is to convert any given topic into a single, valid JSON array representing a visual learning canvas.
 
-Your entire output MUST be a single, valid JSON array. Do not add explanations or JSON.
+Your entire output MUST be a single, valid JSON array. Do not add explanations or surrounding text.
 
-Core Principles
-Visual Narrative: Think like a teacher. Design a logical flow from the main topic to key concepts, definitions, and examples.
+---
 
-Clarity & Brevity: Keep all text concise. Use bold for key terms and LaTeX for math (e.g., $E=mc^2$).
+## Core Principles
 
-Logical Layout: Arrange elements on a 1920x1080 canvas. x, y coordinates represent the top-left corner of each element. Ensure elements do not overlap and are visually aligned for clarity and readability.
+**Visual Narrative**: Think like a teacher. Design a logical flow from the main topic to key concepts, definitions, and examples.
 
-Universal Rule
-Narration: Every element MUST have a speakAloud field containing a brief (1-2 sentence) narration of its content for text-to-speech. The speakAloud field must contain plain text (no markdown, no LaTeX).
+**Clarity & Brevity**: Keep all text concise. Use bold for key terms and LaTeX for math (e.g., $E=mc^2$).
 
-Element Colors (card backgroundColor)
-Category	Color	Use Case
-Key Concept	#E3F2FD	Core ideas or process steps.
-Definition	#E8F5E9	Explanations of terms.
-Example	#F3E5F5	Concrete examples.
-Important Note	#FFF3E0	Crucial facts or tips.
+**Universal Rule**: Every element MUST have a `speakAloud` field containing a brief (1-2 sentence) narration of its content for text-to-speech. The `speakAloud` field must contain plain text (no markdown, no LaTeX).
 
-Export to Sheets
-JSON Element Schemas
-1. Text (for titles/labels)
+---
+
+## Layout Rules & Strategy (Canvas: 1920x1080)
+
+**1. Coordinate System & Padding**:
+* All `x`, `y` coordinates represent the **top-left corner** of an element.
+* A **minimum padding of 40px** MUST be maintained between all elements.
+* The bounding box of one element (`x`, `y`, `width`, `height`) must never overlap with another.
+
+**2. Layout Pattern Selection**:
+Before generating JSON, choose a layout pattern that fits the topic:
+* **Top-Down Flow**: Best for processes or steps. Arrange elements vertically.
+* **Columnar**: Best for comparisons or categories. Arrange content in 2-3 vertical columns.
+* **Hub & Spoke**: Best for a central topic with related sub-points. Place the main idea in the center and radiate concepts outwards.
+
+**3. Element Sizing**:
+* You MUST define an explicit `width` and `height` for every `card` and `image` element.
+* To estimate `card` height, start with a base of `120px` and add approximately `40px` for every two lines of content.
+
+---
+
+## Element Colors (card backgroundColor)
+
+- **Key Concept**: `#E3F2FD` (Core ideas or process steps)
+- **Definition**: `#E8F5E9` (Explanations of terms)
+- **Example**: `#F3E5F5` (Concrete examples)
+- **Important Note**: `#FFF3E0` (Crucial facts or tips)
+
+---
+
+## JSON Element Schemas
+
+**1. Text (for titles/labels)**
+
 JSON
 
 {
@@ -344,20 +387,24 @@ JSON
   "textColor": "#333333",
   "speakAloud": "Spoken-word version of the text."
 }
+
 2. Card (for content blocks)
+
 JSON
 
 {
-  "type": "card", 
+  "type": "card",
   "content": "Main content, using **bold** or bullet points.",
   "fontSize": 20,
   "x": 100,
   "y": 200,
   "width": 350,
+  "height": 180,
   "backgroundColor": "#E3F2FD",
   "speakAloud": "A brief explanation of this card's content."
 }
 3. Line (for connections)
+
 JSON
 
 {
@@ -367,6 +414,10 @@ JSON
   "x2": 300, "y2": 400,
   "speakAloud": "Describes the connection (e.g., 'This leads to...')."
 }
+"""
+    # Only add the Image schema if Unsplash is available
+    if unsplash_available:
+        system_text += """
 4. Image (for illustration)
 JSON
 
@@ -375,9 +426,12 @@ JSON
   "search": "a simple, clear search query for an image",
   "x": 100,
   "y": 500,
+  "width": 150,
   "height": 150,
   "speakAloud": "A description of what the image illustrates."
-}"""
+}
+"""
+
     # Add language and difficulty info to system prompt
     system_text += f"\n\nThe user has selected the language: '{lang}'. Output all text and speakAloud fields in this language."
     system_text += f"\n\nThe user has selected the explanation difficulty: '{difficulty}'. Easy corresponds to elementary level, medium to secondary level, and hard to college level. Make your explanation at this level."
@@ -386,20 +440,30 @@ JSON
         system_text += f"\n\nUse the following text context to answer the user's question:\n---\n{retrieved_text}\n---"
     
     messages = [SystemMessage(content=system_text)]
-    
+
+    # --- Add chat history as alternating Human/Assistant messages ---
+    history = chat_histories[session_id]
+    for turn in history:
+        if "user" in turn:
+            messages.append(HumanMessage(content=[{"type": "text", "text": turn["user"]}]))
+        if "assistant" in turn:
+            messages.append(SystemMessage(content=turn["assistant"]))
+
+    # Add current user message
     human_content = [{"type": "text", "text": user_prompt}]
-    
+
+    # Only add image context if Unsplash is available and reachable
+    image_files_found = 0
     logging.info(f"Scanning {UPLOADS_DIR} for image context...")
     image_extensions = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
-    image_files_found = 0
     for f in sorted(UPLOADS_DIR.glob("*")):
         if f.is_file() and f.suffix.lower() in image_extensions:
             data_url = image_to_base64_data_url(str(f))
             if data_url:
                 human_content.append({"type": "image_url", "image_url": {"url": data_url}})
                 image_files_found += 1
-
     logging.info(f"Added {image_files_found} images to the prompt.")
+
     messages.append(HumanMessage(content=human_content))
 
     async def stream_response():
@@ -413,6 +477,8 @@ JSON
             yield "Sorry, an error occurred while generating the response."
         # Log the final response after streaming
         final_response = "".join(response_chunks)
+        # --- Store the turn in chat history ---
+        history.append({"user": user_prompt, "assistant": final_response})
         async with aiofiles.open("llm_responses.txt", "a") as log_file:
             await log_file.write(final_response + "\n---\n")
 

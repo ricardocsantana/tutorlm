@@ -28,12 +28,13 @@ export const handleAIChatRequest = async (prompt: string, getPointerPosition: ()
                     console.error("Invalid card element (missing x/y):", element);
                     return;
                 }
-                const content = element.speakAloud || '';
+                const content = element.content || '';
+                const speech = element.speakAloud || '';
                 const width = element.width || 500;
                 try {
                     // Speak card content
-                    if (content && typeof content === 'string') {
-                        speakText(content).catch(console.error);
+                    if (speech && typeof speech === 'string') {
+                        speakText(speech).catch(console.error);
                     }
                     const { dataURL, height } = await renderMarkdownToImage(content, width, {
                         backgroundColor: element.backgroundColor || '#ffffff',
@@ -57,15 +58,16 @@ export const handleAIChatRequest = async (prompt: string, getPointerPosition: ()
                     console.error("Invalid text element (missing x/y):", element);
                     return;
                 }
-                const content = element.speakAloud || '';
+                const content = element.content || '';
+                const speech = element.speakAloud || '';
                 const width = element.width || 550;
                 try {
                     // Speak text content
-                    if (content && typeof content === 'string') {
-                        speakText(content).catch(console.error);
+                    if (speech && typeof speech === 'string') {
+                        speakText(speech).catch(console.error);
                     }
                     const { dataURL, height } = await renderMarkdownToImage(content, width, {
-                        fontSize: '18px',
+                        fontSize: element.fontSize ? `${element.fontSize}px` : '18px',
                         backgroundColor: 'transparent'
                     });
                     actions.addElement({

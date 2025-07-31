@@ -73,7 +73,7 @@ export const DifficultySelector: React.FC<DifficultySelectorProps> = ({ isMobile
             <select
                 value={difficulty}
                 onChange={handleChange}
-                className="bg-gray-100 hover:bg-gray-200/80 text-gray-700 text-sm font-medium rounded-lg py-2 px-4 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all border border-transparent cursor-pointer"
+                className="bg-gray-100 hover:bg-gray-200/80 text-gray-700 text-md font-medium rounded-lg py-2 px-4 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all border border-transparent cursor-pointer"
                 title="Select explanation difficulty"
                 disabled={isUploading}
             >

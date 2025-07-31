@@ -47,6 +47,7 @@
     "tailwindcss": "^4.1.11",
     "unified": "^11.0.5",
     "unsplash-js": "^7.0.19",
+    "vosk-browser": "^0.0.8",
     "zustand": "^5.0.6"
   },
   "devDependencies": {

@@ -60,7 +60,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ isMobile = f
                     actions.setRecognitionLang(e.target.value);
                     await notifyBackendLanguageChange(e.target.value);
                 }}
-                className="bg-gray-100 hover:bg-gray-200/80 text-gray-700 text-sm font-medium rounded-lg py-2 pl-9 pr-4 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all border border-transparent cursor-pointer"
+                className="bg-gray-100 hover:bg-gray-200/80 text-gray-700 text-md font-medium rounded-lg py-2 pl-9 pr-4 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all border border-transparent cursor-pointer"
                 title="Select speech recognition language"
                 disabled={isUploading}
             >
