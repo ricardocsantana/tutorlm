@@ -31,7 +31,7 @@ export const SpeechButton: React.FC<SpeechButtonProps> = ({ onStart, onStop }) =
                     transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                     disabled={isUploading}
                     className="p-5 rounded-full text-white shadow-2xl shadow-red-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
-                    title="Stop Recording (Spacebar)"
+                    title="Stop Recording"
                 >
                     <Square size={28} fill="white" />
                 </motion.button>
@@ -45,7 +45,7 @@ export const SpeechButton: React.FC<SpeechButtonProps> = ({ onStart, onStop }) =
                     transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                     disabled={isUploading || aiState !== 'idle'}
                     className="relative p-5 rounded-full bg-gradient-to-br from-[#745bff] via-[#f95bf6] to-[#ff7a41] text-white transition-transform duration-200 active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-fuchsia-400/30 hover:shadow-2xl hover:shadow-fuchsia-400/50 before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-br before:from-[#745bff] before:via-[#f95bf6] before:to-[#ff7a41] before:blur-md before:opacity-60 before:animate-pulse"
-                    title="Click or Hold Spacebar to Talk"
+                    title="Click to Talk"
                     style={{ overflow: 'visible' }}
                 >
                     <span className="relative z-10 flex items-center justify-center">

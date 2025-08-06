@@ -1,192 +1,252 @@
 // src/api/ai.ts
 
-import { BACKEND_URL } from '../config';
-import { useAppStore, type LineData } from '../store/useAppStore';
-import renderMarkdownToImage from '../utils/renderToImage';
-import { speakText } from '../utils/tts';
+import { useAppStore, type LineData } from '../store/useAppStore'
+import renderMarkdownToImage from '../utils/renderToImage'
+import { speakText } from '../utils/tts'
+// Import the backend URL from the config
+import { BACKEND_URL } from '../config'
 
 /**
- * Handles the streaming chat request to the AI backend.
- * Parses JSON objects from the stream and adds corresponding elements to the canvas.
- * @param prompt The user's text prompt for the AI.
- * @param getPointerPosition A function to get the current pointer's position on the canvas.
+ * Processes a single element object received from the backend and adds it to the canvas.
+ * This contains the detailed rendering logic for each element type.
+ * @param element The element object from the backend.
  */
-export const handleAIChatRequest = async (prompt: string, getPointerPosition: () => { x: number; y: number }) => {
-    const { actions } = useAppStore.getState();
-    actions.setAiState('thinking');
+const processElement = async (element: any) => {
+    console.log('processElement called with:', element);
 
-    const processElement = async (element: any) => {
-        if (!element.type) {
-            console.error("Invalid element received from stream (missing type):", element);
-            return;
-        }
-        const id = `${element.type}-${Date.now()}-${Math.random()}`;
+    if (!element.type) {
+        console.error("Invalid element received (missing type):", element);
+        return;
+    }
 
-        switch (element.type) {
-            case 'card': {
-                if (typeof element.x === 'undefined' || typeof element.y === 'undefined') {
-                    console.error("Invalid card element (missing x/y):", element);
-                    return;
-                }
-                const content = element.content || '';
-                const speech = element.speakAloud || '';
-                const width = element.width || 500;
-                try {
-                    // Speak card content
-                    if (speech && typeof speech === 'string') {
-                        speakText(speech).catch(console.error);
-                    }
-                    const { dataURL, height } = await renderMarkdownToImage(content, width, {
-                        backgroundColor: element.backgroundColor || '#ffffff',
-                        textColor: element.textColor || '#1f2937',
-                        padding: '16px',
-                        borderRadius: '12px',
-                        fontSize: element.fontSize ? `${element.fontSize}px` : '18px',
-                    });
-                    actions.addElement({
-                        id, type: 'image', x: element.x, y: element.y,
-                        content: dataURL, width: width, height: height, cornerRadius: 12,
-                    });
-                } catch (renderError) {
-                    console.error("Error rendering card element:", renderError);
-                    actions.addElement({ id, type: 'text', x: element.x, y: element.y, content: 'Error rendering card.', fill: 'red' });
-                }
-                break;
+    // Generate a unique ID for the new element
+    const id = `${element.type}-${Date.now()}-${Math.random()}`;
+
+    console.log(`Processing ${element.type} element with ID: ${id}`);
+
+    // STEP 1: Render the element to the canvas immediately.
+    // This switch statement handles the visual part.
+    switch (element.type) {
+        case 'card': {
+            console.log('Processing card element:', element);
+            if (typeof element.x === 'undefined' || typeof element.y === 'undefined') {
+                console.error("Invalid card element (missing x/y):", element);
+                return;
             }
-            case 'text': {
-                if (typeof element.x === 'undefined' || typeof element.y === 'undefined') {
-                    console.error("Invalid text element (missing x/y):", element);
-                    return;
-                }
-                const content = element.content || '';
-                const speech = element.speakAloud || '';
-                const width = element.width || 550;
-                try {
-                    // Speak text content
-                    if (speech && typeof speech === 'string') {
-                        speakText(speech).catch(console.error);
-                    }
-                    const { dataURL, height } = await renderMarkdownToImage(content, width, {
-                        fontSize: element.fontSize ? `${element.fontSize}px` : '18px',
-                        backgroundColor: 'transparent'
-                    });
-                    actions.addElement({
-                        id, type: 'image', x: element.x, y: element.y,
-                        content: dataURL, width: width, height: height,
-                    });
-                } catch (renderError) {
-                    console.error("Error rendering text element:", renderError);
-                    actions.addElement({ id, type: 'text', x: element.x, y: element.y, content: 'Error rendering content.', fill: 'red' });
-                }
-                break;
-            }
-            case 'line': {
-                const thicknessMap: { [key: string]: number } = { 's': 2, 'm': 4, 'l': 8 };
-                if (typeof element.x1 === 'undefined' || typeof element.y1 === 'undefined' || typeof element.x2 === 'undefined' || typeof element.y2 === 'undefined') {
-                    console.error("Invalid line element (missing x1/y1/x2/y2):", element);
-                    return;
-                }
-                const newLine: LineData = {
-                    id, tool: 'pen',
-                    points: [element.x1, element.y1, element.x2, element.y2],
-                    color: element.color || '#3b82f6',
-                    thickness: thicknessMap[element.thickness] || 4
-                };
-                const currentLines = useAppStore.getState().lines;
-                actions.setLines([...currentLines, newLine]);
-                break;
-            }
-            case 'image': {
-                if (typeof element.x === 'undefined' || typeof element.y === 'undefined') {
-                    console.error("Invalid image element (missing x/y):", element);
-                    return;
-                }
-                const placeholderId = `placeholder-${id}`;
-                actions.addElement({
-                    id: placeholderId, type: 'text', x: element.x, y: element.y,
-                    content: `AI is searching for "${element.search}"...`, fontSize: 16, fill: '#6b7280'
+            try {
+                const { dataURL, height } = await renderMarkdownToImage(element.content || '', element.width || 500, {
+                    backgroundColor: element.backgroundColor || '#ffffff',
+                    textColor: element.textColor || '#1f2937',
+                    padding: '16px',
+                    borderRadius: '12px',
+                    fontSize: element.fontSize ? `${element.fontSize}px` : '18px',
                 });
-                try {
-                    const searchResponse = await fetch(`${BACKEND_URL}/api/image-search?q=${encodeURIComponent(element.search)}`);
-                    if (!searchResponse.ok) throw new Error(`Image search failed for "${element.search}"`);
-                    const { imageUrl, width: originalWidth, height: originalHeight } = await searchResponse.json();
-                    const targetHeight = element.height || 250;
-                    const aspectRatio = originalHeight > 0 ? originalWidth / originalHeight : 1;
-                    const newWidth = targetHeight * aspectRatio;
-                    actions.deleteElement(placeholderId);
-                    actions.addElement({
-                        id, type: 'image', content: imageUrl, x: element.x, y: element.y,
-                        width: newWidth, height: targetHeight, cornerRadius: 8,
-                    });
-                } catch (searchError) {
-                    console.error("Error fetching image:", searchError);
-                    actions.updateElement(placeholderId, { content: `Error: Could not load image.` });
-                }
-                break;
+                const { actions } = useAppStore.getState();
+                actions.addElement({
+                    id, type: 'image', x: element.x, y: element.y,
+                    content: dataURL, width: element.width || 500, height: height, cornerRadius: 12,
+                });
+                console.log('Card element successfully added to canvas');
+            } catch (renderError) {
+                console.error("Error rendering card element:", renderError);
             }
-            default:
-                console.warn("Unknown element type received from stream:", element.type);
+            break;
         }
-    };
-
-    try {
-        const response = await fetch(`${BACKEND_URL}/api/chat`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt })
-        });
-        if (!response.ok || !response.body) {
-            throw new Error(`Network response was not ok: ${response.statusText}`);
-        }
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let buffer = '';
-        let braceDepth = 0;
-        let objectStartIndex = -1;
-
-        while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-            buffer += decoder.decode(value, { stream: true });
-            while (true) {
-                if (objectStartIndex === -1) {
-                    objectStartIndex = buffer.indexOf('{');
-                    if (objectStartIndex === -1) break;
-                }
-                let objectEndIndex = -1;
-                braceDepth = 0;
-                for (let i = objectStartIndex; i < buffer.length; i++) {
-                    if (buffer[i] === '{') braceDepth++;
-                    else if (buffer[i] === '}') braceDepth--;
-                    if (braceDepth === 0) {
-                        objectEndIndex = i;
-                        break;
-                    }
-                }
-                if (objectEndIndex !== -1) {
-                    const objectStr = buffer.substring(objectStartIndex, objectEndIndex + 1);
-                    try {
-                        const element = JSON.parse(objectStr);
-                        await processElement(element);
-                    } catch (e) {
-                        console.error("Failed to parse JSON object from stream:", objectStr, e);
-                    }
-                    buffer = buffer.substring(objectEndIndex + 1);
-                    objectStartIndex = -1;
-                } else {
-                    break;
-                }
+        case 'text': {
+            console.log('Processing text element:', element);
+            if (typeof element.x === 'undefined' || typeof element.y === 'undefined') {
+                console.error("Invalid text element (missing x/y):", element);
+                return;
             }
+            try {
+                const { dataURL, height } = await renderMarkdownToImage(element.content || '', element.width || 550, {
+                    fontSize: element.fontSize ? `${element.fontSize}px` : '18px',
+                    backgroundColor: 'transparent',
+                    textColor: element.textColor || '#1f2937',
+                });
+                const { actions } = useAppStore.getState();
+                actions.addElement({
+                    id, type: 'image', x: element.x, y: element.y,
+                    content: dataURL, width: element.width || 550, height: height,
+                });
+                console.log('Text element successfully added to canvas');
+            } catch (renderError) {
+                console.error("Error rendering text element:", renderError);
+            }
+            break;
         }
-    } catch (error) {
-        console.error("Error handling AI chat request:", error);
-        const pos = getPointerPosition();
-        actions.addElement({
-            id: `err-${Date.now()}`, type: 'text', content: `An AI communication error occurred.`,
-            x: pos.x, y: pos.y, fontSize: 18, fill: '#ef4444',
-        });
-    } finally {
-        actions.setAiState('idle');
-        actions.setTranscript('');
+        case 'line': {
+            console.log('Processing line element:', element);
+            const thicknessMap: { [key: string]: number } = { 's': 2, 'm': 4, 'l': 8 };
+            if (typeof element.x1 === 'undefined' || typeof element.y1 === 'undefined' || typeof element.x2 === 'undefined' || typeof element.y2 === 'undefined') {
+                console.error("Invalid line element (missing coordinates):", element);
+                return;
+            }
+            const newLine: LineData = {
+                id, tool: 'pen',
+                points: [element.x1, element.y1, element.x2, element.y2],
+                color: element.color || '#3b82f6',
+                thickness: thicknessMap[element.thickness] || 4
+            };
+            const lines = useAppStore.getState().lines;
+            const { setLines } = useAppStore.getState().actions;
+            setLines([...lines, newLine]);
+            console.log('Line element successfully added to canvas');
+            break;
+        }
+        case 'image': {
+            console.log('Processing image element:', element);
+            if (typeof element.x === 'undefined' || typeof element.y === 'undefined' || !element.imageUrl || !element.width || !element.height) {
+                console.error("Invalid image element (missing x/y, imageUrl, or dimensions):", element);
+                return;
+            }
+            const { actions } = useAppStore.getState();
+
+            // The backend now sends the final, calculated display dimensions.
+            // We can use them directly.
+            actions.addElement({
+                id, type: 'image', content: element.imageUrl, x: element.x, y: element.y,
+                width: element.width, height: element.height, cornerRadius: 8,
+            });
+            console.log('Image element successfully added to canvas');
+            break;
+        }
+        default:
+            console.warn("Unknown element type received:", element.type);
+    }
+
+    // STEP 2: Speak the narration *after* rendering.
+    // The 'await' here ensures the next element in the queue won't be processed
+    // until this audio finishes, creating the desired sequential flow.
+    const audioDataUrl = element.audioDataUrl || '';
+    if (audioDataUrl && typeof audioDataUrl === 'string') {
+        await speakText(audioDataUrl).catch(console.error);
+    }
+
+    console.log(`Finished processing ${element.type} element`);
+};
+
+// Queue system for sequential element processing
+let elementQueue: any[] = [];
+let isProcessingQueue = false;
+
+const processElementQueue = async () => {
+    if (isProcessingQueue || elementQueue.length === 0) return;
+
+    isProcessingQueue = true;
+
+    const element = elementQueue.shift();
+    if (element) {
+        await processElement(element).catch(console.error);
+    }
+
+    isProcessingQueue = false;
+
+    // Schedule the next check instead of using a while loop.
+    // This prevents blocking the event loop and allows TTS to start promptly.
+    if (elementQueue.length > 0) {
+        setTimeout(processElementQueue, 0);
     }
 };
+
+/**
+ * Handles the entire audio-to-canvas flow without a user confirmation step.
+ * 1. Sends audio to get a refined prompt.
+ * 2. Informs the UI of the refined prompt.
+ * 3. Immediately sends that prompt to get canvas elements via streaming.
+ * @param audioBlob The audio data recorded from the user.
+ * @param sessionId A unique identifier for the current session.
+ */
+export const handleAudioAndGenerateCanvas = async (audioBlob: Blob, sessionId: string) => {
+    const { setAiState, setTranscript } = useAppStore.getState().actions
+    const { pdfFile, elements } = useAppStore.getState();
+
+    // --- STEP 1: Get refined prompt from audio ---
+    setAiState('processing')
+    const formData = new FormData()
+    formData.append('audio_file', audioBlob, 'speech.webm')
+    formData.append('session_id', sessionId)
+
+    // Append PDF file if it exists
+    if (pdfFile) {
+        formData.append('pdf_file', pdfFile);
+    }
+
+    // Append image elements from the canvas
+    const imageElements = elements.filter(el => el.type === 'image' && el.content);
+    imageElements.forEach((el, index) => {
+        // We assume el.content is a data URL. We need to convert it to a Blob.
+        const blob = dataURLtoBlob(el.content!);
+        formData.append(`image_file_${index}`, blob, `canvas-image-${index}.png`);
+    });
+
+
+    let promptPayload
+    try {
+        const response = await fetch(`${BACKEND_URL}/api/speech-to-prompt`, {
+            method: 'POST',
+            body: formData,
+        })
+        if (!response.ok) {
+            const errorData = await response.json()
+            throw new Error(errorData.detail || 'Failed to get refined prompt.')
+        }
+        promptPayload = await response.json()
+        setTranscript(promptPayload)
+    } catch (error) {
+        console.error('speech-to-prompt error:', error)
+        setAiState('idle')
+        setTranscript('')
+        return
+    }
+
+    // --- STEP 2: Stream canvas elements via SSE ---
+    setAiState('streaming')
+    const query = new URLSearchParams({
+        refined_prompt: promptPayload.refined_prompt,
+        session_id: promptPayload.session_id,
+        context_summary: promptPayload.context_summary,
+    }).toString()
+
+    const source = new EventSource(`${BACKEND_URL}/api/reply?${query}`)
+    source.onmessage = (e) => {
+        if (e.data === '[DONE]') {
+            source.close()
+            setAiState('idle')
+            return
+        }
+        let element: any
+        try {
+            element = JSON.parse(e.data)
+        } catch {
+            console.error('SSE parse error', e.data)
+            return
+        }
+
+        // Add element to queue for sequential processing
+        elementQueue.push(element);
+        // Start processing the queue if it's not already running.
+        // This is non-blocking and allows the SSE handler to continue receiving messages.
+        processElementQueue();
+    }
+    source.onerror = (err) => {
+        console.error('SSE connection error:', err)
+        source.close()
+        setAiState('idle')
+    }
+}
+
+function dataURLtoBlob(dataurl: string) {
+    const arr = dataurl.split(',');
+    const mimeMatch = arr[0].match(/:(.*?);/);
+    if (!mimeMatch) throw new Error("Invalid data URL");
+    const mime = mimeMatch[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], { type: mime });
+}
+

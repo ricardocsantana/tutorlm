@@ -1,35 +1,79 @@
-let currentAudio: HTMLAudioElement | null = null;
-let audioQueue: string[] = [];
-let isPlaying = false;
+// --- Web Audio API Unlock Pattern for iOS/Chrome ---
+let globalAudioContext: AudioContext | null = null;
+let audioContextUnlocked = false;
 
-async function playNext() {
-    if (isPlaying || audioQueue.length === 0) return;
-    isPlaying = true;
-    const text = audioQueue.shift()!;
-    const response = await fetch("/api/tts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text }),
-    });
-    if (!response.ok) {
-        isPlaying = false;
-        playNext();
-        return;
+export function getAudioContext(): AudioContext {
+    if (!globalAudioContext) {
+        globalAudioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
     }
-    const blob = await response.blob();
-    const url = URL.createObjectURL(blob);
-    const audio = new Audio(url);
-    currentAudio = audio;
-    audio.play();
-    audio.onended = () => {
-        URL.revokeObjectURL(url);
-        currentAudio = null;
-        isPlaying = false;
-        playNext();
-    };
+    return globalAudioContext;
 }
 
-export async function speakText(text: string) {
-    audioQueue.push(text);
-    playNext();
+export function unlockAudioContext(): void {
+    const ctx = getAudioContext();
+    if (audioContextUnlocked) return;
+    // Resume if suspended
+    if (ctx.state === 'suspended') {
+        ctx.resume();
+    }
+    // Generate a short silent sound to unlock
+    const osc = ctx.createOscillator();
+    osc.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.01);
+    audioContextUnlocked = true;
+}
+
+/**
+ * Plays audio from a base64 data URL.
+ * Returns a Promise that resolves when the audio has finished playing.
+ * @param audioDataUrl The base64 data URL (e.g., "data:audio/wav;base64,...") to be played.
+ */
+export async function speakText(audioDataUrl: string): Promise<void> {
+    if (!audioDataUrl) {
+        return Promise.resolve();
+    }
+
+    // Extract base64 and mime type
+    const match = audioDataUrl.match(/^data:(audio\/[a-zA-Z0-9\-+.]+);base64,(.*)$/);
+    if (!match) {
+        console.error("Invalid audio data URL format");
+        return Promise.resolve();
+    }
+    const base64 = match[2];
+    const binary = atob(base64);
+    const len = binary.length;
+    const bytes = new Uint8Array(len);
+    for (let i = 0; i < len; i++) {
+        bytes[i] = binary.charCodeAt(i);
+    }
+
+    const ctx = getAudioContext();
+    // Resume context if needed
+    if (ctx.state === 'suspended') {
+        await ctx.resume();
+    }
+
+    return new Promise((resolve) => {
+        ctx.decodeAudioData(bytes.buffer.slice(0), (buffer) => {
+            const source = ctx.createBufferSource();
+            source.buffer = buffer;
+            source.connect(ctx.destination);
+            source.onended = () => resolve();
+            source.start();
+        }, (err) => {
+            console.error("Error decoding audio data:", err);
+            resolve();
+        });
+    });
+}
+
+// Fallback: legacy unlock for <audio> element (still useful for some Android devices)
+let audioUnlocked = false;
+export function unlockAudioOnMobile(): void {
+    if (audioUnlocked) return;
+    audioUnlocked = true;
+    // 1-second silent WAV
+    const audio = new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=");
+    audio.play().catch(() => { });
 }

@@ -4,8 +4,9 @@ import React from 'react';
 import Konva from 'konva';
 import { useAppStore, type NotificationType } from '../store/useAppStore';
 import { BACKEND_URL } from '../config';
-import { getLineBoundingBox, dbscan, dataURLtoBlob } from '../utils/imageHelpers';
+import { getLineBoundingBox, dbscan } from '../utils/imageHelpers';
 import { useShallow } from 'zustand/react/shallow';
+
 
 type ShowNotificationFn = (message: string, type: NotificationType, duration?: number) => void;
 
@@ -32,41 +33,44 @@ export const useFileHandlers = (
         }))
     );
 
-    const handlePdfUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handlePdfUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file) return;
+
+        if (elements.some(el => el.type === 'pdf')) {
+            showNotification("Only one PDF can be uploaded at a time. Please remove the existing one first.", 'error');
+            if (e.target) e.target.value = '';
+            return;
+        }
 
         actions.setIsUploading(true);
         showNotification(`Processing "${file.name}"...`, 'info');
 
-        const formData = new FormData();
-        formData.append('file', file);
-
         try {
-            const response = await fetch(`${BACKEND_URL}/api/upload-pdf`, { method: 'POST', body: formData });
-            if (!response.ok) { const errorData = await response.json(); throw new Error(errorData.detail || 'Failed to process PDF.'); }
-            const result = await response.json();
+            const pos = getPointerPosition();
+            const elementWidth = 200;
+            const elementHeight = 100;
 
-            if (result.imageDataUrl) {
-                const img = new window.Image();
-                img.src = result.imageDataUrl;
-                img.onload = () => {
-                    const pos = getPointerPosition();
-                    const MAX_WIDTH = 500;
-                    const scale = Math.min(1, MAX_WIDTH / img.width);
-                    actions.addElement({ id: `pdf-preview-${Date.now()}`, type: 'image', x: pos.x - (img.width * scale) / 2, y: pos.y, content: result.imageDataUrl, width: img.width * scale, height: img.height * scale, cornerRadius: 4 });
-                    clearNotification();
-                    showNotification(`"${result.filename}" is ready for questions!`, 'success');
-                };
-                img.onerror = () => { throw new Error("Failed to load PDF preview image from server data."); };
-            } else {
-                clearNotification();
-                showNotification(`"${result.filename}" processed (no preview).`, 'success');
-            }
+            actions.setPdfFile(file, null);
+            actions.addElement({
+                id: `pdf-placeholder-${Date.now()}`,
+                type: 'pdf',
+                x: pos.x - elementWidth / 2,
+                y: pos.y,
+                content: file.name,
+                width: elementWidth,
+                height: elementHeight,
+                cornerRadius: 4
+            });
+
+            clearNotification();
+            showNotification(`"${file.name}" is ready for questions!`, 'success');
+
         } catch (error) {
-            console.error("Error uploading PDF:", error);
+            console.error("Error processing PDF:", error);
             clearNotification();
             showNotification(`PDF Error: ${error instanceof Error ? error.message : String(error)}`, 'error');
+            actions.setPdfFile(null, null);
         } finally {
             if (e.target) e.target.value = '';
             actions.setIsUploading(false);
@@ -81,44 +85,39 @@ export const useFileHandlers = (
         actions.setIsUploading(true);
         showNotification(`Processing "${file.name}"...`, 'info');
 
-        const formData = new FormData();
-        formData.append('file', file);
-
         try {
-            const response = await fetch(`${BACKEND_URL}/api/upload-image`, { method: 'POST', body: formData });
-            if (!response.ok) {
-                const errData = await response.json();
-                throw new Error(errData.detail || "Image processing failed on server.");
-            }
-
-            const result = await response.json();
-
-            if (result.imageDataUrl) {
-                const img = new window.Image();
-                img.src = result.imageDataUrl;
-                img.onload = () => {
-                    const pos = getPointerPosition();
-                    const MAX_WIDTH = 400;
-                    const scale = Math.min(1, MAX_WIDTH / img.width);
-                    actions.addElement({
-                        id: `img-${Date.now()}`,
-                        type: 'image',
-                        x: pos.x - (img.width * scale) / 2,
-                        y: pos.y,
-                        content: result.imageDataUrl,
-                        width: img.width * scale,
-                        height: img.height * scale,
-                        cornerRadius: 8
-                    });
-                    clearNotification();
-                    showNotification(`Image "${file.name}" is ready for the AI.`, 'success');
-                };
-                img.onerror = () => { throw new Error("Failed to load image from server data."); };
-            } else {
-                throw new Error("Server did not return image data.");
-            }
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const dataUrl = event.target?.result as string;
+                if (dataUrl) {
+                    const img = new window.Image();
+                    img.src = dataUrl;
+                    img.onload = () => {
+                        const pos = getPointerPosition();
+                        const MAX_WIDTH = 400;
+                        const scale = Math.min(1, MAX_WIDTH / img.width);
+                        actions.addElement({
+                            id: `img-${Date.now()}`,
+                            type: 'image',
+                            x: pos.x - (img.width * scale) / 2,
+                            y: pos.y,
+                            content: dataUrl,
+                            width: img.width * scale,
+                            height: img.height * scale,
+                            cornerRadius: 8
+                        });
+                        clearNotification();
+                        showNotification(`Image "${file.name}" is ready for the AI.`, 'success');
+                    };
+                    img.onerror = () => { throw new Error("Failed to load image from data URL."); };
+                } else {
+                    throw new Error("Could not read file as data URL.");
+                }
+            };
+            reader.onerror = () => { throw new Error("Failed to read the selected file."); };
+            reader.readAsDataURL(file);
         } catch (err) {
-            console.error("Error uploading image:", err);
+            console.error("Error handling image upload:", err);
             clearNotification();
             showNotification(`Image Error: ${err instanceof Error ? err.message : String(err)}`, 'error');
         } finally {
@@ -135,12 +134,6 @@ export const useFileHandlers = (
         }
         const stage = stageRef.current;
         if (!stage) return;
-
-        // Get current stage transform
-        const stageX = stage.x();
-        const stageY = stage.y();
-        const scaleX = stage.scaleX();
-        const scaleY = stage.scaleY();
 
         actions.setIsUploading(true);
         showNotification("Processing drawing(s)...", 'info');
@@ -175,41 +168,40 @@ export const useFileHandlers = (
                 const PADDING = 20;
                 const clipRect = { x: minX - PADDING, y: minY - PADDING, width: (maxX - minX) + PADDING * 2, height: (maxY - minY) + PADDING * 2 };
 
-                const absClipRect = {
-                    x: (clipRect.x * scaleX) + stageX,
-                    y: (clipRect.y * scaleY) + stageY,
-                    width: clipRect.width * scaleX,
-                    height: clipRect.height * scaleY,
-                };
+                // Add paper-like background
+                const layer = stage.getLayers()[1]; // Assuming content layer is at index 1
+                const paperRect = new Konva.Rect({
+                    x: clipRect.x,
+                    y: clipRect.y,
+                    width: clipRect.width,
+                    height: clipRect.height,
+                    fill: '#fffdfa', // slightly off-white for paper feel
+                    cornerRadius: 16,
+                    shadowColor: '#e0d7c6',
+                    shadowBlur: 16,
+                    shadowOffset: { x: 0, y: 4 },
+                    shadowOpacity: 0.18,
+                    listening: false,
+                });
+                layer.add(paperRect);
+                paperRect.moveToBottom();
+                layer.draw();
 
-                // This version is for display, with a transparent background.
-                const displayDataUrl = stage.toDataURL({ ...absClipRect, pixelRatio: 2 });
-                const displayBlob = dataURLtoBlob(displayDataUrl);
+                const dataUrl = stage.toDataURL({ ...clipRect, pixelRatio: 2 });
 
-                // Create a temporary white background for the backend version.
-                const tempLayer = new Konva.Layer();
-                tempLayer.add(new Konva.Rect({ ...clipRect, fill: 'white' }));
-                stage.add(tempLayer);
-                tempLayer.moveToBottom();
-                stage.batchDraw();
+                paperRect.destroy();
+                layer.draw();
 
-                const backendDataUrl = stage.toDataURL({ ...absClipRect, pixelRatio: 2 });
-                tempLayer.destroy();
-                stage.batchDraw();
-                const backendBlob = dataURLtoBlob(backendDataUrl);
-
-                // Send both to the backend
-                const formData = new FormData();
-                formData.append('file', backendBlob, `drawing-backend-${Date.now()}.png`);
-                formData.append('display_file', displayBlob, `drawing-display-${Date.now()}.png`);
-
-                const response = await fetch(`${BACKEND_URL}/api/upload-image`, { method: 'POST', body: formData });
-                if (!response.ok) throw new Error((await response.json()).detail || 'Processing drawing cluster failed.');
-
-                const result = await response.json();
-                const imageUrlForDisplay = result.displayImageDataUrl || result.imageDataUrl; // Prioritize display version
-
-                actions.addElement({ id: `drawing-img-${Date.now()}`, type: 'image', content: imageUrlForDisplay, x: clipRect.x, y: clipRect.y, width: clipRect.width, height: clipRect.height, cornerRadius: 8 });
+                actions.addElement({
+                    id: `drawing-img-${Date.now()}`,
+                    type: 'image',
+                    content: dataUrl,
+                    x: clipRect.x,
+                    y: clipRect.y,
+                    width: clipRect.width,
+                    height: clipRect.height,
+                    cornerRadius: 8
+                });
             }
 
             actions.setLines(lines.filter(line => !processedLineIds.has(line.id)));
@@ -229,6 +221,17 @@ export const useFileHandlers = (
 
     const handleDownload = () => {
         const stage = stageRef.current;
+        let gridLayer: any = null;
+        let gridLayerIndex: number | null = null;
+
+        if (stage) {
+            gridLayer = stage.findOne('.grid-layer');
+            if (gridLayer) {
+                gridLayerIndex = stage.getLayers().indexOf(gridLayer);
+                if (gridLayer) gridLayer.visible(false);
+                stage.batchDraw();
+            }
+        }
         if (!stage) { showNotification("Canvas is not ready.", "error"); return; }
         if (lines.length === 0 && elements.length === 0) { showNotification("The canvas is empty!", "error"); return; }
         actions.setSelectedElementId(null); // Deselect elements for a clean export
@@ -241,6 +244,13 @@ export const useFileHandlers = (
             const PADDING = 20;
             const exportRect = { x: box.x - PADDING, y: box.y - PADDING, width: box.width + PADDING * 2, height: box.height + PADDING * 2 };
             const dataURL = stage.toDataURL({ ...exportRect, pixelRatio: 2, mimeType: 'image/png' });
+
+            // Optionally, restore the grid layer after export
+            if (gridLayer && gridLayerIndex !== null) {
+                gridLayer.visible(true);
+                gridLayer.setZIndex(gridLayerIndex);
+                stage.batchDraw();
+            }
 
             const link = document.createElement('a');
             link.download = 'tutorlm-canvas.png';

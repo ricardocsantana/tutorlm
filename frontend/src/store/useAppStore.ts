@@ -4,8 +4,8 @@ import { create } from 'zustand';
 // 1. TYPE DEFINITIONS & ZUSTAND STORE
 //——————————————————————————————————————//
 export type Tool = 'move' | 'pen' | 'eraser' | 'text';
-export type AIState = 'idle' | 'listening' | 'thinking';
-export type CanvasElementType = 'text' | 'image' | 'line';
+export type AIState = 'idle' | 'listening' | 'thinking' | 'processing' | 'streaming' | 'confirming';
+export type CanvasElementType = 'text' | 'image' | 'line' | 'pdf';
 export type NotificationType = 'info' | 'success' | 'error';
 
 export interface LineData {
@@ -50,6 +50,8 @@ export interface AppState {
     penMode: 'free' | 'line';
     recognitionLang: string; // ✨ STATE ADDED
     difficulty: string; // ✨ STATE ADDED
+    pdfFile: File | null;
+    pdfPreview: string | null;
     actions: {
         setCurrentTool: (tool: Tool) => void;
         setPenColor: (color: string) => void;
@@ -70,6 +72,7 @@ export interface AppState {
         setPenMode: (mode: 'free' | 'line') => void;
         setRecognitionLang: (lang: string) => void; // ✨ ACTION ADDED
         setDifficulty: (difficulty: string) => void; // ✨ ACTION ADDED
+        setPdfFile: (file: File | null, preview: string | null) => void;
         clearCanvas: () => void;
     };
 }
@@ -89,6 +92,8 @@ export const useAppStore = create<AppState>((set, get) => ({
     penMode: 'free',
     recognitionLang: 'en-US', // ✨ DEFAULT LANGUAGE
     difficulty: 'easy', // ✨ DEFAULT DIFFICULTY
+    pdfFile: null,
+    pdfPreview: null,
     actions: {
         setCurrentTool: (tool) => set({ currentTool: tool, selectedElementId: null }),
         setPenColor: (color) => set({ penColor: color }),
@@ -138,8 +143,9 @@ export const useAppStore = create<AppState>((set, get) => ({
         setPenMode: (mode) => set({ penMode: mode }),
         setRecognitionLang: (lang) => set({ recognitionLang: lang }), // ✨ ACTION IMPLEMENTED
         setDifficulty: (difficulty) => set({ difficulty }), // ✨ ACTION IMPLEMENTED
+        setPdfFile: (file, preview) => set({ pdfFile: file, pdfPreview: preview }),
         clearCanvas: () => set({
-            lines: [], elements: [], selectedElementId: null, editingElementId: null
+            lines: [], elements: [], selectedElementId: null, editingElementId: null, pdfFile: null, pdfPreview: null
         }),
     },
 }));

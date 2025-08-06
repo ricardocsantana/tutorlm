@@ -10,11 +10,13 @@ interface AIStateIndicatorProps {
     isMobile?: boolean;
 }
 
+type TranscriptType = string | { refined_prompt?: string; [key: string]: any };
+
 export const AIStateIndicator: React.FC<AIStateIndicatorProps> = ({ isMobile = false }) => {
     const { aiState, transcript } = useAppStore(
         useShallow(state => ({
             aiState: state.aiState,
-            transcript: state.transcript,
+            transcript: state.transcript as TranscriptType,
         }))
     );
 
@@ -52,14 +54,14 @@ export const AIStateIndicator: React.FC<AIStateIndicatorProps> = ({ isMobile = f
                         transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                         className="w-7 h-7 flex"
                     >
-                        <img src="/logo.png" alt="Logo"/>
+                        <img src="/logo.png" alt="Logo" />
                     </motion.div>
                     <span className="text-gray-800 font-semibold text-md">Thinking...</span>
                 </div>
             )}
             {transcript && (
                 <p className="text-md text-gray-500 max-w-xs md:max-w-md text-center pt-2 border-t border-gray-200/80 mt-2">
-                    {transcript}
+                    {typeof transcript === 'string' ? transcript : transcript.refined_prompt || JSON.stringify(transcript)}
                 </p>
             )}
         </motion.div>

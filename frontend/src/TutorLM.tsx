@@ -11,7 +11,6 @@ import { useAppStore, type NotificationType, type CanvasElement as Element } fro
 // Custom Hooks
 import { useCanvasInteraction } from './hooks/useCanvasInteraction';
 import { useFileHandlers } from './hooks/useFileHandlers';
-import { useSpeechRecognition } from './hooks/useSpeechRecognition';
 
 // UI Components
 import { Notification } from './components/Notification';
@@ -25,6 +24,7 @@ import { EditingTextarea } from './components/EditingTextarea';
 import { ToolOptionsPanel } from './components/ToolOptionsPanel'; // Assuming this is an existing component
 import { MobileToolOptions, MobileOptionsToggle } from './components/MobileOptions'; // Assuming this is an existing component
 import { useShallow } from 'zustand/react/shallow';
+import { useAudioRecorder } from './hooks/useAudioRecorder';
 
 const TutorLM: React.FC = () => {
     // Refs
@@ -54,7 +54,7 @@ const TutorLM: React.FC = () => {
 
     // Custom Hooks Initialization
     const { stagePos, stageScale, cursorStyle, eventHandlers, getPointerPositionForExternals } = useCanvasInteraction();
-    const { startListening, stopListening } = useSpeechRecognition(getPointerPositionForExternals);
+    const { startRecording, stopRecording } = useAudioRecorder();
     const showNotification = (message: string, type: NotificationType, duration = 4000) => {
         const newId = Date.now();
         setNotification({ id: newId, message, type });
@@ -80,30 +80,18 @@ const TutorLM: React.FC = () => {
                 }
                 return;
             }
-            if (e.code === 'Space' && !e.repeat) {
-                e.preventDefault();
-                startListening();
-            }
-        };
-        const handleKeyUp = (e: KeyboardEvent) => {
-            if (e.code === 'Space') {
-                e.preventDefault();
-                stopListening();
-            }
         };
         window.addEventListener('keydown', handleKeyDown);
-        window.addEventListener('keyup', handleKeyUp);
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
-            window.removeEventListener('keyup', handleKeyUp);
         };
-    }, [selectedElementId, editingElementId, actions, startListening, stopListening]);
+    }, [selectedElementId, editingElementId, actions]);
 
     return (
         <div className="h-screen w-screen bg-slate-50 overflow-hidden relative font-sans touch-none" style={{ cursor: cursorStyle }}>
             <Notification notification={notification} />
             <div className="absolute top-7 left-7 z-50 select-none text-5xl" style={{ fontFamily: "'Satisfy', cursive" }}>TutorLM</div>
-            <WelcomeMessage show={showWelcome} />
+            <WelcomeMessage show={showWelcome} onDismiss={() => setShowWelcome(false)} />
 
             {/* Hidden File Inputs */}
             <input type="file" ref={imageInputRef} onChange={handleImageUpload} accept="image/*" style={{ display: 'none' }} />
@@ -156,7 +144,7 @@ const TutorLM: React.FC = () => {
             <ToolOptionsPanel />
 
             <div className="fixed bottom-4 right-4 z-50">
-                <SpeechButton onStart={startListening} onStop={stopListening} />
+                <SpeechButton onStart={startRecording} onStop={stopRecording} />
             </div>
 
             <CanvasStage

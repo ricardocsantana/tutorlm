@@ -1,573 +1,502 @@
+import io
 import os
-import uuid
 import base64
+import wave
 import fitz  # PyMuPDF
 import logging
-import torch
-import httpx # <-- Added for making API calls to Unsplash
-import aiofiles  # Add this import at the top
-import wave
-from dotenv import load_dotenv
+import json
+import httpx
+import anyio
 from pathlib import Path
 from typing import Dict, Any
-from collections import defaultdict, deque
 
-from fastapi import FastAPI, UploadFile, File, HTTPException, Request
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse, FileResponse
-from fastapi.concurrency import run_in_threadpool
+from flask import Flask, request, jsonify, Response, abort
+from flask_cors import CORS
+from openai import AsyncOpenAI
+from piper import PiperVoice
 
-# RAG & Model Imports
-from langchain_core.documents import Document
-from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_openai import ChatOpenAI
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_core.messages import HumanMessage, SystemMessage
-from piper import PiperVoice, SynthesisConfig
+# --- CONFIGURATION & INITIALIZATION ---
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S'
-)
+from pathlib import Path
+from dotenv import load_dotenv
 
-# --- INITIALIZATION ---
-load_dotenv()
+dotenv_path = Path(__file__).parent / ".env"
+load_dotenv(dotenv_path=dotenv_path)
 
-# --- CONFIGURATION ---
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-UNSPLASH_API_KEY = os.getenv("UNSPLASH_ACCESS_KEY") # <-- Added for image search
-MULTIMODAL_MODEL_NAME = "google/gemma-3n-e4b-it"
-#MULTIMODAL_MODEL_NAME = "google/gemini-2.5-flash"
+# Set up logging
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+logger = logging.getLogger(__name__)
+
+# Load API keys and base URLs from environment
+UNSPLASH_API_KEY = os.getenv("UNSPLASH_ACCESS_KEY")
+OLLAMA_BASE_URL = os.getenv("BASE_URL") # For Ollama models
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY") # For Whisper transcription
+
+# --- Constants ---
 UPLOADS_DIR = Path("uploads")
 UPLOADS_DIR.mkdir(exist_ok=True)
-TEXT_SIM_THRESHOLD = float(os.getenv("TEXT_SIM_THRESHOLD", "0.5"))
+PDF_MAX_WORDS = 2000  # Process up to the first 10,000 words of a PDF
+LLM_MAX_TOKENS_JSON = 4096
+LLM_MAX_TOKENS_PROMPT = 256
 
-# --- IN-MEMORY STATE & MODEL LOADING ---
-logging.info("Initializing application state...")
-rag_state = { "text_retriever": None }
-current_language = {"lang": "en_US"}  # Default language
-difficulty_level = {"difficulty": "easy"}  # Default difficulty
+# --- GLOBAL STATE & MODEL LOADING ---
 
-# --- CHAT HISTORY STATE ---
-MAX_CHAT_HISTORY = 5
-chat_histories = defaultdict(lambda: deque(maxlen=MAX_CHAT_HISTORY))
+# In-memory store for the current TTS language
+current_language = {"lang": "en_US"}
 
-device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
-logging.info(f"Using device: {device}")
+# Initialize API Clients
+logger.info("Initializing API clients...")
 
-# --- TTS ENDPOINT ---
+# Client for OpenAI's Whisper API
+# Reads the OPENAI_API_KEY from the environment automatically
+if not OPENAI_API_KEY:
+    logger.warning("OPENAI_API_KEY not found. Audio transcription will fail.")
+openai_client = AsyncOpenAI()
+
+# Client for the first LLM step (prompt refinement) using Ollama
+client_refinement = AsyncOpenAI(base_url=OLLAMA_BASE_URL, api_key="ollama")
+
+# Client for the second LLM step (JSON generation) using Ollama
+client_generation = AsyncOpenAI(base_url=OLLAMA_BASE_URL, api_key="ollama")
+
+logger.info("API clients initialized.")
+
+
+# --- TTS VOICE LOADING ---
+BASE_DIR = Path(__file__).parent.resolve()
 VOICE_MODEL_PATHS = {
-    "en_US": os.getenv("PIPER_VOICE_PATH_EN", "voices/en_US-lessac-medium.onnx"),
-    "pt_PT": os.getenv("PIPER_VOICE_PATH_PT", "voices/pt_PT-tug%C3%A3o-medium.onnx"),
-    "es_ES": os.getenv("PIPER_VOICE_PATH_ES", "voices/es_ES-sharvard-medium.onnx"),
-    # Add more language codes and model paths as needed
+    "en_US": str(BASE_DIR / "voices/en_US-lessac-medium.onnx"),
+    "es_ES": str(BASE_DIR / "voices/es_ES-sharvard-medium.onnx"),
 }
 voice_cache = {}
 
 def get_voice_for_lang(lang: str):
     """Returns a PiperVoice instance for the given language, loading if necessary."""
     if lang not in VOICE_MODEL_PATHS:
-        raise HTTPException(status_code=400, detail=f"Unsupported language: {lang}")
+        abort(400, description=f"Unsupported language: {lang}")
     if lang not in voice_cache:
         try:
-            voice_cache[lang] = PiperVoice.load(VOICE_MODEL_PATHS[lang])
-            logging.info(f"PiperVoice loaded for lang '{lang}' from {VOICE_MODEL_PATHS[lang]}")
+            model_path = VOICE_MODEL_PATHS[lang]
+            if not Path(model_path).exists():
+                 logger.error(f"Voice model file not found at path: {model_path}")
+                 abort(500, description=f"TTS model file not found for language '{lang}'.")
+            voice_cache[lang] = PiperVoice.load(model_path)
+            logging.info(f"PiperVoice loaded for lang '{lang}' from {model_path}")
         except Exception as e:
             logging.error(f"Failed to load PiperVoice for lang '{lang}': {e}")
-            raise HTTPException(status_code=500, detail=f"TTS model not loaded for language '{lang}'.")
+            abort(500, description=f"TTS model could not be loaded for language '{lang}'.")
     return voice_cache[lang]
 
-logging.info("Loading text embedding model...")
-text_embeddings = HuggingFaceEmbeddings(
-    model_name="./local_models/all-MiniLM-L6-v2",
-    model_kwargs={'device': device}
-)
 
-logging.info(f"Initializing LLM client with model: {MULTIMODAL_MODEL_NAME}...")
-llm = ChatOpenAI(
-    model=MULTIMODAL_MODEL_NAME,
-    base_url="http://127.0.0.1:1234/v1",
-    api_key="lmstudio",
-    max_tokens=2048,
-)
-logging.info("All models loaded successfully.")
+# --- IMPROVED PROMPT TEMPLATES ---
 
-# --- HELPER FUNCTIONS & CLASSES ---
-def image_to_base64_data_url(filepath: str) -> str:
-    """Converts an image file to a base64 data URL."""
-    try:
-        ext = Path(filepath).suffix[1:].lower()
-        if ext == "jpg":
-            ext = "jpeg"
-        with open(filepath, "rb") as image_file:
-            encoded_string = base64.b64encode(image_file.read()).decode()
-        return f"data:image/{ext};base64,{encoded_string}"
-    except Exception as e:
-        logging.error(f"Error converting image {filepath} to base64: {e}")
-        return ""
+PROMPT_REFINEMENT_SYSTEM_PROMPT = """
+You are an expert at understanding and refining user requests for visual learning experiences.
 
+Your task is to analyze the provided context and generate a clear, focused prompt that emphasizes the core learning objective and key concepts that benefit from visual representation.
 
-# --- FASTAPI APP SETUP ---
-app = FastAPI()
+**CONTEXT ANALYSIS**:
+- Identify the main subject/topic
+- Determine what specific concepts need visual explanation
+- Note any complex relationships, processes, or structures mentioned
+- Consider what would be most effectively communicated visually vs. textually
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+**OUTPUT REQUIREMENTS**:
+- Single string prompt (no markdown, explanations, or additional text)
+- Focus on concepts that benefit from visual representation
+- Include specific details that help generate relevant, educational content
+- Emphasize learning objectives and key relationships
 
+**INPUT FORMAT**:
+- User's transcribed speech: "The user said this..."
+- Text from a relevant document: "Here is some text from a document..."
+- Images: "The user has the following image(s) open..."
 
-# --- SYNCHRONOUS BLOCKING FUNCTIONS ---
-def process_pdf_data(file_content: bytes, filename: str) -> Dict[str, Any]:
-    """
-    Processes an uploaded PDF file by extracting text for RAG and a preview image of the first page.
-    The preview image is saved to UPLOADS_DIR to be used as context in chat.
-    """
-    temp_pdf_path = UPLOADS_DIR / f"{uuid.uuid4()}.pdf"
-    try:
-        with open(temp_pdf_path, "wb") as buffer:
-            buffer.write(file_content)
+**OUTPUT**: A refined prompt that captures the essence of the learning request with focus on visual educational value.
+"""
 
-        full_text = ""
-        with fitz.open(temp_pdf_path) as pdf_doc:
-            for page in pdf_doc:
-                full_text += page.get_text()
+JSON_GENERATION_SYSTEM_PROMPT = """
+You are TutorLM, an expert visual educator specializing in creating effective educational layouts using text, cards, and strategic imagery.
 
-        if not full_text.strip():
-            logging.warning(f"No text could be extracted from PDF '{filename}'. It might be image-based.")
-        else:
-            text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
-            texts = text_splitter.split_text(full_text)
-            splits = [Document(page_content=text) for text in texts]
+**CRITICAL REQUIREMENT**: Output ONLY a valid JSON array. No explanations, markdown, or additional text.
 
-            if not splits:
-                logging.warning(f"Text was present in '{filename}' but no splits were generated.")
-            else:
-                vectorstore = FAISS.from_documents(documents=splits, embedding=text_embeddings)
-                
-                rag_state["text_retriever"] = vectorstore.as_retriever(
-                    search_type="similarity_score_threshold",
-                    search_kwargs={"k": 3, "score_threshold": TEXT_SIM_THRESHOLD}
-                )
-                logging.info(f"Successfully created text retriever for '{filename}'.")
+**DESIGN PRINCIPLES**:
+- Use images ONLY when they add genuine educational value to the concept
+- Prioritize clear text hierarchy and well-organized cards for content delivery
+- Images should illustrate specific concepts, processes, structures, or phenomena
+- Avoid decorative or generic images that don't enhance understanding
 
-        image_data_url = None
-        with fitz.open(temp_pdf_path) as pdf_doc:
-            if len(pdf_doc) > 0:
-                page = pdf_doc[0]
-                pix = page.get_pixmap(dpi=150)
-                preview_image_path = UPLOADS_DIR / f"{temp_pdf_path.stem}.png"
-                pix.save(str(preview_image_path))
-                image_data_url = image_to_base64_data_url(str(preview_image_path))
+**ELEMENT TYPES**:
 
-        return {"status": "success", "type": "pdf", "filename": filename, "imageDataUrl": image_data_url}
-    finally:
-        if os.path.exists(temp_pdf_path):
-            os.remove(temp_pdf_path)
+1. **Text Elements** - For titles, headings, and key concepts
+   {
+     "type": "text",
+     "content": "Clear title with **emphasis** or $LaTeX$ formulas",
+     "fontSize": 18-32,
+     "x": position, "y": position (use increments of 80-100px for proper spacing),
+     "textColor": "#000000",
+     "speakAloud": "Clear narration explaining this concept"
+   }
 
+2. **Card Elements** - For explanations, definitions, and detailed content
+   {
+     "type": "card",
+     "content": "Structured content with markdown formatting and $LaTeX$ when needed",
+     "fontSize": 14-18,
+     "x": position, "y": position (ensure 100-120px gaps between cards),
+     "width": 300-400,
+     "backgroundColor": "#F8F9FA", "#E3F2FD", "#E8F5E8", "#FFF3E0", "#F3E5F5", "#FCE4EC", "#E0F2F1", "#FFF8E1", "#FFEBEE", "#E1F5FE", "#F1F8E9", "#FFF9C4", "#EFEBE9", "#FAFAFA", "#FFFFFF",
+     "speakAloud": "Detailed explanation of the card's educational content"
+   }
 
-def process_image_data(file_content: bytes, filename: str) -> Dict[str, Any]:
-    """
-    Processes and saves an uploaded image file to the UPLOADS_DIR.
-    """
-    filepath = UPLOADS_DIR / f"{uuid.uuid4()}{Path(filename).suffix}"
-    try:
-        with open(filepath, "wb") as buffer:
-            buffer.write(file_content)
+3. **Image Elements** - ONLY for concepts that benefit from visual representation
+   {
+     "type": "image",
+     "search": "specific, educational search term (e.g., 'mitochondria diagram', 'water cycle illustration', 'DNA double helix structure')",
+     "x": position, "y": position (account for image height + 20px margin),
+     "width": 150-300,
+     "speakAloud": "Explanation of how this image relates to and enhances the learning concept"
+   }
 
-        image_data_url = image_to_base64_data_url(str(filepath))
-        return {"status": "success", "type": "image", "filename": filename, "imageDataUrl": image_data_url}
-    except Exception as e:
-        logging.error(f"Failed to process image data for {filename}: {e}")
-        if os.path.exists(filepath):
-            os.remove(filepath)
-        raise HTTPException(status_code=500, detail=f"Failed to process image: {e}")
+**IMAGE USAGE GUIDELINES**:
+- Use images for: scientific structures, historical artifacts, geographical features, mathematical visualizations, technical diagrams, natural phenomena
+- AVOID images for: abstract concepts, general topics, decorative purposes
+- Search terms should be specific and educational (not generic or decorative)
+- Each image must have clear educational relevance explained in speakAloud
 
+**LAYOUT STRATEGY**:
+- Create logical visual flow from general to specific concepts
+- **CRITICAL**: Ensure NO vertical overlapping - each element needs sufficient vertical spacing
+- Text elements: minimum 60px vertical separation
+- Card elements: minimum 80px vertical separation (cards are typically 60-100px tall)
+- Images: minimum 100px vertical separation (account for image height + margins)
+- Use a grid-like approach: place elements at y-coordinates like 50, 150, 250, 350, etc.
+- Balance text-heavy cards with strategic visual elements
+- Consider element heights when positioning: text ~40px, cards ~80-120px, images variable
+- Ensure content is educational and purposeful
 
-# --- API ENDPOINTS ---
-@app.get("/api")
-def root():
-    return {"status": "TutorLM multimodal backend is running!"}
+Your response must be a valid JSON array starting with `[` and ending with `]`, containing 4-8 thoughtfully designed elements.
+"""
 
-@app.post("/api/upload-pdf")
-async def upload_pdf(file: UploadFile = File(...)):
-    logging.info(f"Received request for /api/upload-pdf, filename: '{file.filename}'")
-    try:
-        file_content = await file.read()
-        result = await run_in_threadpool(process_pdf_data, file_content, file.filename)
-        logging.info(f"Successfully processed PDF '{file.filename}'.")
-        return result
-    except Exception as e:
-        logging.error(f"Error in /api/upload-pdf for file '{file.filename}': {e}", exc_info=True)
-        if isinstance(e, HTTPException):
-            raise e
-        raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {e}")
+# --- HELPER FUNCTIONS ---
 
-@app.post("/api/upload-image")
-async def upload_image(request: Request):
-    logging.info(f"Received request for /api/upload-image")
-    try:
-        form = await request.form()
-        file: UploadFile = form.get("file")
-        display_file: UploadFile = form.get("display_file")
-
-        if not file:
-            raise HTTPException(status_code=400, detail="No 'file' part in the form.")
-
-        file_content = await file.read()
-        result = await run_in_threadpool(process_image_data, file_content, file.filename)
-
-        if display_file:
-            display_file_content = await display_file.read()
-            ext = Path(display_file.filename).suffix.lower()[1:]
-            if ext == "jpg":
-                ext = "jpeg"
-            encoded_string = base64.b64encode(display_file_content).decode()
-            display_image_data_url = f"data:image/{ext};base64,{encoded_string}"
-            result["displayImageDataUrl"] = display_image_data_url
-
-        logging.info(f"Successfully processed image '{file.filename}'.")
-        return result
-    except Exception as e:
-        logging.error(f"Error in /api/upload-image: {e}", exc_info=True)
-        if isinstance(e, HTTPException):
-            raise e
-        raise HTTPException(status_code=500, detail=f"Failed to process image: {e}")
-
-# ✨ --- NEW ENDPOINT FOR IMAGE SEARCH --- ✨
-@app.get("/api/image-search")
-async def image_search(q: str):
-    """
-    Searches for an image on Unsplash using the provided query 'q' and returns
-    the URL, width, and height of the first result.
-    Requires an UNSPLASH_API_KEY in the .env file.
-    """
-    logging.info(f"Received image search request for query: '{q}'")
+async def search_for_image_on_unsplash(q: str) -> Dict[str, Any]:
+    """Searches for an image on Unsplash and returns a dictionary with its details."""
+    logging.info(f"Performing Unsplash search for query: '{q}'")
     if not UNSPLASH_API_KEY:
         logging.error("UNSPLASH_API_KEY is not set. Cannot perform image search.")
-        raise HTTPException(
-            status_code=501, # 501 Not Implemented
-            detail="Image search is not configured on the server (missing API key)."
-        )
+        raise ConnectionError("Image search is not configured on the server (missing API key).")
     if not q:
-        raise HTTPException(status_code=400, detail="Search query 'q' cannot be empty.")
+        raise ValueError("Search query cannot be empty.")
 
     url = "https://api.unsplash.com/search/photos"
     headers = {"Authorization": f"Client-ID {UNSPLASH_API_KEY}", "Accept-Version": "v1"}
     params = {"query": q, "per_page": 1}
 
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url, headers=headers, params=params)
+        response.raise_for_status()
+
+    data = response.json()
+    if not data.get("results"):
+        raise FileNotFoundError(f"No images found for '{q}'")
+
+    first_image = data["results"][0]
+    image_url = first_image.get("urls", {}).get("regular")
+    if not image_url:
+        raise ValueError("Unsplash API returned incomplete image data.")
+
+    return {"imageUrl": image_url, "width": first_image.get("width"), "height": first_image.get("height")}
+
+
+def image_to_base64_data_url(file_content: bytes, filename: str) -> str:
+    """Converts an image file's content to a base64 data URL."""
     try:
-        async with httpx.AsyncClient() as client:
-            response = await client.get(url, headers=headers, params=params)
-            response.raise_for_status()
-
-        data = response.json()
-        results = data.get("results")
-
-        if not results:
-            raise HTTPException(status_code=404, detail=f"No images found for '{q}'")
-
-        first_image = results[0]
-        image_url = first_image.get("urls", {}).get("regular")
-        width = first_image.get("width")
-        height = first_image.get("height")
-
-        if not all([image_url, width, height]):
-             raise HTTPException(status_code=500, detail="Unsplash API returned incomplete image data.")
-
-        return {"imageUrl": image_url, "width": width, "height": height}
-
-    except httpx.HTTPStatusError as e:
-        logging.error(f"HTTP error during Unsplash API call: {e.response.text}")
-        raise HTTPException(status_code=e.response.status_code, detail=f"Error from image search provider.")
+        ext = Path(filename).suffix.lstrip('.').lower()
+        if ext == "jpg": ext = "jpeg"
+        encoded_string = base64.b64encode(file_content).decode()
+        return f"data:image/{ext};base64,{encoded_string}"
     except Exception as e:
-        logging.error(f"An unexpected error occurred during image search: {e}", exc_info=True)
-        raise HTTPException(status_code=500, detail="An internal error occurred during image search.")
+        logger.error(f"Error converting image {filename} to base64: {e}")
+        return ""
 
 
-@app.post("/api/chat")
-async def chat_handler(request: Request):
-    body = await request.json()
-    user_prompt = body.get("prompt")
-    session_id = body.get("session_id", "default")
-    lang = current_language.get("lang", "en")
-    difficulty = difficulty_level.get("difficulty", "easy")
-    logging.info(f"Received chat request with prompt: '{user_prompt[:50]}...' (lang: {lang})")
-    if not user_prompt:
-        raise HTTPException(status_code=400, detail="Prompt is required.")
-
-    # --- Check Unsplash availability early ---
-    unsplash_available = False
-    if UNSPLASH_API_KEY:
-        try:
-            async with httpx.AsyncClient(timeout=2.0) as client:
-                ping = await client.get(
-                    "https://api.unsplash.com/photos/random",
-                    headers={"Authorization": f"Client-ID {UNSPLASH_API_KEY}"},
-                    params={"count": 1}
-                )
-                if ping.status_code == 200:
-                    unsplash_available = True
-        except Exception as e:
-            logging.warning(f"Unsplash API not reachable: {e}")
-
-    retrieved_text = ""
-    if rag_state["text_retriever"]:
-        try:
-            docs = await rag_state["text_retriever"].ainvoke(user_prompt)
-            if docs:
-                retrieved_text = "\n\n".join([d.page_content for d in docs])
-                logging.info(f"Retrieved {len(docs)} relevant text chunks.")
-        except Exception as e:
-            logging.error(f"Error during RAG retrieval: {e}")
-
-    # --- Build system prompt, conditionally including image schema ---
-    system_text = """
-You are TutorLM, an expert visual educator. Your purpose is to convert any given topic into a single, valid JSON array representing a visual learning canvas.
-
-Your entire output MUST be a single, valid JSON array. Do not add explanations or surrounding text.
-
----
-
-## Core Principles
-
-**Visual Narrative**: Think like a teacher. Design a logical flow from the main topic to key concepts, definitions, and examples.
-
-**Clarity & Brevity**: Keep all text concise. Use bold for key terms and LaTeX for math (e.g., $E=mc^2$).
-
-**Universal Rule**: Every element MUST have a `speakAloud` field containing a brief (1-2 sentence) narration of its content for text-to-speech. The `speakAloud` field must contain plain text (no markdown, no LaTeX).
-
----
-
-## Layout Rules & Strategy (Canvas: 1920x1080)
-
-**1. Coordinate System & Padding**:
-* All `x`, `y` coordinates represent the **top-left corner** of an element.
-* A **minimum padding of 40px** MUST be maintained between all elements.
-* The bounding box of one element (`x`, `y`, `width`, `height`) must never overlap with another.
-
-**2. Layout Pattern Selection**:
-Before generating JSON, choose a layout pattern that fits the topic:
-* **Top-Down Flow**: Best for processes or steps. Arrange elements vertically.
-* **Columnar**: Best for comparisons or categories. Arrange content in 2-3 vertical columns.
-* **Hub & Spoke**: Best for a central topic with related sub-points. Place the main idea in the center and radiate concepts outwards.
-
-**3. Element Sizing**:
-* You MUST define an explicit `width` and `height` for every `card` and `image` element.
-* To estimate `card` height, start with a base of `120px` and add approximately `40px` for every two lines of content.
-
----
-
-## Element Colors (card backgroundColor)
-
-- **Key Concept**: `#E3F2FD` (Core ideas or process steps)
-- **Definition**: `#E8F5E9` (Explanations of terms)
-- **Example**: `#F3E5F5` (Concrete examples)
-- **Important Note**: `#FFF3E0` (Crucial facts or tips)
-
----
-
-## JSON Element Schemas
-
-**1. Text (for titles/labels)**
-
-JSON
-
-{
-  "type": "text",
-  "content": "Text with **bold** or $math$.",
-  "fontSize": 36,
-  "x": 100,
-  "y": 100,
-  "textColor": "#333333",
-  "speakAloud": "Spoken-word version of the text."
-}
-
-2. Card (for content blocks)
-
-JSON
-
-{
-  "type": "card",
-  "content": "Main content, using **bold** or bullet points.",
-  "fontSize": 20,
-  "x": 100,
-  "y": 200,
-  "width": 350,
-  "height": 180,
-  "backgroundColor": "#E3F2FD",
-  "speakAloud": "A brief explanation of this card's content."
-}
-3. Line (for connections)
-
-JSON
-
-{
-  "type": "line",
-  "thickness": "m",
-  "x1": 100, "y1": 200,
-  "x2": 300, "y2": 400,
-  "speakAloud": "Describes the connection (e.g., 'This leads to...')."
-}
-"""
-    # Only add the Image schema if Unsplash is available
-    if unsplash_available:
-        system_text += """
-4. Image (for illustration)
-JSON
-
-{
-  "type": "image",
-  "search": "a simple, clear search query for an image",
-  "x": 100,
-  "y": 500,
-  "width": 150,
-  "height": 150,
-  "speakAloud": "A description of what the image illustrates."
-}
-"""
-
-    # Add language and difficulty info to system prompt
-    system_text += f"\n\nThe user has selected the language: '{lang}'. Output all text and speakAloud fields in this language."
-    system_text += f"\n\nThe user has selected the explanation difficulty: '{difficulty}'. Easy corresponds to elementary level, medium to secondary level, and hard to college level. Make your explanation at this level."
-
-    if retrieved_text:
-        system_text += f"\n\nUse the following text context to answer the user's question:\n---\n{retrieved_text}\n---"
-    
-    messages = [SystemMessage(content=system_text)]
-
-    # --- Add chat history as alternating Human/Assistant messages ---
-    history = chat_histories[session_id]
-    for turn in history:
-        if "user" in turn:
-            messages.append(HumanMessage(content=[{"type": "text", "text": turn["user"]}]))
-        if "assistant" in turn:
-            messages.append(SystemMessage(content=turn["assistant"]))
-
-    # Add current user message
-    human_content = [{"type": "text", "text": user_prompt}]
-
-    # Only add image context if Unsplash is available and reachable
-    image_files_found = 0
-    logging.info(f"Scanning {UPLOADS_DIR} for image context...")
-    image_extensions = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
-    for f in sorted(UPLOADS_DIR.glob("*")):
-        if f.is_file() and f.suffix.lower() in image_extensions:
-            data_url = image_to_base64_data_url(str(f))
-            if data_url:
-                human_content.append({"type": "image_url", "image_url": {"url": data_url}})
-                image_files_found += 1
-    logging.info(f"Added {image_files_found} images to the prompt.")
-
-    messages.append(HumanMessage(content=human_content))
-
-    async def stream_response():
-        response_chunks = []
-        try:
-            async for chunk in llm.astream(messages):
-                response_chunks.append(chunk.content)
-                yield chunk.content
-        except Exception as e:
-            logging.error(f"Error during LLM stream: {e}", exc_info=True)
-            yield "Sorry, an error occurred while generating the response."
-        # Log the final response after streaming
-        final_response = "".join(response_chunks)
-        # --- Store the turn in chat history ---
-        history.append({"user": user_prompt, "assistant": final_response})
-        async with aiofiles.open("llm_responses.txt", "a") as log_file:
-            await log_file.write(final_response + "\n---\n")
-
-    return StreamingResponse(stream_response(), media_type="text/plain; charset=utf-8")
-
-@app.post("/api/clear")
-def clear_all():
-    """Clears the RAG state and deletes all files in the uploads directory."""
-    logging.info("Clearing application state and uploaded files.")
-    rag_state["text_retriever"] = None
-    for f in UPLOADS_DIR.glob("*"):
-        try:
-            if f.is_file():
-                f.unlink()
-        except OSError as e:
-            logging.error(f"Error deleting file {f}: {e}")
-    return {"status": "cleared"}
-
-@app.post("/api/tts")
-async def tts_handler(request: Request):
-    """
-    Text-to-speech endpoint. Receives JSON: { "text": "..." }
-    Returns: WAV audio file.
-    """
-    data = await request.json()
-    text = data.get("text")
-    lang = current_language.get("lang", "en_US")
-    if not text:
-        logging.error("TTS endpoint received request without 'text' field.")
-        raise HTTPException(status_code=400, detail="Missing 'text' in request body.")
-
+async def transcribe_audio(audio_file_stream, audio_filename: str) -> str:
+    """Transcribes audio using the OpenAI Whisper API."""
+    logger.info(f"Transcribing audio file: {audio_filename} using OpenAI API")
+    if not OPENAI_API_KEY:
+        abort(501, description="Audio transcription service is not configured.")
     try:
-        logging.info(f"TTS requested for lang='{lang}' and text='{text[:30]}...'")
-        voice = get_voice_for_lang(lang)
-    except HTTPException as e:
-        logging.error(f"TTS error: {e.detail} (lang='{lang}')")
-        raise e
-    except Exception as e:
-        logging.error(f"Unexpected error in get_voice_for_lang: {e} (lang='{lang}')", exc_info=True)
-        raise HTTPException(status_code=500, detail="Unexpected error in TTS language selection.")
-
-    temp_wav_path = UPLOADS_DIR / f"{uuid.uuid4()}.wav"
-    syn_config = SynthesisConfig(
-        length_scale=1.5,
-    )
-    try:
-        with wave.open(str(temp_wav_path), "wb") as wav_file:
-            voice.synthesize_wav(text, wav_file, syn_config=syn_config)
-        return FileResponse(
-            str(temp_wav_path),
-            media_type="audio/wav",
-            filename="speech.wav",
-            headers={"Content-Disposition": "attachment; filename=speech.wav"}
+        transcription = await openai_client.audio.transcriptions.create(
+            model="whisper-1",
+            file=(audio_filename, audio_file_stream.read()),
         )
+        logger.info(f"OpenAI transcription successful for {audio_filename}.")
+        return transcription.text
     except Exception as e:
-        logging.error(f"TTS synthesis failed: {e}", exc_info=True)
-        raise HTTPException(status_code=500, detail="TTS synthesis failed.")
-    finally:
-        # Optionally, clean up the wav file after sending (if not needed for caching)
-        pass
+        logger.error(f"OpenAI transcription failed: {e}", exc_info=True)
+        abort(500, description="Audio transcription failed.")
 
-@app.post("/api/set-language")
-async def set_language(request: Request):
+
+# --- FLASK APP ---
+app = Flask(__name__)
+CORS(app) # Enable Cross-Origin Resource Sharing for all routes
+
+# --- API ENDPOINTS ---
+
+@app.route("/api/speech-to-prompt", methods=['POST'])
+async def speech_to_prompt():
     """
-    Receives the selected language from the frontend and stores it in memory.
+    Step 1: Takes audio, optional PDF, and optional images, performs transcription,
+    processes context, and refines it into a clear prompt.
     """
-    data = await request.json()
+    if 'session_id' not in request.form or 'audio_file' not in request.files:
+        abort(400, description="Missing 'session_id' or 'audio_file' in form data.")
+
+    session_id = request.form['session_id']
+    audio_file = request.files['audio_file']
+    pdf_file = request.files.get('pdf_file')
+    image_files = [file for key, file in request.files.items() if key.startswith('image_file_')]
+
+    logger.info(f"Received STP request for session_id: {session_id}")
+
+    try:
+        # 1. Transcribe Audio using OpenAI API
+        transcribed_text = await transcribe_audio(audio_file.stream, audio_file.filename)
+
+        # 2. Process PDF for context (if provided)
+        retrieved_text = ""
+        if pdf_file:
+            logger.info(f"Processing PDF: {pdf_file.filename}")
+            try:
+                pdf_content = pdf_file.read()
+                full_text = ""
+                with fitz.open(stream=pdf_content, filetype="pdf") as doc:
+                    full_text = "".join(page.get_text() for page in doc)
+
+                if full_text.strip():
+                    words = full_text.split()
+                    if len(words) > PDF_MAX_WORDS:
+                        retrieved_text = " ".join(words[:PDF_MAX_WORDS])
+                        logger.info(f"PDF content truncated to the first {PDF_MAX_WORDS} words.")
+                    else:
+                        retrieved_text = full_text
+                else:
+                    logger.warning(f"PDF '{pdf_file.filename}' contains no extractable text.")
+            except Exception as e:
+                logger.error(f"Failed to process PDF {pdf_file.filename}: {e}", exc_info=True)
+                retrieved_text = "" # Proceed without PDF context on error
+
+        # 3. Process images for visual context
+        image_context = []
+        if image_files:
+            for img_file in image_files:
+                img_content = img_file.read()
+                data_url = image_to_base64_data_url(img_content, img_file.filename)
+                if data_url:
+                    image_context.append({"type": "image_url", "image_url": {"url": data_url}})
+            logger.info(f"Loaded {len(image_context)} images for context.")
+
+        # 4. Refine the prompt with an LLM if context exists
+        has_context = bool(retrieved_text or image_context)
+        context_summary = "User provided audio only."
+        if not has_context:
+            refined_prompt = transcribed_text.strip()
+        else:
+            llm_messages = [{"role": "system", "content": PROMPT_REFINEMENT_SYSTEM_PROMPT}]
+            user_content_parts = [f"User's transcribed speech: \"{transcribed_text}\""]
+            if retrieved_text:
+                user_content_parts.append(f"Text from a relevant document:\n---\n{retrieved_text}\n---")
+                context_summary = "User provided audio, and text from a document"
+            if image_context:
+                user_content_parts.append("The user also has the following image(s) open:")
+                context_summary += f", and {len(image_context)} image(s)."
+
+            llm_user_message = [{"type": "text", "text": "\n\n".join(user_content_parts)}]
+            llm_user_message.extend(image_context)
+            llm_messages.append({"role": "user", "content": llm_user_message})
+
+            logger.info("Requesting prompt refinement from Ollama...")
+            response = await client_refinement.chat.completions.create(
+                model="gemma3", messages=llm_messages, max_tokens=LLM_MAX_TOKENS_PROMPT, temperature=0.2
+            )
+            refined_prompt = response.choices[0].message.content.strip()
+
+        logger.info(f"Refined prompt: '{refined_prompt}'")
+        return jsonify({
+            "refined_prompt": refined_prompt,
+            "session_id": session_id,
+            "context_summary": context_summary
+        })
+
+    except Exception as e:
+        logger.error(f"Error in speech-to-prompt endpoint: {e}", exc_info=True)
+        # Check if it's a werkzeug/flask exception with a description
+        error_desc = getattr(e, 'description', str(e))
+        error_code = getattr(e, 'code', 500)
+        return jsonify({"error": error_desc}), error_code
+
+
+@app.route("/api/reply", methods=['GET'])
+def reply_stream():
+    """Streams the generated canvas elements as server-sent events."""
+    args = request.args
+    refined_prompt = args.get('refined_prompt')
+    session_id = args.get('session_id')
+    context_summary = args.get('context_summary')
+
+    if not all([refined_prompt, session_id, context_summary]):
+        abort(400, "Missing one or more required query parameters: refined_prompt, session_id, context_summary")
+
+    async def event_generator():
+        try:
+            lang = current_language.get("lang", "en_US")
+            voice = get_voice_for_lang(lang) if get_voice_for_lang else None
+
+            messages = [
+                {"role": "system", "content": JSON_GENERATION_SYSTEM_PROMPT},
+                {"role": "user", "content": refined_prompt}
+            ]
+
+            response_stream = await client_generation.chat.completions.create(
+                model="gemma3n", messages=messages, max_tokens=LLM_MAX_TOKENS_JSON, temperature=0.7, stream=True
+            )
+
+            accumulated_content = ""
+            bracket_count = 0
+            in_string = False
+            escape_next = False
+            object_start = -1
+
+            async for chunk in response_stream:
+                delta = chunk.choices[0].delta.content
+                if not delta: continue
+                accumulated_content += delta
+                # Simple and robust JSON object streaming parser
+                for i, char in enumerate(delta):
+                    pos = len(accumulated_content) - len(delta) + i
+                    if in_string:
+                        if escape_next: escape_next = False
+                        elif char == '\\': escape_next = True
+                        elif char == '"': in_string = False
+                    else:
+                        if char == '"': in_string = True
+                        elif char == '{':
+                            if bracket_count == 0: object_start = pos
+                            bracket_count += 1
+                        elif char == '}':
+                            bracket_count -= 1
+                            if bracket_count == 0 and object_start != -1:
+                                json_str = accumulated_content[object_start : pos + 1]
+                                try:
+                                    obj = json.loads(json_str)
+                                    # --- Image Search Logic ---
+                                    if obj.get("type") == "image" and obj.get("search"):
+                                        try:
+                                            image_data = await search_for_image_on_unsplash(obj["search"])
+                                            aspect_ratio = image_data["height"] / image_data["width"] if image_data["width"] > 0 else 1
+                                            final_width = obj.get("width") if isinstance(obj.get("width"), int) else 350
+                                            obj.update({
+                                                "imageUrl": image_data["imageUrl"],
+                                                "width": final_width,
+                                                "height": int(final_width * aspect_ratio)
+                                            })
+                                        except Exception as search_error:
+                                            logger.error(f"Image search failed: {search_error}")
+                                            obj.update({
+                                                "type": "text",
+                                                "content": f"**Error:** Could not find image for '{obj['search']}'",
+                                                "textColor": "#ef4444"
+                                            })
+
+                                    # --- TTS Generation Logic ---
+                                    narration_text = obj.get("speakAloud")
+                                    if narration_text and voice:
+                                        try:
+                                            with io.BytesIO() as wav_buffer:
+                                                with wave.open(wav_buffer, "wb") as wav_file:
+                                                    voice.synthesize_wav(narration_text, wav_file)
+                                                base64_audio = base64.b64encode(wav_buffer.getvalue()).decode('utf-8')
+                                                obj['audioDataUrl'] = f"data:audio/wav;base64,{base64_audio}"
+                                        except Exception as tts_error:
+                                            logger.error(f"Error generating TTS audio: {tts_error}")
+                                            obj['audioDataUrl'] = None
+
+                                    yield f"data: {json.dumps(obj)}\n\n"
+                                except json.JSONDecodeError:
+                                    pass # Incomplete object, wait for more chunks
+
+            logger.info(f"Streaming completed for session: {session_id}")
+            yield "data: [DONE]\n\n"
+        except Exception as e:
+            logger.error(f"Error in reply streaming generator: {e}", exc_info=True)
+            yield f"data: {json.dumps({'error': str(e)})}\n\n"
+
+    def sync_event_stream():
+        # Use anyio to run the async generator and yield results synchronously
+        async def run_and_yield():
+            async for item in event_generator():
+                yield item
+
+        # anyio.to_thread.run_sync expects a sync function, so we use a queue to bridge async->sync
+        import queue
+        import threading
+
+        q = queue.Queue()
+        sentinel = object()
+
+        def runner():
+            async def async_runner():
+                async for item in event_generator():
+                    q.put(item)
+                q.put(sentinel)
+            anyio.run(async_runner)
+
+        thread = threading.Thread(target=runner)
+        thread.start()
+        while True:
+            item = q.get()
+            if item is sentinel:
+                break
+            yield item
+        thread.join()
+
+    return Response(sync_event_stream(), mimetype="text/event-stream")
+
+@app.route("/api/set-language", methods=['POST'])
+def set_language():
+    """Receives the selected language from the frontend and stores it."""
+    data = request.get_json()
     lang = data.get("lang")
     if not lang:
-        logging.error("Missing 'lang' in request body.")
-        raise HTTPException(status_code=400, detail="Missing 'lang' in request body.")
-    # Normalize language code to use underscores
-    lang = lang.replace("-", "_")
-    current_language["lang"] = lang
-    logging.info(f"Language set to: {lang}")
-    return {"status": "ok", "lang": lang}
+        abort(400, description="Missing 'lang' in request body.")
+    current_language["lang"] = lang.replace("-", "_")
+    logger.info(f"Language set to: {current_language['lang']}")
+    return jsonify({"status": "ok", "lang": current_language['lang']})
 
-# --- DIFFICULTY ENDPOINT ---
-@app.post("/api/set-difficulty")
-async def set_difficulty(request: Request):
-    """
-    Receives the selected difficulty from the frontend and stores it in memory.
-    """
-    data = await request.json()
-    difficulty = data.get("difficulty")
-    if not difficulty:
-        logging.error("Missing 'difficulty' in request body.")
-        raise HTTPException(status_code=400, detail="Missing 'difficulty' in request body.")
-    difficulty_level["difficulty"] = difficulty
-    logging.info(f"Difficulty set to: {difficulty}")
-    return {"status": "ok", "difficulty": difficulty}
+@app.route("/api/image-search", methods=['GET'])
+async def image_search():
+    """Searches for an image on Unsplash."""
+    query = request.args.get('q')
+    if not query:
+        abort(400, description="Missing query parameter 'q'.")
+    try:
+        result = await search_for_image_on_unsplash(query)
+        return jsonify(result)
+    except ValueError as e: abort(400, description=str(e))
+    except FileNotFoundError as e: abort(404, description=str(e))
+    except ConnectionError as e: abort(501, description=str(e))
+    except httpx.HTTPStatusError as e:
+        logger.error(f"HTTP error during Unsplash API call: {e.response.text}")
+        abort(e.response.status_code, "Error from image search provider.")
+    except Exception as e:
+        logger.error(f"Unexpected error during image search: {e}", exc_info=True)
+        abort(500, "An internal error occurred during image search.")
 
+
+# To run this app locally:
+# 1. Ensure you have an .env file with your API keys.
+# 2. Run 'flask --app your_script_name --debug run' in your terminal.
+if __name__ == '__main__':
+    # This block is for local development and won't be used by a WSGI server like Gunicorn on PythonAnywhere
+    app.run(debug=False, port=8000)

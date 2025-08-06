@@ -1,5 +1,5 @@
 import type { KonvaEventObject } from "konva/lib/Node";
-import { Text, Image as KonvaImage } from "react-konva";
+import { Text, Image as KonvaImage, Group, Rect } from "react-konva";
 import { useEffect, useState } from "react";
 import { useAppStore, type CanvasElement, type Tool } from "../store/useAppStore";
 import React from "react";
@@ -101,6 +101,11 @@ export const KonvaElement: React.FC<{
                             actions.setEditingElementId(element.id);
                         }
                     }}
+                    onDblTap={() => {
+                        if (currentTool === 'move') {
+                            actions.setEditingElementId(element.id);
+                        }
+                    }}
                 />
             );
         case 'image':
@@ -112,6 +117,31 @@ export const KonvaElement: React.FC<{
                     height={element.height}
                     cornerRadius={element.cornerRadius}
                 />
+            );
+        case 'pdf':
+            return (
+                <Group {...commonProps}>
+                    <Rect
+                        width={element.width}
+                        height={element.height}
+                        fill="#EFEFEF"
+                        stroke="#CCCCCC"
+                        strokeWidth={1}
+                        cornerRadius={element.cornerRadius}
+                    />
+                    <Text
+                        text={element.content}
+                        fontFamily="Inter, system-ui, sans-serif"
+                        fontSize={14}
+                        fill="#333333"
+                        width={element.width}
+                        height={element.height}
+                        align="center"
+                        verticalAlign="middle"
+                        padding={10}
+                        listening={false}
+                    />
+                </Group>
             );
         default:
             return null;

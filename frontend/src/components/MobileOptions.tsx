@@ -112,128 +112,126 @@ export const MobileToolOptions: React.FC = React.memo(() => {
         updateElement(selectedElement.id, { textDecoration: newDecoration });
     };
 
-    if (showPenOptions) {
-        return (
-            <>
-                {['#1f2937', '#ef4444', '#3b82f6', '#16a34a'].map(color => (
-                    <button
-                        key={color}
-                        onClick={() => setPenColor(color)}
-                        title={color}
-                        style={{ backgroundColor: color }}
-                        className={`w-10 h-10 rounded-lg border-2 transition-transform duration-150 ${
-                            penColor === color
-                                ? 'border-blue-500 scale-110'
-                                : 'border-transparent hover:scale-110'
-                        }`}
-                    />
-                ))}
-                {[2, 4, 8].map(thick => (
-                    <button
-                        key={thick}
-                        onClick={() => setPenThickness(thick)}
-                        className={`p-1 rounded-lg transition-colors flex items-center justify-center ${
-                            penThickness === thick
-                                ? 'bg-blue-100'
-                                : 'hover:bg-gray-100'
-                        }`}
-                    >
-                        <div
-                            style={{
-                                width: thick + 6,
-                                height: thick + 6,
-                                backgroundColor: penColor
-                            }}
-                            className="rounded-full"
+    if (!showPenOptions && !showEraserOptions && !showTextOptions) return null;
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            className="flex items-center justify-center gap-3 bg-white/95 backdrop-blur-xl p-3 rounded-2xl shadow-2xl"
+        >
+            {showPenOptions && (
+                <>
+                    {['#1f2937', '#ef4444', '#3b82f6', '#16a34a'].map(color => (
+                        <button
+                            key={color}
+                            onClick={() => setPenColor(color)}
+                            title={color}
+                            style={{ backgroundColor: color }}
+                            className={`w-10 h-10 rounded-lg border-2 transition-transform duration-150 ${penColor === color
+                                    ? 'border-blue-500 scale-110'
+                                    : 'border-transparent hover:scale-110'
+                                }`}
                         />
-                    </button>
-                ))}
-                <button
-                    onClick={() => setPenMode(penMode === 'free' ? 'line' : 'free')}
-                    title={penMode === 'free' ? "Straight Line" : "Freehand"}
-                    className="p-2 rounded-lg transition-colors flex items-center justify-center hover:bg-gray-100 text-gray-600"
-                >
-                    {penMode === 'free' ? <Minus size={20} /> : <Spline size={20} />}
-                </button>
-            </>
-        );
-    }
-    if (showEraserOptions) {
-        return (
-            <>
-                {[20, 40, 60].map(thick => (
+                    ))}
+                    {[2, 4, 8].map(thick => (
+                        <button
+                            key={thick}
+                            onClick={() => setPenThickness(thick)}
+                            className={`p-1 rounded-lg transition-colors flex items-center justify-center ${penThickness === thick
+                                    ? 'bg-blue-100'
+                                    : 'hover:bg-gray-100'
+                                }`}
+                        >
+                            <div
+                                style={{
+                                    width: thick + 6,
+                                    height: thick + 6,
+                                    backgroundColor: penColor
+                                }}
+                                className="rounded-full"
+                            />
+                        </button>
+                    ))}
                     <button
-                        key={thick}
-                        onClick={() => setEraserThickness(thick)}
-                        className={`p-1 rounded-lg transition-colors flex items-center justify-center ${
-                            eraserThickness === thick
-                                ? 'bg-blue-100'
-                                : 'hover:bg-gray-100'
-                        }`}
+                        onClick={() => setPenMode(penMode === 'free' ? 'line' : 'free')}
+                        title={penMode === 'free' ? "Straight Line" : "Freehand"}
+                        className="p-2 rounded-lg transition-colors flex items-center justify-center hover:bg-gray-100 text-gray-600"
                     >
-                        <div
-                            style={{
-                                width: thick / 2 + 8,
-                                height: thick / 2 + 8
-                            }}
-                            className="rounded-full bg-gray-300 border-2 border-gray-400"
-                        />
+                        {penMode === 'free' ? <Minus size={20} /> : <Spline size={20} />}
                     </button>
-                ))}
-            </>
-        );
-    }
-    if (showTextOptions && selectedElement) {
-        return (
-            <>
-                {['#1f2937', '#ef4444', '#3b82f6', '#16a34a'].map(color => (
+                </>
+            )}
+            {showEraserOptions && (
+                <>
+                    {[20, 40, 60].map(thick => (
+                        <button
+                            key={thick}
+                            onClick={() => setEraserThickness(thick)}
+                            className={`p-1 rounded-lg transition-colors flex items-center justify-center ${eraserThickness === thick
+                                    ? 'bg-blue-100'
+                                    : 'hover:bg-gray-100'
+                                }`}
+                        >
+                            <div
+                                style={{
+                                    width: thick / 2 + 8,
+                                    height: thick / 2 + 8
+                                }}
+                                className="rounded-full bg-gray-300 border-2 border-gray-400"
+                            />
+                        </button>
+                    ))}
+                </>
+            )}
+            {showTextOptions && selectedElement && (
+                <>
+                    {['#1f2937', '#ef4444', '#3b82f6', '#16a34a'].map(color => (
+                        <button
+                            key={color}
+                            onClick={() => updateElement(selectedElement.id, { fill: color })}
+                            title={color}
+                            style={{ backgroundColor: color }}
+                            className={`w-10 h-10 rounded-lg border-2 transition-transform duration-150 ${selectedElement.fill === color
+                                    ? 'border-blue-500 scale-110'
+                                    : 'border-transparent hover:scale-110'
+                                }`}
+                        />
+                    ))}
                     <button
-                        key={color}
-                        onClick={() => updateElement(selectedElement.id, { fill: color })}
-                        title={color}
-                        style={{ backgroundColor: color }}
-                        className={`w-10 h-10 rounded-lg border-2 transition-transform duration-150 ${
-                            selectedElement.fill === color
-                                ? 'border-blue-500 scale-110'
-                                : 'border-transparent hover:scale-110'
-                        }`}
-                    />
-                ))}
-                <button
-                    title="Bold"
-                    onClick={handleToggleBold}
-                    className={`p-2 rounded-lg transition-colors flex items-center justify-center ${
-                        isBold
-                            ? 'bg-blue-100 text-blue-600'
-                            : 'hover:bg-gray-100 text-gray-600'
-                    }`}
-                >
-                    <Bold size={20} />
-                </button>
-                <button
-                    title="Italic"
-                    onClick={handleToggleItalic}
-                    className={`p-2 rounded-lg transition-colors flex items-center justify-center ${
-                        isItalic
-                            ? 'bg-blue-100 text-blue-600'
-                            : 'hover:bg-gray-100 text-gray-600'
-                    }`}
-                >
-                    <Italic size={20} />
-                </button>
-                <button
-                    title="Underline"
-                    onClick={handleToggleUnderline}
-                    className={`p-2 rounded-lg transition-colors flex items-center justify-center ${
-                        isUnderlined
-                            ? 'bg-blue-100 text-blue-600'
-                            : 'hover:bg-gray-100 text-gray-600'
-                    }`}
-                >
-                    <Underline size={20} />
-                </button>
-            </>
-        );
-    }
-    return null;
+                        title="Bold"
+                        onClick={handleToggleBold}
+                        className={`p-2 rounded-lg transition-colors flex items-center justify-center ${isBold
+                                ? 'bg-blue-100 text-blue-600'
+                                : 'hover:bg-gray-100 text-gray-600'
+                            }`}
+                    >
+                        <Bold size={20} />
+                    </button>
+                    <button
+                        title="Italic"
+                        onClick={handleToggleItalic}
+                        className={`p-2 rounded-lg transition-colors flex items-center justify-center ${isItalic
+                                ? 'bg-blue-100 text-blue-600'
+                                : 'hover:bg-gray-100 text-gray-600'
+                            }`}
+                    >
+                        <Italic size={20} />
+                    </button>
+                    <button
+                        title="Underline"
+                        onClick={handleToggleUnderline}
+                        className={`p-2 rounded-lg transition-colors flex items-center justify-center ${isUnderlined
+                                ? 'bg-blue-100 text-blue-600'
+                                : 'hover:bg-gray-100 text-gray-600'
+                            }`}
+                    >
+                        <Underline size={20} />
+                    </button>
+                </>
+            )}
+        </motion.div>
+    );
 });
