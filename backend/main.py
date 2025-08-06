@@ -29,8 +29,10 @@ logger = logging.getLogger(__name__)
 
 # Load API keys and base URLs from environment
 UNSPLASH_API_KEY = os.getenv("UNSPLASH_ACCESS_KEY")
-OLLAMA_BASE_URL = os.getenv("BASE_URL") # For Ollama models
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY") # For Whisper transcription
+RUNPOD_API_KEY = os.getenv("RUNPOD_API_KEY")
+BASE_URL_3 = os.getenv("BASE_URL_3")
+BASE_URL_3N = os.getenv("BASE_URL_3N")
 
 # --- Constants ---
 UPLOADS_DIR = Path("uploads")
@@ -53,11 +55,11 @@ if not OPENAI_API_KEY:
     logger.warning("OPENAI_API_KEY not found. Audio transcription will fail.")
 openai_client = AsyncOpenAI()
 
-# Client for the first LLM step (prompt refinement) using Ollama
-client_refinement = AsyncOpenAI(base_url=OLLAMA_BASE_URL, api_key="ollama")
+# Client for the first LLM step (prompt refinement) using RunPod
+client_refinement = AsyncOpenAI(base_url=BASE_URL_3, api_key=RUNPOD_API_KEY)
 
-# Client for the second LLM step (JSON generation) using Ollama
-client_generation = AsyncOpenAI(base_url=OLLAMA_BASE_URL, api_key="ollama")
+# Client for the second LLM step (JSON generation) using RunPod
+client_generation = AsyncOpenAI(base_url=BASE_URL_3N, api_key=RUNPOD_API_KEY)
 
 logger.info("API clients initialized.")
 
@@ -159,10 +161,7 @@ You are TutorLM, an expert visual educator specializing in creating effective ed
    }
 
 **IMAGE USAGE GUIDELINES**:
-- Use images for: scientific structures, historical artifacts, geographical features, mathematical visualizations, technical diagrams, natural phenomena
-- AVOID images for: abstract concepts, general topics, decorative purposes
-- Search terms should be specific and educational (not generic or decorative)
-- Each image must have clear educational relevance explained in speakAloud
+- DO NOT USE images for mathematical explanations, abstract concepts, general topics, or decorative purposes.
 
 **LAYOUT STRATEGY**:
 - Create logical visual flow from general to specific concepts

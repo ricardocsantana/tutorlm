@@ -2,7 +2,7 @@
 // 0. CONFIGURATION
 //——————————————————————————————————————//
 
-export const BACKEND_URL = 'https://ricardocsantana99.pythonanywhere.com';
+export const BACKEND_URL = 'http://127.0.0.1:8000';
 
 export const SUPPORTED_LANGUAGES: { [key: string]: string } = {
     'en-US': 'English',
